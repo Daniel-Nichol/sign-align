@@ -1,0 +1,15 @@
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\SignAlign.exe
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\SignAlign.pdb
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\MainWindow.baml
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\MainWindow.g.cs
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\App.g.cs
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign_MarkupCompile.cache
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.g.resources
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\WpfApplication1.Properties.Resources.resources
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.exe
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.pdb
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
