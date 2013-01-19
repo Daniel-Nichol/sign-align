@@ -11,5 +11,3 @@ C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\GenerateResour
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.exe
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.pdb
-C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
-C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb

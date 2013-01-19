@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Kinect;
 
 namespace WpfApplication1
 {
@@ -24,6 +25,12 @@ namespace WpfApplication1
         {
             controller = new GestureController();
             InitializeComponent();
+            
+        }
+
+
+        private void Btn_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

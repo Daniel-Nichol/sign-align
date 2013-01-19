@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Kinect;
-using Microsoft.Samples.Kinect.WpfViewers;
 
 namespace WpfApplication1
 {
@@ -12,9 +11,10 @@ namespace WpfApplication1
     /// </summary>
     class GestureController
     {
-        private KinectSensor kinectSensor; //The sensor used for skeletal tracking
-        private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
-        public GestureController()
+        public /* BAD DON'T DO THIS */ KinectSensor kinectSensor; //The sensor used for skeletal tracking
+        public /* BAD DON'T DO THIS */ Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
+        private SkeletonFrame skeletonFrame;
+        public GestureController() //
         {
             // Walk through KinectSensors to find the first one with a Connected status
             var firstKinect = (from k in KinectSensor.KinectSensors
@@ -24,6 +24,31 @@ namespace WpfApplication1
             {
                 kinectSensor = firstKinect;
             }
+            //Enable the available streams
+            kinectSensor.SkeletonStream.Enable();
+            //kinectSensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
+            //kinectSensor.DepthStream.Enable();
+            //Wait for the frames of all 3 streams to be read. Then we will call AllFramesReady
+            kinectSensor.AllFramesReady += new EventHandler<AllFramesReadyEventArgs>(KinectAllFramesReady);
+            kinectSensor.Start();
+        }
+
+        /// <summary>
+        /// Called each time new frames are ready
+        /// </summary>
+        private void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
+        {
+            skeletonData = new Skeleton[kinectSensor.SkeletonStream.FrameSkeletonArrayLength];
+            skeletonFrame = e.OpenSkeletonFrame();
+            if (skeletonFrame != null)
+            {
+                skeletonFrame.CopySkeletonDataTo(skeletonData);
+                if (skeletonData[0].TrackingState == SkeletonTrackingState.Tracked)
+                {
+                    //DO SOMETHING WITH THE SKELETON.
+                }
+            }
+
         }
 
         /// <summary>
@@ -34,44 +59,5 @@ namespace WpfApplication1
         {
             kinectSensor.Stop();
         }
-
-        /// <summary>
-        /// Opens a new kinect sensor for skeletal tracking
-        /// </summary>
-        /// <param name="newKinect">the new sensor</param>
-        private void openKinect(KinectSensor newKinect)
-        {
-            kinectSensor = newKinect;
-            newKinect.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
-            // Activate the SkeletonStream with default smoothing.
-            newKinect.SkeletonStream.Enable();
-            // Subscribe to the SkeletonFrameReady event to know when data is available
-            newKinect.SkeletonFrameReady += Kinect_SkeletonFrameReady;
-            // Starts the sensor
-            newKinect.Start();
-        }
-
-        /// <summary>
-        /// Handles the SkeletonFrameReady event of the newKinect control - called for each new available skeleton
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="Microsoft.Kinect.SkeletonFrameReadyEventArgs"/> instance containing the event data.</param>
-        void Kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
-        {
-            // Opens the received SkeletonFrame
-            using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame())
-            {
-                // Skeleton frame might be null if we are too late or if the Kinect has been stopped
-                if (skeletonFrame == null)
-                    return;
-
-                // Copies the data in a Skeleton array (6 items) 
-                skeletonFrame.CopySkeletonDataTo(skeletonData)
-
-                // Retrieves Skeleton objects with Tracked state
-                var trackedSkeletons = skeletonData.Where(s => s.TrackingState == SkeletonTrackingState.Tracked);
-            }
-        }
-
     }
 }
