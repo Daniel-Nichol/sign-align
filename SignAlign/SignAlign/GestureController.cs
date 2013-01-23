@@ -11,8 +11,8 @@ namespace WpfApplication1
     /// </summary>
     class GestureController
     {
-        public /* BAD DON'T DO THIS */ KinectSensor kinectSensor; //The sensor used for skeletal tracking
-        public /* BAD DON'T DO THIS */ Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
+        private KinectSensor kinectSensor; //The sensor used for skeletal tracking
+        private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
         private SkeletonFrame skeletonFrame;
         public GestureController() //
         {

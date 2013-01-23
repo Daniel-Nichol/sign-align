@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  19 JAN 2013 17:37
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  23 JAN 2013 20:25
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -477,7 +477,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
-(rerunfilecheck)             Checksum: 16BD510067ECE0BAD6ED7700C384A48D;2115.
+(rerunfilecheck)             Checksum: 3E596A714B81515D1FEC10EEF24BFD9A;2159.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
 (rerunfilecheck)             Checksum: CD830EA7845F4AE6EF48A2FBBB2538B8;193.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
@@ -502,7 +502,7 @@ s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on projectReport.pdf (18 pages, 247062 bytes).
+Output written on projectReport.pdf (18 pages, 247614 bytes).
 PDF statistics:
  305 PDF objects out of 1000 (max. 8388607)
  52 named destinations out of 1000 (max. 500000)
