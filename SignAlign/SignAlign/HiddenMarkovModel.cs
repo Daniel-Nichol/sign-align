@@ -83,7 +83,7 @@ namespace WpfApplication1
             return prob;
         }
 
-         /// <summary>
+        /// <summary>
         /// Returns the probability that a given sequence of observation was created by this Markov model
         ///
         /// Uses the forward/backward algorithm, we scale the alphas and return a log-probability to avoid underflow.
@@ -144,6 +144,8 @@ namespace WpfApplication1
             }
             return -logprob;
         }
+
+        
     }
     
 
