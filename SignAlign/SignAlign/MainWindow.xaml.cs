@@ -31,7 +31,9 @@ namespace WpfApplication1
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            double[,] A = new double[2,2];
+            /**
+             * TESTING THE HMM
+             * double[,] A = new double[2,2];
             double[,] B = new double[2, 3];
             double[] pi = new double[2];
             A[0, 0] = 0.7; A[0, 1] = 0.3; A[1, 0] = 0.4; A[1, 1] = 0.6;
@@ -44,7 +46,24 @@ namespace WpfApplication1
             observations[0] = 1;
             observations[1] = 1;
             double prob = HMM.logProbObservations(observations);
-            button1.Content = prob.ToString();   
+            button1.Content = prob.ToString();   **/
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

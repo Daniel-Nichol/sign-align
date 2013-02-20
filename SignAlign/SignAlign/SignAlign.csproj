@@ -73,8 +73,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HiddenMarkovModel.cs" />
-    <Compile Include="Recording.cs" />
+    <Compile Include="Training\HiddenMarkovModel.cs" />
+    <Compile Include="RecordingGestures\GestureRecorder.cs" />
+    <Compile Include="RecordingGestures\GestureRecording.cs" />
     <Compile Include="GestureController.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
