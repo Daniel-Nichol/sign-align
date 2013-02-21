@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Kinect;
 
+
 namespace WpfApplication1
 {
     /// <summary>
@@ -21,11 +22,10 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
         GestureController controller;
+        GestureRecorder recorder;
         public MainWindow()
         {
-            controller = new GestureController();
-            InitializeComponent();
-            
+            InitializeComponent();   
         }
 
 
@@ -49,6 +49,11 @@ namespace WpfApplication1
             button1.Content = prob.ToString();   **/
         }
 
+        private void button2_Click_1(object sender, RoutedEventArgs e)
+        {
+            recorder = new GestureRecorder();
+        }
+
         private void button4_Click(object sender, RoutedEventArgs e)
         {
 
@@ -61,9 +66,6 @@ namespace WpfApplication1
         {
 
         }
-        private void button2_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

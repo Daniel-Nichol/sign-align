@@ -4,23 +4,23 @@ using System.Linq;
 using System.Text;
 using Microsoft.Kinect;
 
-namespace WpfApplication1.Recording
+namespace WpfApplication1
 {
-    class GestureRecorder
+    class GestureRecorder : GestureController
     {
-        private KinectSensor kinectSensor; //The sensor to record from
         private List<GestureRecording> recordings = new List<GestureRecording>(); //A list of recording
         private GestureRecording currentRecording;
+        private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
+        private SkeletonFrame skeletonFrame;
         private bool areRecording;
 
-        public GestureRecorder(KinectSensor kinectSensor)
+        public GestureRecorder()
         {
-            this.kinectSensor = kinectSensor;
             kinectSensor.AllFramesReady += new EventHandler<AllFramesReadyEventArgs>(KinectAllFramesReady);
         }
 
         //Update current recording with kinect readings when frame ready
-        private void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
+        protected override void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
             Skeleton[] skeletonData;
             SkeletonFrame skeletonFrame;
