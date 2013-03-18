@@ -11,8 +11,8 @@ namespace WpfApplication1
     /// </summary>
     class GestureController
     {
-        protected KinectSensor kinectSensor; //The sensor used for skeletal tracking
-    
+        public KinectSensor kinectSensor { get; private set; } //The sensor used for skeletal tracking
+        protected bool tracking;
         public GestureController() //
         {
             // Walk through KinectSensors to find the first one with a Connected status
@@ -32,12 +32,33 @@ namespace WpfApplication1
             kinectSensor.Start();
         }
 
+        public bool isTracking()
+        {
+            return tracking;
+        }
+
         /// <summary>
         /// Called each time new frames are ready
         /// </summary>
         protected virtual void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
+            Skeleton[] skeletonData;
+            SkeletonFrame skeletonFrame;
 
+            skeletonData = new Skeleton[kinectSensor.SkeletonStream.FrameSkeletonArrayLength];
+            skeletonFrame = e.OpenSkeletonFrame();
+            if (skeletonFrame != null)
+            {
+                skeletonFrame.CopySkeletonDataTo(skeletonData);
+                if (skeletonData[0].TrackingState == SkeletonTrackingState.Tracked)
+                {
+                    tracking = true;
+                }
+                else
+                {
+                    tracking = false;
+                }
+            }
         }
 
 

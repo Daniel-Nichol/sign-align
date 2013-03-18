@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace WpfApplication1
 {
     class GestureRecorder : GestureController
     {
-        private List<GestureRecording> recordings = new List<GestureRecording>(); //A list of recording
+        private List<GestureRecording> recordings = new List<GestureRecording>(); //A list of recordings
         private GestureRecording currentRecording;
         private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
         private SkeletonFrame skeletonFrame;
@@ -40,7 +41,7 @@ namespace WpfApplication1
         }
 
         //Starts recording from the kinect
-        public void StartRecording()
+        public void startRecording()
         {
             areRecording = true;
             currentRecording = new GestureRecording();
@@ -53,8 +54,17 @@ namespace WpfApplication1
         }
 
         //Saves the current recordings as .csv with joint annotations
-        public void saveRecordings()
+        public void saveRecordings(String filename)
         {
+            using (var writer = new StreamWriter("C:/Users/user/Desktop/signAlign/"+filename+".csv"))
+            {
+                foreach(GestureRecording g in recordings)
+                {
+                    writer.WriteLine(g.asString(g.hand_left, 0));
+                }
+                writer.Flush();
+                writer.Dispose();
+            }
         }
 
 
