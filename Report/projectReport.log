@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  23 JAN 2013 20:25
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  20 MAR 2013 22:16
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -308,7 +308,85 @@ LaTeX Warning: You have requested package `StyleFiles/watermark',
                but the package provides `watermark'.
 
 Package: watermark 2002/01/29 v1.00 Watermarks (NCC)
-) (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip56
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen112
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen113
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count103
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count104
+\leftroot@=\count105
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count106
+\DOTSCASE@=\count107
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen114
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count108
+\c@MaxMatrixCols=\count109
+\dotsspace@=\muskip11
+\c@parentequation=\count110
+\dspbrk@lvl=\count111
+\tag@help=\toks18
+\row@=\count112
+\column@=\count113
+\maxfields@=\count114
+\andhelp@=\toks19
+\eqnshift@=\dimen115
+\alignsep@=\dimen116
+\tagshift@=\dimen117
+\tagwidth@=\dimen118
+\totwidth@=\dimen119
+\lineht@=\dimen120
+\@envbody=\toks20
+\multlinegap=\skip57
+\multlinetaggap=\skip58
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip59
+\thm@postskip=\skip60
+\thm@headsep=\skip61
+\dth@everypar=\toks27
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 138.
+LaTeX Info: Redefining \bm on input line 204.
+)
+(C:\Users\user\Desktop\signAlign\Report\projectReport.aux
 (C:\Users\user\Desktop\signAlign\Report\Dedication/dedication.aux)
 (C:\Users\user\Desktop\signAlign\Report\Acknowledgement/acknowledgement.aux)
 (C:\Users\user\Desktop\signAlign\Report\Abstract/abstract.aux)
@@ -319,48 +397,48 @@ Package: watermark 2002/01/29 v1.00 Watermarks (NCC)
 (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count103
-\scratchdimen=\dimen112
-\scratchbox=\box26
-\nofMPsegments=\count104
-\nofMParguments=\count105
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count106
-\MPscratchDim=\dimen113
-\MPnumerator=\count107
-\everyMPtoPDFconversion=\toks18
+\scratchcounter=\count115
+\scratchdimen=\dimen121
+\scratchbox=\box28
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen122
+\MPnumerator=\count119
+\everyMPtoPDFconversion=\toks29
 )
-\AtBeginShipoutBox=\box27
-Package backref Info: ** backref set up for natbib ** on input line 39.
-Package hyperref Info: Link coloring ON on input line 39.
+\AtBeginShipoutBox=\box29
+Package backref Info: ** backref set up for natbib ** on input line 28.
+Package hyperref Info: Link coloring ON on input line 28.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count108
+\c@section@level=\count120
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
-LaTeX Info: Redefining \nameref on input line 39.
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
 
 (C:\Users\user\Desktop\signAlign\Report\projectReport.out)
 (C:\Users\user\Desktop\signAlign\Report\projectReport.out)
@@ -404,50 +482,47 @@ No file projectReport.nls.
 
 ] (C:\Users\user\Desktop\signAlign\Report\Introduction/introduction.tex
 Chapter 1.
-) [1
+[1
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Chapter1/chapter1.tex
+] [2]) [3] (C:\Users\user\Desktop\signAlign\Report\Chapter1/chapter1.tex
 Chapter 2.
-<Chapter1/Chapter1Figs/aflow.jpg, id=194, 454.87589pt x 658.93236pt>
-File: Chapter1/Chapter1Figs/aflow.jpg Graphic file (type jpg)
-
-<use Chapter1/Chapter1Figs/aflow.jpg>
-Package pdftex.def Info: Chapter1/Chapter1Figs/aflow.jpg used on input line 45.
-
-(pdftex.def)             Requested size: 299.34447pt x 433.62pt.
- [2
+[4
 
 
 
-] [3 <C:/Users/user/Desktop/signAlign/Report/Chapter1/Chapter1Figs/aflow.jpg>])
- [4]
+] [5]
+LaTeX Font Info:    Try loading font information for U+eus on input line 63.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueus.fd"
+File: ueus.fd 2009/06/22 v3.00 Euler Script
+)
+[6] [7] [8] [9]) [10]
 (C:\Users\user\Desktop\signAlign\Report\Chapter2/chapter2.tex
 Chapter 3.
-) [5
+) [11
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Chapter3/chapter3.tex
 Chapter 4.
-[6
+) [12
 
 
 
-]) [7] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
+] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
 Chapter 5.
-) [8
+) [13
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex) [9
+] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
+[14
 
 
 
 
-]
-(C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [10
+] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [15
 
 
 
@@ -455,13 +530,13 @@ Chapter 5.
 (C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
 (C:\Users\user\Desktop\signAlign\Report\projectReport.brf)
 \tf@brf=\write7
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
- [11
+ [16
 
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
+] [17])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 77.
+ [18]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
 
 (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
 (C:\Users\user\Desktop\signAlign\Report\Dedication/dedication.aux)
@@ -474,37 +549,43 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
 (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 77.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 77.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
-(rerunfilecheck)             Checksum: 3E596A714B81515D1FEC10EEF24BFD9A;2159.
+(rerunfilecheck)             Checksum: 972CD04498AD27860714003B1EBF7E95;1205.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
-(rerunfilecheck)             Checksum: CD830EA7845F4AE6EF48A2FBBB2538B8;193.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
+(rerunfilecheck)             Checksum: 73BB0A077DE83002C545B5278130887E;1348.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 77.
  ) 
 Here is how much of TeX's memory you used:
- 6833 strings out of 494049
- 102370 string characters out of 3146069
- 186948 words of memory out of 3000000
- 9872 multiletter control sequences out of 15000+200000
- 13453 words of font info for 51 fonts, out of 3000000 for 9000
+ 7646 strings out of 494049
+ 113039 string characters out of 3146069
+ 204583 words of memory out of 3000000
+ 10630 multiletter control sequences out of 15000+200000
+ 16394 words of font info for 61 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 39i,12n,50p,446b,451s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,14n,47p,854b,490s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program File
-s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on projectReport.pdf (18 pages, 247614 bytes).
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Program
+ Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9
+/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on projectReport.pdf (25 pages, 248902 bytes).
 PDF statistics:
- 305 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
- 230 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 399 PDF objects out of 1000 (max. 8388607)
+ 72 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 

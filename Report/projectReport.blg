@@ -11,3 +11,21 @@ A level-1 auxiliary file: Appendix1/appendix1.aux
 A level-1 auxiliary file: Appendix2/appendix2.aux
 The style file: plainnat.bst
 Database file #1: References/references.bib
+Warning--entry type for "LATTA:2010:biblatex" isn't style-file defined
+--line 5 of file References/references.bib
+Warning--entry type for "Microsoft:2013:Online" isn't style-file defined
+--line 26 of file References/references.bib
+I was expecting a `,' or a `}'---line 32 of file References/references.bib
+ : 
+ : urldate = {19/03/2013}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "Forth:2013:Online" isn't style-file defined
+--line 35 of file References/references.bib
+I was expecting a `,' or a `}'---line 41 of file References/references.bib
+ : 
+ : urldate = {19/03/2013}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--can't use both volume and number fields in bishop2006pattern
+(There were 2 error messages)

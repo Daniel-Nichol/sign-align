@@ -4,25 +4,12 @@
  \documentclass[oneside,12pt]{Classes/CUEDthesisPSnPDF}
 
 \title{Sign Align -- A System to Track and Translate Sign Language}
+\author{Daniel Nichol}
+\collegeordept{Department of Computer Science}
+\university{University of Oxford}
+\crest{}
 
-\ifpdf
-  \author{\href{mailto:harish.bhanderi@cantab.net}{Daniel Nichol}}
-  \collegeordept{\href{http://www.eng.cam.ac.uk}{Department of Computer Science}}
-  \university{\href{http://www.cam.ac.uk}{University of Oxford}}
-% insert below the file name that contains the crest in-place of 'UnivShield'
-  \crest{}
-\else
-  \author{Daniel Nichol}
-  \collegeordept{Department of Computer Science}
-  \university{University of Oxford}
-% insert below the file name that contains the crest in-place of 'UnivShield'
-  \crest{}
-\fi
-%
-% insert below the file name that contains the crest in-place of 'UnivShield'
-% \crest{\IncludeGraphicsW{UnivShield}{40mm}{14 14 73 81}}
-%
-%\renewcommand{\submittedtext}{change the default text here if needed}
+
 \degree{Master of Mathematics and Computer Science}
 \degreedate{}
 
@@ -32,6 +19,8 @@
 
 % Put all the style files you want in the directory StyleFiles and usepackage like this:
 \usepackage{StyleFiles/watermark}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{bm}
 
 % Comment out the next line to get single spacing
 \onehalfspacing
@@ -48,14 +37,6 @@
 % \begin{abstractseparate}
 %   \input{Abstract/abstract}
 % \end{abstractseparate}
-
-
-
-
-% Using the watermark package which is in StyleFiles/
-% and to remove DRAFT COPY ONLY appearing on the top of all pages comment out below line
-%\watermark{DRAFT COPY ONLY}
-
 
 \maketitle
 
@@ -91,6 +72,6 @@
 %\bibliographystyle{Classes/jmb}
 %\bibliographystyle{Classes/jmb} % bibliography style
 \renewcommand{\bibname}{References} % changes default name Bibliography to References
-\bibliography{References/references} % References file
+\bibliography{References/references}{} % References file
 
 \end{document}

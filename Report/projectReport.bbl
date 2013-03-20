@@ -1,23 +1,130 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Knuth(1984)]{texbook}
-Donald~E. Knuth.
-\newblock \emph{The {{\TeX}book}}.
-\newblock Addison-Wesley, 1984.
+\bibitem[Baum and Petrie(1966)]{baum1966statistical}
+Leonard~E Baum and Ted Petrie.
+\newblock Statistical inference for probabilistic functions of finite state
+  markov chains.
+\newblock \emph{The Annals of Mathematical Statistics}, 37\penalty0
+  (6):\penalty0 1554--1563, 1966.
 
-\bibitem[Lamport(1986)]{latex}
-Leslie Lamport.
-\newblock \emph{{\LaTeX:} {A} Document Preparation System}.
-\newblock Addison-Wesley, 1986.
+\bibitem[Baum and Sell(1968)]{baum1968growth}
+Leonard~E Baum and George~R Sell.
+\newblock Growth transformations for functions on manifolds.
+\newblock \emph{Pacific Journal of Mathematics}, 27\penalty0 (2):\penalty0
+  211--227, 1968.
 
-\bibitem[Rudin(1973)]{Rud73}
-W.~Rudin.
-\newblock \emph{Functional {Analysis}}.
-\newblock McGraw-Hill, New York, 1973.
+\bibitem[Baum et~al.(1970)Baum, Petrie, Soules, and
+  Weiss]{baum1970maximization}
+Leonard~E Baum, Ted Petrie, George Soules, and Norman Weiss.
+\newblock A maximization technique occurring in the statistical analysis of
+  probabilistic functions of markov chains.
+\newblock \emph{The annals of mathematical statistics}, pages 164--171, 1970.
+
+\bibitem[Bishop et~al.(2006)]{bishop2006pattern}
+Christopher~M Bishop et~al.
+\newblock \emph{Pattern recognition and machine learning}, volume~4.
+\newblock springer New York, 2006.
+
+\bibitem[Bunke et~al.(1995)Bunke, Roth, and Schukat-Talamazzini]{bunke1995off}
+Horst Bunke, Markus Roth, and Ernst~G{\"u}nter Schukat-Talamazzini.
+\newblock Off-line cursive handwriting recognition using hidden markov models.
+\newblock \emph{Pattern recognition}, 28\penalty0 (9):\penalty0 1399--1413,
+  1995.
+
+\bibitem[Durbin et~al.(1998)Durbin, Eddy, Krogh, and
+  Mitchison]{durbin1998biological}
+Richard Durbin, Sean~R Eddy, Anders Krogh, and Graeme Mitchison.
+\newblock \emph{Biological sequence analysis: probabilistic models of proteins
+  and nucleic acids}.
+\newblock Cambridge university press, 1998.
+
+\bibitem[I.~Oikonomidis(2013)]{Forth:2013:Online}
+A.~A.~Argyros I.~Oikonomidis, N.~Kyriazis.
+\newblock Kinect 3d {H}and {T}racking, March 2013.
+\newblock URL \url{http://cvrlcode.ics.forth.gr/handtracking/}.
+
+\bibitem[Jelinek(1998)]{jelinek1998statistical}
+Frederick Jelinek.
+\newblock \emph{Statistical methods for speech recognition}.
+\newblock MIT press, 1998.
+
+\bibitem[Juang and Rabiner(1991)]{juang1991hidden}
+Biing-Hwang Juang and Lawrence~R Rabiner.
+\newblock Hidden markov models for speech recognition.
+\newblock \emph{Technometrics}, 33\penalty0 (3):\penalty0 251--272, 1991.
+
+\bibitem[Jurafsky et~al.(2002)Jurafsky, Martin, and Kehler]{jurafsky2002speech}
+Dan Jurafsky, James~H Martin, and Andrew Kehler.
+\newblock \emph{Speech and language processing: an introduction to natural
+  language processing, computational linguistics and speech recognition},
+  volume~2.
+\newblock MIT Press, 2002.
+
+\bibitem[Krogh et~al.(1994)Krogh, Brown, Mian, Sjolander, and
+  Haussler]{krogh1994hidden}
+Anders Krogh, Michael Brown, I~Saira Mian, Kimmen Sjolander, and David
+  Haussler.
+\newblock Hidden markov models in computational biology: Applications to
+  protein modeling.
+\newblock \emph{Journal of molecular biology}, 235\penalty0 (5):\penalty0
+  1501--1531, 1994.
+
+\bibitem[LATTA et~al.(2010)LATTA, TSUNODA, GEISNER, MARKOVIC, BENNETT, and
+  PEREZ]{LATTA:2010:biblatex}
+Stephen~G. LATTA, Kudo TSUNODA, Kevin GEISNER, Relja MARKOVIC, Darren~Alexander
+  BENNETT, and Kathryn~Stone PEREZ.
+\newblock Gesture keyboarding, 08 2010.
+\newblock URL
+  \url{http://www.patentlens.net/patentlens/patent/US_2010_0199228_A1/en/}.
+
+\bibitem[Levinson et~al.(1983)Levinson, Rabiner, and
+  Sondhi]{levinson1983introduction}
+Stephen~E Levinson, Lawrence~R Rabiner, and Man~Mohan Sondhi.
+\newblock An introduction to the application of the theory of probabilistic
+  functions of a markov process to automatic speech recognition.
+\newblock \emph{Bell Syst. Tech. J}, 62\penalty0 (4):\penalty0 1035--1074,
+  1983.
+
+\bibitem[Li{\`o} and Goldman(1998)]{lio1998models}
+Pietro Li{\`o} and Nick Goldman.
+\newblock Models of molecular evolution and phylogeny.
+\newblock \emph{Genome research}, 8\penalty0 (12):\penalty0 1233--1244, 1998.
+
+\bibitem[Manning and Sch{\"u}tze(1999)]{manning1999foundations}
+Christopher~D Manning and Hinrich Sch{\"u}tze.
+\newblock \emph{Foundations of statistical natural language processing}.
+\newblock MIT press, 1999.
+
+\bibitem[Microsoft(2013)]{Microsoft:2013:Online}
+Microsoft.
+\newblock What's {N}ew - {K}inect {SDK} 1.7, March 2013.
+\newblock URL
+  \url{http://www.microsoft.com/en-us/kinectforwindows/Develop/New.aspx}.
+
+\bibitem[Moon(1996)]{moon1996expectation}
+Todd~K Moon.
+\newblock The expectation-maximization algorithm.
+\newblock \emph{Signal Processing Magazine, IEEE}, 13\penalty0 (6):\penalty0
+  47--60, 1996.
+
+\bibitem[Rabiner(1989)]{rabiner1989tutorial}
+Lawrence~R Rabiner.
+\newblock A tutorial on hidden markov models and selected applications in
+  speech recognition.
+\newblock \emph{Proceedings of the IEEE}, 77\penalty0 (2):\penalty0 257--286,
+  1989.
+
+\bibitem[Yamato et~al.(1992)Yamato, Ohya, and Ishii]{yamato1992recognizing}
+Junji Yamato, Jun Ohya, and Kenichiro Ishii.
+\newblock Recognizing human action in time-sequential images using hidden
+  markov model.
+\newblock In \emph{Computer Vision and Pattern Recognition, 1992. Proceedings
+  CVPR'92., 1992 IEEE Computer Society Conference on}, pages 379--385. IEEE,
+  1992.
 
 \end{thebibliography}
