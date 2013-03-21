@@ -1,9 +1,15 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{28}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baker(1975)]{baker1975dragon}
+James Baker.
+\newblock The dragon system--an overview.
+\newblock \emph{Acoustics, Speech and Signal Processing, IEEE Transactions on},
+  23\penalty0 (1):\penalty0 24--29, 1975.
 
 \bibitem[Baum and Petrie(1966)]{baum1966statistical}
 Leonard~E Baum and Ted Petrie.
@@ -36,12 +42,35 @@ Horst Bunke, Markus Roth, and Ernst~G{\"u}nter Schukat-Talamazzini.
 \newblock \emph{Pattern recognition}, 28\penalty0 (9):\penalty0 1399--1413,
   1995.
 
+\bibitem[Dreuw et~al.(2009)Dreuw, Steingrube, Deselaers, and
+  Ney]{dreuw2009smoothed}
+Philippe Dreuw, Pascal Steingrube, Thomas Deselaers, and Hermann Ney.
+\newblock Smoothed disparity maps for continuous american sign language
+  recognition.
+\newblock \emph{Pattern Recognition and Image Analysis}, pages 24--31, 2009.
+
+\bibitem[Dreuw et~al.(2010)Dreuw, Forster, Gweth, Stein, Ney, Martinez, Llahi,
+  Crasborn, Ormel, Du, et~al.]{dreuw2010signspeak}
+Philippe Dreuw, Jens Forster, Yannick Gweth, Daniel Stein, Hermann Ney,
+  Gregorio Martinez, Jaume~Verges Llahi, Onno Crasborn, Ellen Ormel, Wei Du,
+  et~al.
+\newblock Signspeak--understanding, recognition, and translation of sign
+  languages.
+\newblock In \emph{Proceedings of 4th Workshop on the Representation and
+  Processing of Sign Languages: Corpora and Sign Language Technologies}, pages
+  22--23, 2010.
+
 \bibitem[Durbin et~al.(1998)Durbin, Eddy, Krogh, and
   Mitchison]{durbin1998biological}
 Richard Durbin, Sean~R Eddy, Anders Krogh, and Graeme Mitchison.
 \newblock \emph{Biological sequence analysis: probabilistic models of proteins
   and nucleic acids}.
 \newblock Cambridge university press, 1998.
+
+\bibitem[Dymarski(2011)]{dym2011hmm}
+Przemyslaw Dymarski.
+\newblock \emph{Hidden Markov Models, Theory and Applications}.
+\newblock In{T}ech, 2011.
 
 \bibitem[I.~Oikonomidis(2013)]{Forth:2013:Online}
 A.~A.~Argyros I.~Oikonomidis, N.~Kyriazis.
@@ -53,10 +82,30 @@ Frederick Jelinek.
 \newblock \emph{Statistical methods for speech recognition}.
 \newblock MIT press, 1998.
 
+\bibitem[Jelinek et~al.(1975)Jelinek, Bahl, and Mercer]{jelinek1975design}
+Frederick Jelinek, L~Bahl, and R~Mercer.
+\newblock Design of a linguistic statistical decoder for the recognition of
+  continuous speech.
+\newblock \emph{Information Theory, IEEE Transactions on}, 21\penalty0
+  (3):\penalty0 250--256, 1975.
+
+\bibitem[Juang(1985)]{juang1985maximum}
+B-H Juang.
+\newblock Maximum-likelihood estimation for mixture multivariate stochastic
+  observation of markov chains.
+\newblock \emph{AT \& T TECH. J.}, 64\penalty0 (6):\penalty0 1235--1250, 1985.
+
 \bibitem[Juang and Rabiner(1991)]{juang1991hidden}
 Biing-Hwang Juang and Lawrence~R Rabiner.
 \newblock Hidden markov models for speech recognition.
 \newblock \emph{Technometrics}, 33\penalty0 (3):\penalty0 251--272, 1991.
+
+\bibitem[Juang et~al.(1986)Juang, Levinson, and Sondhi]{juang1986maximum}
+Bing-Hwang Juang, Stephene Levinson, and M~Sondhi.
+\newblock Maximum likelihood estimation for multivariate mixture observations
+  of markov chains (corresp.).
+\newblock \emph{Information Theory, IEEE Transactions on}, 32\penalty0
+  (2):\penalty0 307--309, 1986.
 
 \bibitem[Jurafsky et~al.(2002)Jurafsky, Martin, and Kehler]{jurafsky2002speech}
 Dan Jurafsky, James~H Martin, and Andrew Kehler.
@@ -95,6 +144,13 @@ Pietro Li{\`o} and Nick Goldman.
 \newblock Models of molecular evolution and phylogeny.
 \newblock \emph{Genome research}, 8\penalty0 (12):\penalty0 1233--1244, 1998.
 
+\bibitem[Liporace(1982)]{liporace1982maximum}
+L~Liporace.
+\newblock Maximum likelihood estimation for multivariate observations of markov
+  sources.
+\newblock \emph{Information Theory, IEEE Transactions on}, 28\penalty0
+  (5):\penalty0 729--734, 1982.
+
 \bibitem[Manning and Sch{\"u}tze(1999)]{manning1999foundations}
 Christopher~D Manning and Hinrich Sch{\"u}tze.
 \newblock \emph{Foundations of statistical natural language processing}.
@@ -118,6 +174,13 @@ Lawrence~R Rabiner.
   speech recognition.
 \newblock \emph{Proceedings of the IEEE}, 77\penalty0 (2):\penalty0 257--286,
   1989.
+
+\bibitem[Starner and Pentland(1995)]{starner1995real}
+Thad Starner and Alex Pentland.
+\newblock Real-time american sign language recognition from video using hidden
+  markov models.
+\newblock In \emph{Computer Vision, 1995. Proceedings., International Symposium
+  on}, pages 265--270. IEEE, 1995.
 
 \bibitem[Yamato et~al.(1992)Yamato, Ohya, and Ishii]{yamato1992recognizing}
 Junji Yamato, Jun Ohya, and Kenichiro Ishii.

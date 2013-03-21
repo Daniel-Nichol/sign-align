@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  20 MAR 2013 22:16
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  21 MAR 2013 21:01
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -451,24 +451,24 @@ LaTeX Info: Redefining \nameref on input line 28.
 
 ])
 (C:\Users\user\Desktop\signAlign\Report\Acknowledgement/acknowledgement.tex
-LaTeX Font Info:    Try loading font information for U+msa on input line 8.
+[2
+
+
+]) (C:\Users\user\Desktop\signAlign\Report\Abstract/abstract.tex [3
+
+
+])
+(C:\Users\user\Desktop\signAlign\Report\projectReport.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 6.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 8.
+LaTeX Font Info:    Try loading font information for U+msb on input line 6.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [2
-
-
-])
-(C:\Users\user\Desktop\signAlign\Report\Abstract/abstract.tex [3
-
-
-])
-(C:\Users\user\Desktop\signAlign\Report\projectReport.toc [4
+) [4
 \FN@pp@footnotehinttrue 
 
 
@@ -493,36 +493,36 @@ Chapter 2.
 
 
 ] [5]
-LaTeX Font Info:    Try loading font information for U+eus on input line 63.
+LaTeX Font Info:    Try loading font information for U+eus on input line 65.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueus.fd"
 File: ueus.fd 2009/06/22 v3.00 Euler Script
 )
-[6] [7] [8] [9]) [10]
+[6] [7] [8] [9] [10] [11]) [12]
 (C:\Users\user\Desktop\signAlign\Report\Chapter2/chapter2.tex
 Chapter 3.
-) [11
+) [13
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Chapter3/chapter3.tex
 Chapter 4.
-) [12
+) [14
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
 Chapter 5.
-) [13
+) [15
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
-[14
+[16
 
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [15
+] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [17
 
 
 
@@ -530,12 +530,12 @@ Chapter 5.
 (C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
 (C:\Users\user\Desktop\signAlign\Report\projectReport.brf)
 \tf@brf=\write7
- [16
+ [18
 
 
-] [17])
+] [19])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 77.
- [18]
+ [20]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
 
 (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
@@ -552,16 +552,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 77.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 77.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
-(rerunfilecheck)             Checksum: 972CD04498AD27860714003B1EBF7E95;1205.
+(rerunfilecheck)             Checksum: 1BDF2D7B6A7F1D8B6634AE6BD57F67A1;1427.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
-(rerunfilecheck)             Checksum: 73BB0A077DE83002C545B5278130887E;1348.
+(rerunfilecheck)             Checksum: 77629E02ED1E61294FA7F6DAABA23E4A;2190.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 77.
  ) 
 Here is how much of TeX's memory you used:
- 7646 strings out of 494049
- 113039 string characters out of 3146069
- 204583 words of memory out of 3000000
- 10630 multiletter control sequences out of 15000+200000
+ 7717 strings out of 494049
+ 114505 string characters out of 3146069
+ 205027 words of memory out of 3000000
+ 10687 multiletter control sequences out of 15000+200000
  16394 words of font info for 61 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  39i,14n,47p,854b,490s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -578,14 +578,15 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on projectReport.pdf (25 pages, 248902 bytes).
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on projectReport.pdf (27 pages, 284517 bytes).
 PDF statistics:
- 399 PDF objects out of 1000 (max. 8388607)
- 72 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 483 PDF objects out of 1000 (max. 8388607)
+ 86 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
