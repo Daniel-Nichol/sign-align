@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WpfApplication1
+namespace SignAlign
 {
     /// <summary>
     /// An interface which is a base for the funtions that determine

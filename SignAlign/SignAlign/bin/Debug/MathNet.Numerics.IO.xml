@@ -645,6 +645,13 @@
             <param name="bytes">The number of bytes to pad.</param>
             <param name="pad">What value to pad with.</param>
         </member>
+        <member name="M:MathNet.Numerics.LinearAlgebra.IO.Matlab.Adler32.Compute(System.Byte[])">
+            <summary>
+            Computes the Adler-32 checksum of the given data.
+            </summary>
+            <param name="data">The data to create the checksum.</param>
+            <returns>The checksum</returns>
+        </member>
         <member name="T:MathNet.Numerics.LinearAlgebra.IO.Matlab.ArrayClass">
             <summary>
             Enumeration for the Matlab array types

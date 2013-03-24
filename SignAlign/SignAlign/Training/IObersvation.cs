@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WpfApplication1
+namespace SignAlign
 {
     /// <summary>
     /// A interface as a base for observations. These can be from a discrete

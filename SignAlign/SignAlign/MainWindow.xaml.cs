@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.Kinect;
 
 
-namespace WpfApplication1
+namespace SignAlign
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -56,8 +56,15 @@ namespace WpfApplication1
             HiddenMarkovModel HMM = new DiscreteHiddenMarkovModel(A,B,pi);
 
             List<IObersvation> observations = new List<IObersvation>();
-            observations.Add(new DiscreteObservation(2));
-            observations.Add(new DiscreteObservation(2));
+            observations.Add(new DiscreteObservation(0));
+            observations.Add(new DiscreteObservation(0));
+            observations.Add(new DiscreteObservation(1));
+            observations.Add(new DiscreteObservation(1));
+
+            HMM.reestimateParameters(observations);
+            HMM.reestimateParameters(observations);
+            HMM.reestimateParameters(observations);
+            HMM.reestimateParameters(observations);
             HMM.reestimateParameters(observations);
             double prob = HMM.probObservations(observations);
             button1.Content = prob.ToString();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using MathNet.Numerics.LinearAlgebra.Double;
 
-namespace WpfApplication1
+namespace SignAlign
 {
     class MarkovChain
     {

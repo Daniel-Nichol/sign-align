@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Kinect;
 
-namespace WpfApplication1
+namespace SignAlign
 {
     class GestureRecorder : GestureController
     {

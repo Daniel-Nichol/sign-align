@@ -6,7 +6,6 @@ C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\MainWindow.g.c
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\App.g.cs
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign_MarkupCompile.cache
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.g.resources
-C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\WpfApplication1.Properties.Resources.resources
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.exe
@@ -15,3 +14,6 @@ C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.p
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.xml
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.IO.pdb
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.IO.xml
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.Properties.Resources.resources
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.dll
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.IO.dll

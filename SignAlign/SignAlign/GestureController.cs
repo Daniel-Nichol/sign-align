@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using Microsoft.Kinect;
 
-namespace WpfApplication1
+namespace SignAlign
 {
     /// <summary>
     /// Handles the kinect sensor - gets a skeleton for gesture recognition
     /// </summary>
-    class GestureController
+    public class GestureController
     {
         public KinectSensor kinectSensor { get; private set; } //The sensor used for skeletal tracking
         protected bool tracking;

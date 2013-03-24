@@ -7,7 +7,7 @@ using System.Diagnostics;
 using Microsoft.Kinect;
 
 
-namespace WpfApplication1
+namespace SignAlign
 {
 
 
