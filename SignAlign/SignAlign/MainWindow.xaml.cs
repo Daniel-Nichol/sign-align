@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Kinect;
 
+using MathNet.Numerics.LinearAlgebra.Double;
+
 
 namespace SignAlign
 {
@@ -46,7 +48,7 @@ namespace SignAlign
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
            
-            double[,] A = new double[2,2];
+            /*double[,] A = new double[2,2];
             double[,] B = new double[2, 3];
             double[] pi = new double[2];
             A[0, 0] = 0.7; A[0, 1] = 0.3; A[1, 0] = 0.4; A[1, 1] = 0.6;
@@ -66,8 +68,23 @@ namespace SignAlign
             HMM.reestimateParameters(observations);
             HMM.reestimateParameters(observations);
             HMM.reestimateParameters(observations);
-            double prob = HMM.probObservations(observations);
-            button1.Content = prob.ToString();
+            double prob = HMM.probObservations(observations);*/
+
+
+            double[,] sig = new double[2,2];
+            sig[0,0] = 0.2; sig[0,1] = 0.3; sig[1,0] = 0.30; sig[1,1] = 1.00;
+            DenseMatrix sigMat = new DenseMatrix(sig);
+
+            double[] obs = new double[2];
+            double[] mean = new double[2];
+            obs[0] = 0; obs[1] = 0;
+            mean[0] = 0; mean[1] = 0;
+
+            //CD_HMM cdhmm = new CD_HMM();
+
+            //double prob = cdhmm.queryGuassian(new DenseVector(obs),new DenseVector(mean), sigMat);
+
+           // button1.Content = prob.ToString();
            
         }
 

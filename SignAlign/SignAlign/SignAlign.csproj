@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Training\CD-HMM.cs" />
     <Compile Include="Training\DiscreteObservationProbabilityMeasure.cs" />
     <Compile Include="Training\IObersvationProbabilityMeasure.cs" />
     <Compile Include="Training\DiscreteObservation.cs" />
