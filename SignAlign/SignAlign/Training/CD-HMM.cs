@@ -47,7 +47,8 @@ namespace SignAlign
         {
             int T = observations.Length;
             int N = A.numberOfStates;
-            double[,] alphas = new double[T, N];
+            #region Without scales
+            /*double[,] alphas = new double[T, N];
             double prob = 0;
 
             for (int i = 0; i < N; i++)
@@ -73,22 +74,68 @@ namespace SignAlign
                 prob += alphas[T - 1, i];
             }
 
-            return prob;
+            return prob;*/
+            
+            #endregion
+
+            double[,] alphabars = new double[T, N];
+            double[,] alphahats = new double[T, N];
+            double[] scales = new double[T];
+
+            for (int i = 0; i < N; i++)
+            {
+                alphabars[0, i] = pi[i] * queryGuassian(observations[0], mus[i], sigmas[i]);
+                scales[0] += alphabars[0, i];
+            }
+            scales[0] = 1 / scales[0];
+
+            for (int i = 0; i < N; i++)
+            {
+                alphahats[0, i] = scales[0] * alphabars[0, i];
+            }
+
+            for (int t = 1; t < observations.Length; t++)
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    alphabars[t, i] = 0;
+                    for (int j = 0; j < N; j++)
+                    {
+                        alphabars[t, i] += alphahats[t - 1, i] * A.getTransitionProb(i, j);
+                    }
+                    alphabars[t, i] *= queryGuassian(observations[t], mus[i], sigmas[i]);
+                    scales[t] += alphabars[t, i];
+                }
+                scales[t] = (1 / scales[t]);
+                for (int i = 0; i < N; i++)
+                {
+                    alphahats[t,i] = scales[t] * alphabars[t, i];
+                }
+            }
+
+            double logProb = 0;
+            for (int t = 0; t < observations.Length; t++)
+            {
+                logProb += Math.Log(scales[t]);
+            }
+            logProb = -logProb;
+            return logProb;
+
         }
 
         public double calculateMultiplePosterior(DenseVector[][] observationsSequence)
         {
-            double prob = 1;
+            double prob = 0;
 
-            foreach (DenseVector[] observations in observationsSequence)
+            for (int k = 0; k < observationsSequence.Length;k++ )
             {
-                prob *= calculatePosterior(observations);
+                prob += calculatePosterior(observationsSequence[k]);
             }
             return prob;
         }
 
 
-        private void reestimateParameters(DenseVector[][] observationsCollection)
+        public void reestimateParameters(DenseVector[][] observationsCollection)
         {
             int K = observationsCollection.Length;
             int[] times = new int[K];
@@ -105,13 +152,18 @@ namespace SignAlign
 
             double[][,] betahats = new double[K][,];
 
+            double[][,,] digammas = new double[K][,,];
+            double[][,] gammas = new double[K][,];
+
+            //Initialize arrays to proper sizes.
             for (int k = 0; k < K; k++)
             {
-                alphahats[k] = new double[times[k], N];
-                alphabars[k] = new double[times[k], N];
-                scales[k] = new double[times[k]];
-
-                betahats[k] = new double[times[k], N];
+                alphahats[k]    = new double[times[k], N];
+                alphabars[k]    = new double[times[k], N];
+                scales[k]       = new double[times[k]];
+                betahats[k]     = new double[times[k], N];
+                digammas[k]     = new double[times[k],N,N];
+                gammas[k]       = new double[times[k],N];
             }
 
             
@@ -129,7 +181,7 @@ namespace SignAlign
 
                 for (int i = 0; i < N; i++)
                 {
-                    alphahats[k][0, i] = scales[k][0];
+                    alphahats[k][0, i] = scales[k][0]*alphabars[k][0,i];
                 }
 
                 for (int t = 1; t < times[k]; t++)
@@ -148,7 +200,7 @@ namespace SignAlign
                     scales[k][t] = 1 / (scales[k][t]);
                     for (int i = 0; i < N; i++)
                     {
-                        alphahats[k][t, 0] *= scales[k][t];
+                        alphahats[k][t, i] = scales[k][t]*alphabars[k][t,i];
                     }
                 }
                 
@@ -173,20 +225,147 @@ namespace SignAlign
                 } 
                 #endregion
 
+                #region The gamma pass
+                for (int t = 0; t < times[k] - 1; t++)
+                {
+                    for (int i = 0; i < N; i++)
+                    {
+                        for (int j = 0; j < N; j++)
+                        {
+                            digammas[k][t, i, j] = alphahats[k][t, i] * A.getTransitionProb(i, j) *
+                                queryGuassian(observationsCollection[k][t + 1], mus[j], sigmas[j]) * betahats[k][t + 1, j];
+                        }
+                        gammas[k][t, i] = alphahats[k][t, i] * betahats[k][t, i] * (1 / scales[k][t]);
+                    }
+                } 
+                #endregion
+            }
+
+            #region re-estimate pi
+            DenseVector newPi = new DenseVector(N);
+            double numer, denom, piComp;
+            for (int i = 0; i < N; i++)
+            {
+                numer = 0; denom = 0; piComp = 0;
+                for (int k = 0; k < K; k++)
+                {
+                    numer += gammas[k][0, i];
+                }
+                for (int j = 0; j < numer; j++)
+                {
+                    for (int k = 0; k < K; k++)
+                    {
+                        denom += gammas[k][0, j];
+                    }
+                }
+                piComp = numer / denom;
+                newPi[i] = piComp;
+            }
+            
+            #endregion
+
+            #region re-estimate A
+            DenseMatrix newA;
+            double[,] newAarray = new double[N, N];
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    numer = 0; denom = 0;
+
+                    //Can these be simplified with the gammas?
+                    for (int k = 0; k < K; k++)
+                    {
+                        for (int t = 0; t < times[k] - 1; t++)
+                        {
+                            numer += alphahats[k][t, i] * A.getTransitionProb(i, j) *
+                                queryGuassian(observationsCollection[k][t + 1], mus[j], sigmas[j]) * betahats[k][t + 1, j];
+                        }
+                    }
+
+                    for (int k = 0; k < K; k++)
+                    {
+                        for (int t = 0; t < times[k] - 1; t++)
+                        {
+                            denom += alphahats[k][t, i] * betahats[k][t, i] * (1 / scales[k][t]);
+                        }
+                    }
+                    newAarray[i, j] = (numer / denom);
+                }
+
+            }
+            newA = new DenseMatrix(newAarray);
+            
+            #endregion
+
+            #region re-estimate mus
+            DenseVector[] newMus = new DenseVector[N];
+            //Initialize and zero the new mus
+            for (int j = 0; j < N; j++)
+            {
+                newMus[j] = new DenseVector(observationsCollection[0][0].Count);
+                for (int l = 0; l < observationsCollection[0][0].Count; l++)
+                {
+                    newMus[j][l] = 0;
+                }
+
+            }
+            for (int j = 0; j < N; j++)
+            {
+                denom = 0;
+                for (int k = 0; k < K; k++)
+                {
+                    for (int t = 0; t < times[k]; t++)
+                    {
+                        newMus[j] += gammas[k][t, j] * observationsCollection[k][t];
+                        denom += gammas[k][t, j];
+                    }
+                }
+                newMus[j] = (newMus[j] / denom);
+            }
+            #endregion
+
+            #region re-estimate Sigmas
+            DenseMatrix[] newSigmas = new DenseMatrix[N];
+            DenseMatrix temp = new DenseMatrix(observationsCollection[0][0].Count);
+            DenseVector tempvec = new DenseVector(observationsCollection[0][0].Count);
+            for (int j = 0; j < N; j++)
+            {
+                newSigmas[j] = new DenseMatrix(observationsCollection[0][0].Count);
+                for (int l = 0; l < observationsCollection[0][0].Count; l++)
+                {
+                    for (int m = 0; m < observationsCollection[0][0].Count; m++)
+                    {
+                        newSigmas[j][l, m] = 0;
+                    }
+                }
 
             }
 
+            for (int j = 0; j < N; j++)
+            {
+                denom = 0;
+                for (int k = 0; k < K; k++)
+                {
+                    for (int t = 0; t < times[k]; t++)
+                    {
+                        tempvec = observationsCollection[k][t] - newMus[j];
+                        temp = DenseVector.OuterProduct(tempvec, tempvec);
+                        newSigmas[j] += temp;
 
-            double[,] betas;
-            double[, ,] digammas;
-            double[,] gammas;
+                        denom += gammas[k][t, j];
+                    }
+                }
+                newSigmas[j] = newSigmas[j] * (1 / denom);
+            } 
+            #endregion
 
-
-
-
-
-            
+            pi = newPi;
+            A = new MarkovChain(newA);
+            mus = newMus;
+            sigmas = newSigmas;
         }
+
 
         private void reestimateMarkovChain(double[, ,] digammas, double[] gammas)
         {

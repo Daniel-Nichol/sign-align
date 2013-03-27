@@ -54,38 +54,26 @@ namespace SignAlign
             A[0, 0] = 0.7; A[0, 1] = 0.3; A[1, 0] = 0.4; A[1, 1] = 0.6;
             B[0, 0] = 0.1; B[0, 1] = 0.4; B[0, 2] = 0.5; B[1, 0] = 0.7; B[1, 1] = 0.2; B[1, 2] = 0.1;
             pi[0] = 0.6; pi[1] = 0.4;
-            
-            HiddenMarkovModel HMM = new DiscreteHiddenMarkovModel(A,B,pi);
 
-            List<IObersvation> observations = new List<IObersvation>();
-            observations.Add(new DiscreteObservation(0));
-            observations.Add(new DiscreteObservation(0));
-            observations.Add(new DiscreteObservation(1));
-            observations.Add(new DiscreteObservation(1));
+            int[] obsSeq = new int[4] { 0, 1, 2, 1 };
 
-            HMM.reestimateParameters(observations);
-            HMM.reestimateParameters(observations);
-            HMM.reestimateParameters(observations);
-            HMM.reestimateParameters(observations);
-            HMM.reestimateParameters(observations);
-            double prob = HMM.probObservations(observations);*/
+            int[][] obsSeqs = new int[1][];
+            obsSeqs[0] = obsSeq;
 
+            D_HMM HMM = new D_HMM(pi, A, B);
 
-            double[,] sig = new double[2,2];
-            sig[0,0] = 0.2; sig[0,1] = 0.3; sig[1,0] = 0.30; sig[1,1] = 1.00;
-            DenseMatrix sigMat = new DenseMatrix(sig);
+            double prob = HMM.Evaluate(obsSeq, false);
+            HMM.Learn(obsSeqs, 100, 0.0);
+            double prob2 = HMM.Evaluate(obsSeq, false);
+            button1.Content = prob.ToString()+" "+prob2.ToString();*/
 
-            double[] obs = new double[2];
-            double[] mean = new double[2];
-            obs[0] = 0; obs[1] = 0;
-            mean[0] = 0; mean[1] = 0;
+            KMeansClassifier classifier = new KMeansClassifier(4);
 
-            //CD_HMM cdhmm = new CD_HMM();
+            //int[] labels = classifier.computeClusters(data, 0);
 
-            //double prob = cdhmm.queryGuassian(new DenseVector(obs),new DenseVector(mean), sigMat);
+            //button1.Content = labels.ToString();
 
-           // button1.Content = prob.ToString();
-           
+         
         }
 
         private void button2_Click_1(object sender, RoutedEventArgs e)
