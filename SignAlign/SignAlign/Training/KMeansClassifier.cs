@@ -47,7 +47,7 @@ namespace SignAlign
         }
 
         //Computes the clusters via a greedy algorithm
-        public int[] computeClusters(double[][] observations, double threshold)
+        public int[] computeClusters(double[][] observations, double threshold, out double[][] cents)
         {
             int T = observations.Length;
             int dims = observations[0].Length;
@@ -99,6 +99,8 @@ namespace SignAlign
                     centroids = newCentroids;
                 }
             }
+            cents = new double[centroids.Length][];
+            cents = centroids;
             return labels;
         }
 

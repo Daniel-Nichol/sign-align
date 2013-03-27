@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SignClassifier.cs" />
     <Compile Include="Training\CD-HMM.cs" />
     <Compile Include="Training\D-HMM.cs" />
     <Compile Include="Training\DiscreteObservationProbabilityMeasure.cs" />
@@ -72,7 +73,7 @@
     <Compile Include="Training\DiscreteObservation.cs" />
     <Compile Include="Training\HiddenMarkovModel.cs" />
     <Compile Include="Training\IObersvation.cs" />
-    <Compile Include="Training\KMeans.cs" />
+    <Compile Include="Training\KMeansClassifier.cs" />
     <Compile Include="Training\MarkovChain.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
