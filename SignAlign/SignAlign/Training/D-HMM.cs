@@ -13,7 +13,7 @@ namespace SignAlign
         private double[,] A;
         private double[,] B;
         private int N, M;
-        public string name{get; private set;}
+        public string name{get; set;}
 
         private double[][] centroids; //The centroids of the clusters, used to determine the symbols from 3-space readings.
 
@@ -26,6 +26,12 @@ namespace SignAlign
             M = B.GetLength(1);
             this.centroids = centroids;
             this.name = name;
+        }
+
+        public D_HMM(string name, string parametersFile)
+        {
+            this.name = name;
+            loadParameters(parametersFile);
         }
 
         public double Evaluate(double[][] observations, bool log)
@@ -425,6 +431,79 @@ namespace SignAlign
                 }
                 writer.Flush();
                 writer.Dispose();
+            }
+        }
+
+        public void loadParameters(string path)
+        {
+            string line;
+            string[] row;
+            using (StreamReader sr = new StreamReader(path + name + ".csv"))
+            {
+                line = sr.ReadLine();
+                if (line != null)
+                {
+                    row = line.Split(',');
+                    N = Convert.ToInt32(row[0]);
+                    M = Convert.ToInt32(row[1]);
+                    pi = new double[N];
+                    A = new double[N, N];
+                    B = new double[N, M];
+                }
+                line = sr.ReadLine();
+                if (line != null)
+                {
+                    row = line.Split(',');
+                    for (int i = 0; i < N; i++)
+                    {
+                        if(row[i]!=null)
+                            pi[i] = Convert.ToDouble(row[i]);
+                    }
+                }
+
+                for (int i = 0; i < N; i++)
+                {
+                    line = sr.ReadLine();
+                    if(line!=null)
+                    {
+                        row = line.Split(',');
+                        for(int j=0; j<N;j++)
+                        {
+                            if(row[j]!=null)
+                            {
+                                A[i,j] = Convert.ToDouble(row[j]);
+                            }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < N; i++)
+                {
+                    line = sr.ReadLine();
+                    if (line != null)
+                    {
+                        row = line.Split(',');
+                        for (int j = 0; j < M; j++)
+                        {
+                            if (row[j] != null)
+                            {
+                                B[i, j] = Convert.ToDouble(row[j]);
+                            }
+                        }
+                    }
+                }
+                List<double[]> centList = new List<double[]>();
+                while ((line = sr.ReadLine()) != null)
+                {
+                    row = line.Split(',');
+                    double[] cent = new double[row.Length];
+                    for (int i = 0; i < cent.Length; i++)
+                    {
+                        cent[i] = Convert.ToDouble(row[i]);
+                    }
+                    centList.Add(cent);
+                }
+                centroids = centList.ToArray();
             }
         }
 

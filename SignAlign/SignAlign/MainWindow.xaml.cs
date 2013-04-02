@@ -159,6 +159,7 @@ namespace SignAlign
                 }
                 A[11, 11] = 1;
             }
+            //Create B
             double[,] B = new double[12, 9];
 
             for (int i = 0; i < 12; i++)
@@ -168,6 +169,7 @@ namespace SignAlign
                     B[i, j] = (1.0 / 9.0);
                 }
             }
+            //Pi
             double[] pi = new double[12];
             pi[0] = 1;
 
@@ -177,7 +179,16 @@ namespace SignAlign
 
             double prob = dhmm.Evaluate(tSeqs[1], true);
 
-            dhmm.saveParameters("C:/Users/user/Desktop/signAlign/");
+            dhmm.saveParameters("C:/Users/user/Desktop/signAlign/Data/Parameters/");
+
+            D_HMM dhmm2 = new D_HMM(pi, A, B, centroids, "test");
+
+            dhmm2.loadParameters("C:/Users/user/Desktop/signAlign/Data/Parameters/");
+
+            dhmm2.name = "test2";
+            dhmm2.saveParameters("C:/Users/user/Desktop/signAlign/Data/Parameters/");
+
+            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/");
 
             button1.Content = prob.ToString();
 
