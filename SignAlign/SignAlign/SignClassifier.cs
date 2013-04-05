@@ -145,7 +145,9 @@ namespace SignAlign
 
 
 
-            D_HMM dhmm = initializeNewHMM(name, centroids);
+            //D_HMM dhmm = initializeNewHMM(name, centroids);
+
+            return null;
         }
 
         /// <summary>
