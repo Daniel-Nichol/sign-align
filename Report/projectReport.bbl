@@ -1,18 +1,21 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[bak()]{bakis1976continuous}
-
-
 \bibitem[Baker(1975)]{baker1975dragon}
 James Baker.
 \newblock The dragon system--an overview.
 \newblock \emph{Acoustics, Speech and Signal Processing, IEEE Transactions on},
   23\penalty0 (1):\penalty0 24--29, 1975.
+
+\bibitem[Bakis(1976)]{bakis1976continuous}
+Raimo Bakis.
+\newblock Continuous speech recognition via centisecond acoustic states.
+\newblock \emph{The Journal of the Acoustical Society of America}, 59:\penalty0
+  S97, 1976.
 
 \bibitem[Baum and Petrie(1966)]{baum1966statistical}
 Leonard~E Baum and Ted Petrie.
@@ -177,6 +180,13 @@ Lawrence~R Rabiner.
   speech recognition.
 \newblock \emph{Proceedings of the IEEE}, 77\penalty0 (2):\penalty0 257--286,
   1989.
+
+\bibitem[Russell et~al.(1995)Russell, Norvig, Canny, Malik, and
+  Edwards]{russell1995artificial}
+Stuart~Jonathan Russell, Peter Norvig, John~F Canny, Jitendra~M Malik, and
+  Douglas~D Edwards.
+\newblock \emph{Artificial intelligence: a modern approach}, volume~74.
+\newblock Prentice hall Englewood Cliffs, 1995.
 
 \bibitem[Starner and Pentland(1995)]{starner1995real}
 Thad Starner and Alex Pentland.

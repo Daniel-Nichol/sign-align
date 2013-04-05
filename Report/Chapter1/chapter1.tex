@@ -14,11 +14,11 @@
 \section{Model Selection}
 
 \section{Hidden Markov Models}
-A hidden Markov Model (HMM) is (following the definitions in ~\cite{rabiner1989tutorial}) a doubly stochastic process which consists of an underlying discrete Markov chain with state set $S = \{S_1, \dots, S_n \}$ and stochastic matrix $A=[a_{i,j}]_{N\times N}$ where 
+A \emph{hidden Markov Model} (HMM) is (following the definitions in ~\cite{rabiner1989tutorial}) a doubly stochastic process which consists of an underlying discrete Markov chain with state set $S = \{S_1, \dots, S_n \}$ and stochastic matrix $A=[a_{i,j}]_{N\times N}$ where 
 \begin{equation*}
 a_{i,j} = \mathbb{P}(q_{t+1} = S_i | q_t = S_j) \text{  for each  } 1 \leq i,j \leq N
 \end{equation*}
-which is hidden from an observer in the respect that one cannot directly observe the current state of the Markov chain. Instead we have a collection of $M$ observable symbols, say $V = \{ v_1, \dots, v_M\}$, which may be observed with probability dependent on the state underlying Markov chain. 
+which is hidden from an observer in the respect that one cannot directly observe the current state of the Markov chain. Instead we have a collection of $M$ observable symbols, say $V = \{ v_1, \dots, v_M\}$, which may be observed with probability dependent on the state underlying Markov chain (Figure:  ~\ref{fig:hmmex}). 
 
 We encode these so-called \emph{emission probabilities} in a matrix $B = [b_j(k)]_{N\times M}$ where
 \begin{equation*}
@@ -41,6 +41,13 @@ by the following process:
 \item[ii.] Stochastically transition to a new state $S_j$ from $S_i$ according to $A$ 
 \end{enumerate}
 \end{enumerate}
+
+\begin{figure}[]
+  \centering
+    \includegraphics[width=0.7\textwidth]{ThesisFigs/HMMExample}
+  \caption{A Hidden Markov Model. The underlying Markov Chain contains 4 states (depicted as circles) which emit two possible observations (a or b).}\label{ref:hmmex}
+\end{figure}
+
 
 Note now that a hidden Markov Model is entirely determined by the transition matrix $A$, the emissions matrix $B$ and the initial distribution $\bm{\pi}$ (noting that the dimensions $N$ and $M$ are encoded in the dimensions of the matrices) hence for convenience we may denote a HMM by
 \begin{equation*}

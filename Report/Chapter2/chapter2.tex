@@ -24,7 +24,7 @@ We then have
 \end{align*}
 and hence we can compute the log-probability of an observation sequence $\mathbf{O}$ by
 \begin{equation*}
-log(\mathbb{P}[\mathbf{O}|\lambda]) = -\sum_{t=0}^{T-1}log(c_t)
+\log(\mathbb{P}[\mathbf{O}|\lambda]) = -\sum_{t=0}^{T-1}\log(c_t)
 \end{equation*}
 which allows us to determine probabilities which otherwise would be lost due to underflow. 
 
@@ -50,29 +50,18 @@ To quantize our training data for a single sign we merged all of the points  int
 
 \begin{figure}
         \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{ThesisFigs/unclusteredCircleGesture}
-                \caption{Unclustered circle gesture training data (x-y plane projection)}
-                \label{fig:unclust}
-        \end{subfigure} 
-        \begin{subfigure}[b]{0.3\textwidth}
-                \centering
-                \includegraphics[width=\textwidth]{ThesisFigs/clusteredCircleGesture}
-                \caption{Clustered circle gesture training data (x-y plane projection)}
-                \label{fig:clust}
-        \end{subfigure}
+        \includegraphics[width=0.9\textwidth]{ThesisFigs/ClusteringDiag}
         \caption{The K-Means method for vector quantization}\label{fig:kmeans}
 \end{figure}
 
-\subsection{Determining The Initial Topology and Parameters}
+\section{Determining The Initial Topology and Parameters}
 As our training method utilises a local search to improve our parameterisation its effectiveness will greatly depend on how we initialise our Hidden Markov Model. If the initial parameterisation is poor then even with a large training set we may fail to find a parameterisation which allows us to  recognise signs with high enough accuracy.
 
-It has been shown that the topology of the underlying Markov Chain can greatly impact the effectiveness of a HMM for a given pattern recognition task~\citep{rabiner1989tutorial, jelinek1998statistical}. The two most common types of HMM are the \emph{ergodic model}, in which each state can transition to any other state in a finite number of steps and the \emph{left-right model} or Bakis model~\citep{bakis1976continuous} in which the state sequence is a (non-strictly) increasing. The left-right model can be viewed as modelling a signal which changes through time, with each transition representing a movement forward in time. For that reason it is more suitable for modelling gestures or speech than other Markov Chain topologies. 
+It has been shown that the topology of the underlying Markov Chain can greatly impact the effectiveness of a HMM for a given pattern recognition task~\citep{rabiner1989tutorial, jelinek1998statistical}. The two most common types of HMM (See figure ~\ref{fig:mctop}) are the \emph{ergodic model}, in which each state can transition to any other state in a finite number of steps and the \emph{left-right model} or Bakis model~\citep{bakis1976continuous} in which the state sequence is (non-strictly) increasing. The left-right model can be viewed as modelling a signal which changes through time, with each transition representing a movement forward in time. For that reason it is more suitable for modelling gestures or speech than other Markov Chain topologies and is the topology we choose for our Hidden Markov Models.
 
-A left-right topology Markov chain is characterized by an upper triangular stochastic matrix $A$. We can further restrict our model to only allow jumps from a state $i$ to states $i \leq j \leq j+\Delta$ for some $\Delta$. This restriction can prevent the model being pushed, through re-parameterisation, into a trivial Markov chain which remains at the final state $N$ at all times. This can be seen as imposing a restriction on the velocity we can expect a signer's hand to move at - not allowing him to pass by too many states in quick succession.
+A left-right topology Markov chain is characterized by an upper triangular stochastic matrix $A$. We can further restrict our model to only allow jumps from a state $i$ to states $i \leq j \leq i+\Delta$ for some $\Delta$. This restriction can prevent the model being pushed, through re-parameterisation, into a trivial Markov chain which remains at the final state $N$ at all times. This can be seen as imposing a restriction on the velocity we can expect a signer's hand to move at - not allowing him to pass by too many states in quick succession.
 
-As such we choose to intialize our HMMs as left-right models restricted to $\Delta = 1$. Hence we initialise the stochastic matrix with form
+As such we choose to intialize our HMMs as left-right models restricted to $\Delta = 1$ and initialise the stochastic matrix with form
 \begin{equation*}
 A =
  \begin{pmatrix}
@@ -83,13 +72,62 @@ A =
   0 & 0 & \cdots & 0& 1
  \end{pmatrix}
 \end{equation*}
-and define $\pi = [1,0, \dots, 0]$. Clearly if we initialise the non-zero $a_{ij}$ of A deterministically then we restrict ourselves to single outcome from the re-estimation procedure, as such we choose to introduce some randomness in the stochastic matrix when it is initialized. Setting
+and define $\pi = [1,0, \dots, 0]$. Clearly if we initialise the non-zero $a_{ij}$ of A deterministically then we restrict ourselves to single outcome from the re-estimation procedure regardless of how many times we retry it, as such we choose to introduce some stochasticity by setting
 \begin{align*}
 &a_{ii} = 0.5 - r &a_{i(i+1)} = 0.5 + r
 \end{align*}
- for some $r$ chose uniformly from the interval $[-0.3, +0.3]$, which is chosed to ensure that none of the links are set too weakly and the forward transitions broken during re-estimation.
+ for some $r$ chosen uniformly from the interval $[-0.3, +0.3]$. This interval is chosen to ensure that none of the links are set too weakly and the forward transitions broken during re-estimation.
 
-As we expect the system to differentiate a large number of signs it would be a major task to taylor the initialistions of each Hidden Markov Model to the sign it is expected to recognise. Hence, we choose to use the same initial estimation procedure for each HMM and do not make any inferences about the structure of the emissions matrix $B$ given the sign it is expected model.
+As we expect the system to differentiate a large number of signs it would be a major task to taylor the initialistions of each Hidden Markov Model to the sign it is expected to recognise. Hence, we choose to use the same initial estimation procedure for each HMM and do not make any inferences about the structure of the emissions matrix $B$ given the sign it is expected model. We initialise $B$ almost uniformly with
+\begin{align*}
+&b_{ij} = 1/M + r_{ij} &\text{for each $1\leq i \leq N$ and $1 \leq j \leq M$}
+\end{align*}
+where each $r_{ij}$ is some small random number and subject to the condition that the matrix $B$ remains stochastic.
+
+The benefit of introducing stochasticity into the initial parameter estimations is that if the re-estimation procedure does not produce a sufficiently good parameterisation we can re-initialise our HMM and try again. That is to say we may use the forward-backward algorithm as part of a random restart hill climbing algorithm~\citep{russell1995artificial} to increase the chances that we will find a good parameterisation for the model.
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=1.0\textwidth]{ThesisFigs/erdogicMC}
+                \caption{An Ergodic Markov Chain}
+                \label{fig:unclust}
+        \end{subfigure} 
+        \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=1.0\textwidth]{ThesisFigs/del1LRMC}
+                \caption{A $\Delta = 1$ Left-Right Markov Chain}
+                \label{fig:clust}
+        \end{subfigure}
+	   \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[width=1.0\textwidth]{ThesisFigs/del2LRMC}
+                \caption{A $\Delta = 2$ Left-Right Markov Chain}
+                \label{fig:clust}
+        \end{subfigure}
+        \caption{Different Markov Chain Topologies}\label{fig:mctop}
+\end{figure}
+
+\section{Predicting the Probability of a Sign}
+Using the work of the previous sections we implemented a class \verb|DHMM| which can be instantiated to model a discrete observation Hidden Markov Model by providing initial parameters $A$, $B$ and $pi$ and also with a collection of less than $M$ vectors \verb|centroids[]| which specify how to translate observations from $\mathbb{R}^n$ (for any $n$) into discrete observations as described before. For convenience provided a means to save and load these parameters from file which means we need only go through the computationally expensive task of training the model once.
+
+The Kinect Sensor provides a stream of real-time positions, as vectors in $\mathbb{R}^3$, of a number of joints in the body. A single \verb|DHMM| object can be trained on a collection of observations sequences of one of these joints, the left hand say, and be used to determine the probability that another observation sequence was produced by that HMM. If this probability is high enough we might conclude that this observations sequence matches the sign that produced the training data, however this procedure will only use observations from the left hand and ignore the information provided by the rest of the body.
+
+One solution to this problem is to create an instance \verb|DHMM| which takes as its input streams vectors of $(\mathbb{R}^3)^J$ where $J$ is the number of joints we choose to track. This will allow us to train the model on full observations of the body and hence will take into account all of the information available through the Kinect Sensor in computing the probability that an observation sequence corresponds to a specific sign. This method introduces two problems however. The first is purely practical - the computations in the k-means clustering and training algorithms will become more and more expensive as the dimension of the observation vector grows and this will impact negatively on the perfomance of our sign recognition system.
+
+The second issue is that this method ignores the prior knowledge we have about the joints of that body - that some are more dominant in the expression of a sign than others. For example, we know that the right hand is more dominant than the left and that both are more dominant than the elbows or shoulders. In fact the elbows and shoulders might be only worth considering when the hands alone cannot used to determine two different signs. As such we should not let the importance of each joint be determined algorithmically and should specify these parameters with care. For this we create $J$ seperate instances of \verb|DHMM|, each trained on a collection of observations sequences of a different joint. Then supposing we have trained a set of Hidden Markov Models $\Lambda = \{\lambda_1, \dots, \lambda_J\}$ for each joint, and observations sequences $\mathcal{O} = \{\mathbf{O}_1,\dots, \mathbf{O}_J\}$ which specify a stream for each joint over the course of one sign, we can compute the log-probability that this sequence corresponds to the sign used to train $\lambda_1, \dots, \lambda_J$ as a weighted sum
+\begin{equation*}
+\log(\mathbf{P}[\mathcal{O} | \Lambda ]) = \sum_{j=1}^{J} c_j \log(\mathbf{P}[\mathbf{O}_j | \lambda_j])
+\end{equation*}
+Where the weights $c_j$ are used to express the dominance of the $j^\text{th}$ joint in expressing a sign relative to the other joints.
+
+We implemented the class \verb|SignModel| to correspond to this definition of $\Lambda$. This class contains a collection of \verb|DHMM| objects, with each corresponding to a joint of the skeleton provided by the Kinect Sensor as well as a set of weightings $c_1, \dots c_J$ along with a method to train the model by training the individual instances of \verb|DHMM| and a method which uses the above equation to compute the probability that a set of joint observation symbols corresponds to the sign used to train the model.
+
+\subsection{Determining the Weightings}
+
+\section{Building a Sign Classifier}
+
 % ------------------------------------------------------------------------
 
 %%% Local Variables: 

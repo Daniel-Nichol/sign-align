@@ -1,8 +1,10 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A Hidden Markov Model. The underlying Markov Chain contains 4 states (depicted as circles) which emit two possible observations (a or b).\relax }}{5}{figure.caption.3}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces The K-Means method for vector quantization\relax }}{16}{figure.caption.3}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The K-Means method for vector quantization\relax }}{17}{figure.caption.4}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Different Markov Chain Topologies\relax }}{20}{figure.caption.5}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

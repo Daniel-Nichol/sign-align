@@ -27,15 +27,5 @@ I was expecting a `,' or a `}'---line 43 of file References/references.bib
  : urldate = {19/03/2013}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You're missing a field name---line 282 of file References/references.bib
- : @article{bakis1976continuous, 
- :                               %-Bakis model
-I'm skipping whatever remains of this entry
-Warning--to sort, need author or key in bakis1976continuous
-Warning--empty author in bakis1976continuous
-Warning--empty title in bakis1976continuous
-Warning--empty journal in bakis1976continuous
-Warning--empty year in bakis1976continuous
-Warning--empty year in bakis1976continuous
 Warning--can't use both volume and number fields in bishop2006pattern
-(There were 3 error messages)
+(There were 2 error messages)
