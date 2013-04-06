@@ -47,7 +47,7 @@ namespace SignAlign
 
         }
 
-        public double Evaluate(int[] observationSymbols, bool log)
+        private double Evaluate(int[] observationSymbols, bool log)
         {
             double prob = 0;
             double[] scales;
@@ -185,7 +185,7 @@ namespace SignAlign
             return betas;
         }
 
-        public double Reestimate(double[][][] observationSequences, int iterations, double tolerance)
+        public void Reestimate(double[][][] observationSequences, int iterations, double threshold)
         {
             int[][] observationsSymbols = new int[observationSequences.Length][];
             for (int i = 0; i < observationSequences.Length; i++)
@@ -197,12 +197,10 @@ namespace SignAlign
                 }
             }
 
-            double prob = Reestimate(observationsSymbols, iterations, tolerance);
-
-            return prob;
+            Reestimate(observationsSymbols, iterations, threshold);
         }
 
-        public double Reestimate(int[][] observations, int iterations, double tolerance)
+        private void Reestimate(int[][] observations, int iterations, double threshold)
         {
             int K = observations.Length;
             int currentIteration = 1;
@@ -285,7 +283,7 @@ namespace SignAlign
 
                 // Check if the model has converged or we should stop
                 if (checkConvergence(oldProb, newProb,
-                    currentIteration, iterations, tolerance))
+                    currentIteration, iterations, threshold))
                 {
                     stop = true;
                 }
@@ -358,10 +356,6 @@ namespace SignAlign
                 }
 
             } while (!stop);
-
-
-            // Returns the model average log-likelihood
-            return newProb;
         }
 
         //Saves the HMM parameters to file

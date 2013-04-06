@@ -66,6 +66,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="SignClassifier.cs" />
+    <Compile Include="SignModel.cs" />
     <Compile Include="Training\CD-HMM.cs" />
     <Compile Include="Training\D-HMM.cs" />
     <Compile Include="Training\DiscreteObservationProbabilityMeasure.cs" />

@@ -17,13 +17,15 @@
 \contentsline {section}{\numberline {2.4}Previous Work}{12}{section.2.4}
 \contentsline {chapter}{\numberline {3}Building a Hidden Markov Model for Isolated Signs}{14}{chapter.3}
 \contentsline {section}{\numberline {3.1}Scaling}{14}{section.3.1}
-\contentsline {section}{\numberline {3.2}Observation Vector Quantization}{16}{section.3.2}
-\contentsline {section}{\numberline {3.3}Determining The Initial Topology and Parameters}{17}{section.3.3}
+\contentsline {section}{\numberline {3.2}Determining The Initial Topology and Parameters}{16}{section.3.2}
+\contentsline {section}{\numberline {3.3}Observation Vector Quantization}{19}{section.3.3}
 \contentsline {section}{\numberline {3.4}Predicting the Probability of a Sign}{19}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Determining the Weightings}{22}{subsection.3.4.1}
-\contentsline {section}{\numberline {3.5}Building a Sign Classifier}{22}{section.3.5}
-\contentsline {chapter}{\numberline {4}Determining a Sign from the Possibilities}{23}{chapter.4}
-\contentsline {chapter}{\numberline {5}My Conclusions ...}{24}{chapter.5}
-\contentsline {chapter}{Appdx A}{25}{appendix*.6}
-\contentsline {chapter}{Appdx B}{26}{appendix*.7}
-\contentsline {chapter}{References}{27}{appendix*.8}
+\contentsline {subsection}{\numberline {3.4.1}Determining the Weightings}{23}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Building a Sign Classifier}{23}{section.3.5}
+\contentsline {chapter}{\numberline {4}Interfacing With The Kinect Sensor}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}Recording Training Data}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}A Controller for Detecting Gestures}{26}{section.4.2}
+\contentsline {chapter}{\numberline {5}My Conclusions ...}{27}{chapter.5}
+\contentsline {chapter}{Appdx A}{28}{appendix*.9}
+\contentsline {chapter}{Appdx B}{29}{appendix*.10}
+\contentsline {chapter}{References}{30}{appendix*.11}
