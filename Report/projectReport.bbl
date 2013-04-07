@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -145,6 +145,13 @@ Stephen~E Levinson, Lawrence~R Rabiner, and Man~Mohan Sondhi.
 \newblock \emph{Bell Syst. Tech. J}, 62\penalty0 (4):\penalty0 1035--1074,
   1983.
 
+\bibitem[Li et~al.(2000)Li, Parizeau, and Plamondon]{li2000training}
+Xiaolin Li, Marc Parizeau, and R{\'e}jean Plamondon.
+\newblock Training hidden markov models with multiple observations-a
+  combinatorial method.
+\newblock \emph{Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, 22\penalty0 (4):\penalty0 371--377, 2000.
+
 \bibitem[Li{\`o} and Goldman(1998)]{lio1998models}
 Pietro Li{\`o} and Nick Goldman.
 \newblock Models of molecular evolution and phylogeny.
@@ -156,6 +163,12 @@ L~Liporace.
   sources.
 \newblock \emph{Information Theory, IEEE Transactions on}, 28\penalty0
   (5):\penalty0 729--734, 1982.
+
+\bibitem[Lloyd(1982)]{lloyd1982least}
+Stuart Lloyd.
+\newblock Least squares quantization in pcm.
+\newblock \emph{Information Theory, IEEE Transactions on}, 28\penalty0
+  (2):\penalty0 129--137, 1982.
 
 \bibitem[Manning and Sch{\"u}tze(1999)]{manning1999foundations}
 Christopher~D Manning and Hinrich Sch{\"u}tze.
@@ -181,6 +194,13 @@ Lawrence~R Rabiner.
 \newblock \emph{Proceedings of the IEEE}, 77\penalty0 (2):\penalty0 257--286,
   1989.
 
+\bibitem[Rahimi(2000)]{rahimi2000}
+Ali Rahimi.
+\newblock An erratum for ' a tutorial on hidden markov models and selected
+  applications in speech recognition', April 2000.
+\newblock URL
+  \url{http://xenia.media.mit.edu/~rahimi/rabiner/rabiner-errata/rabiner-errata.html}.
+
 \bibitem[Russell et~al.(1995)Russell, Norvig, Canny, Malik, and
   Edwards]{russell1995artificial}
 Stuart~Jonathan Russell, Peter Norvig, John~F Canny, Jitendra~M Malik, and
@@ -194,6 +214,13 @@ Thad Starner and Alex Pentland.
   markov models.
 \newblock In \emph{Computer Vision, 1995. Proceedings., International Symposium
   on}, pages 265--270. IEEE, 1995.
+
+\bibitem[van Oosten(2010)]{van2010can}
+Jean-Paul van Oosten.
+\newblock \emph{Can markov properties be learned by hidden markov modelling
+  algorithms}.
+\newblock PhD thesis, Master’s thesis, University of Groningen, The
+  Netherlands, 2010.
 
 \bibitem[Yamato et~al.(1992)Yamato, Ohya, and Ishii]{yamato1992recognizing}
 Junji Yamato, Jun Ohya, and Kenichiro Ishii.

@@ -45,7 +45,7 @@ by the following process:
 \begin{figure}[]
   \centering
     \includegraphics[width=0.7\textwidth]{ThesisFigs/HMMExample}
-  \caption{A Hidden Markov Model. The underlying Markov Chain contains 4 states (depicted as circles) which emit two possible observations (a or b).}\label{ref:hmmex}
+  \caption{A Hidden Markov Model. The underlying Markov Chain contains 4 states (depicted as circles) which emit two possible observations (a or b).}\label{fig:hmmex}
 \end{figure}
 
 
@@ -153,45 +153,10 @@ A significant limitation of hidden Markov Models is that they can have only a fi
 \begin{align*}
 &b_j(\bm{p}) = \mathbb{P}[\text{the pen is at point $\bm{p}$ at time $t$ } | q_t = S_j] &\text{ for each point $\bm{p}\in\mathbb{R}^2$}
 \end{align*}
-However as the plane is continuous and $V$ is finite this is not possible. One solution is the discretise the plane and have only a finite (but large) set of observation symbols. This method has been used with some success to distuingish between gestures with large variations, for example different tennis strokes~\citep{yamato1992recognizing}. However without sufficiently fine grained discretisation, which will severely impact the efficiency of our algorithms, our observation sequences will suffer from signal degradation. As we plan to model signed languages, in which certain subtle changes to a gesture can change the meaning {\color{green}[GIVEN AN EXAMPLE]}, it is likely signal degradation will impact on the accuracy of our system.
+However as the plane is continuous and $V$ is finite this is not possible. One solution is the discretise the plane and have only a finite (but large) set of observation symbols. This method has been used with some success to distuingish between gestures with large variations, for example different tennis strokes~\citep{yamato1992recognizing}. I could be argued that this discretisation of the observation space could cause use to lose some subtlety in the input and hence prevent us from distinguishing between similar signs. We attempt to compensate for this by taking into account the full torso in determining a sign and using the elbows, shoulders and head to help distinguish signs where the hands are not sufficient alone.
 
-\section{Continuous Distribution HMMs}
-Another solution to this problem is to use a \emph{continuous hidden Markov Model}~\citep{rabiner1989tutorial, dym2011hmm} which is defined similarly to a regular HMM except we allow an infinite number of observations symbols $O$ and define for each state $S_j$ the probability $b_j(O)$ to be drawn from a continuous finite mixture of distributions. That is
-\begin{equation*}
-b_j(O) = \sum_{m=1}^M c_{jm}f_m(O)
-\end{equation*}
-where $f_m$ are some (possibly parameterised) probability distribution functions and the $c_{jm}$ are mixture coefficients satisfying $\sum_m c_{jm} = 1$ for each $1 \leq j \leq N$. 
+A second solution is to utilise \emph{Continuous Distribution Hidden Markov Models} which extend HMMs by replacing the emissions matrix $B$ with a probability density function. This method proved to be outside of the scope of this project but is one that has proven fruitful in previous pattern detection systems. As such we have built our sign recognition system to allow the discrete hidden markov models to be replaced by a continuous counterpart provided it implements a specific interface.
 
-It has been shown that if the $f_m$ are log-concave functions then there exists a re-estimation tecnique for the continuous HMM which extends the forward-backward algorithm.~\cite{liporace1982maximum, juang1985maximum, juang1986maximum}. 
-
-For the purposes of this project we will restrict ourselves to mixtures of Gaussian distributions as these the most commonly studied log-concave distributions. Then our $b_j(O)$ will take the form
-\begin{equation*}
-b_j(O) = \sum_{m=1}^M c_{jm}\mathcal{N}(O | \mu_{jm}, \Sigma_{jm})
-\end{equation*}
-where $\mu_{jm}$ is the mean vector and $\Sigma_{jm}$ the covariance matrix of the $m^\text{th}$ distribution in the mixture for state $S_j$, and  
-\begin{equation*}
-\mathcal{N}(O|\mu,\Sigma) = \frac{1}{(2\pi)^{d/2}\sqrt{|\Sigma|}}e^{\left(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)\right)}
-\end{equation*}
-with $d$ being the dimension of the observation $O$ (and hence of $\mu$ and $\Sigma$)~\citep{bishop2006pattern}.
-\subsection{Re-estimation In Continuous HMMs}
-Following the work of ~\citet{liporace1982maximum}, ~\citet{juang1985maximum} and~\citet{ juang1986maximum} we can extend the forward-backward algorithm to re-estimate the parameters of a continuous hidden Markov Model. The definition of the $\alpha_t(i)$, the $\beta_t(i)$ and the $\gamma_t(i)$ remain as before as doe the re-estimation of the stochastic matrix $A$ and initial state distribution $\bm{\pi}$. However we no longer have a matrix $B$ and instead must re-estimate the mixture coefficients $c_{jm}$, mean vectors $\mu_{jk}$ and covariance matrices $\Sigma_{jk}$. To do this we define
-\begin{equation*}
-\zeta_t(j,k) = \left[ \frac{\alpha_t(j)\beta_t(j)}{\sum_{j=1}^N \alpha_t(j)\beta_t(j)} \right]\left[ \frac{c_{jk}\mathcal{N}(O_t, \mu_{jk}, \Sigma_{jk})}{\sum_{m=1}^M c_{jm}\mathcal{N}(O_t, \mu_{jm},\Sigma_{jm})} \right]
-\end{equation*}
-and then compute
-\begin{align*}
-&\overline{c}_{jk} = \frac{\sum_{t=1}^T \zeta_t(j,k)}{\sum_{t=1}^T \sum_{m=1}^M \zeta_t(j,m)} 
-&\overline{\mu}_{jk} = \frac{\sum_{t=1}^T \zeta_y(j,k)O_t}{\sum_{t=1}^T \zeta_t(j,k)} \\
-\end{align*}
-\begin{equation*}
-\overline{\Sigma}_{jk} = \frac{\left(\sum_{t=1}^T \zeta_t(j,k)\right)(O_t - \mu_{jk})\otimes(O_t - \mu_{jk})}{\sum_{t=1}^T \zeta_t(j,k)}
-\end{equation*}
-for each $1 \leq j \leq N$ and $1 \leq k \leq M$. (Where $\otimes$ denotes the dyadic tensor product).
-If we form a new continuous HMM $\overline{\lambda}$ with these new parameters then 
-\begin{equation*}
-\mathbb{P}[\bm{O}|\overline{\lambda}] \geq \mathbb{P}[\bm{O}|\lambda] 
-\end{equation*}
-and hence we may find a locally optimal model for some observation sequence $\bm{O}$ by a similar local search algorithm as for discrete HMMs.
 
 \section{Previous Work}
 Motivated by the success of hidden Markov Models for speech in the mid 1970s \citep{baker1975dragon, jelinek1975design} these models were adopted for gesture detection. ~\citet{yamato1992recognizing} used discrete HMMs with observations from a 2D camera to detect tennis strokes and later ~\citet{starner1995real} implemented a system to recognise American Sign Language in real-time using by continuous density hidden Markov Models. This system relied on a single camera and required the user to wear a pair of special gloves. By imposing a restricted grammar to only allow sentences of a particular structure they were able to achieve an accuracy of 97.0\% on an independent training set. 

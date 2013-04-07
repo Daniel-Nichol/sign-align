@@ -48,7 +48,10 @@ namespace SignAlign
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
+            
             SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -120);
+
+
 
             button1.Content = "finished";
 

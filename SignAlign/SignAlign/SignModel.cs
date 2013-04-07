@@ -22,8 +22,8 @@ namespace SignAlign
          * to a pair of weighting and D_HMM. This approach ensures that we can associate memebers new joint observation collections
          * to their appropriate DHMM.
          * */
-        
-        private Dictionary<string, D_HMM> jointHMMs;
+
+        private Dictionary<string, D_HMM> jointHMMs = new Dictionary<string, D_HMM>();
 
 
         //private LinkedList<D_HMM> jointHMMs = new LinkedList<D_HMM>();
@@ -212,10 +212,10 @@ namespace SignAlign
             foreach (string fileName in fileNames)
             {
                 string hmmname = fileName.Split('.')[0];
-                hmmname = (hmmname.Split('/').Last()).Split('_').First();
+                hmmname = hmmname.Split('/').Last();
                 
-                dhmm = new D_HMM(name, parametersFile);
-                dhmm.loadParameters(parametersFile);
+                dhmm = new D_HMM(hmmname, parametersFile);
+                //dhmm.loadParameters(parametersFile);
                 jointHMMs.Add(hmmname, dhmm);
             }
         }
