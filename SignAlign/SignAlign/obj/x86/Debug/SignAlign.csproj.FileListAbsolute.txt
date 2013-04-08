@@ -17,3 +17,8 @@ C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.I
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\SignAlign.Properties.Resources.resources
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.dll
 C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\MathNet.Numerics.IO.dll
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\recordingWindow.baml
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\obj\x86\Debug\recordingWindow.g.cs
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\SignAlign.exe.config
+C:\Users\user\Desktop\signAlign\SignAlign\SignAlign\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll

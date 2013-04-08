@@ -29,53 +29,14 @@ namespace SignAlign
         public MainWindow()
         {
             controller = new GestureController();
-            controller.kinectSensor.AllFramesReady += new EventHandler<AllFramesReadyEventArgs>(updateStatusGraphic);
             InitializeComponent();   
         }
 
-        //rudimentary tracking graphic
-        public void updateStatusGraphic(object sender, AllFramesReadyEventArgs e)
-        {
-            if (controller.isTracking())
-            {
-                kinectStatEllipse.Fill = new SolidColorBrush(Colors.Green);
-            }
-            else
-            {
-                kinectStatEllipse.Fill = new SolidColorBrush(Colors.Red);
-            }
-        }
-
+        //Open the training data window
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            
-            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -120);
-
-
-
-            button1.Content = "finished";
-
-                
-         
+            var newWindow = new recordingWindow("test");
+            newWindow.ShowDialog();
         }
-
-        private void button2_Click_1(object sender, RoutedEventArgs e)
-        {
-            recorder = new GestureRecorder();
-        }
-
-        private void button3_Click_1(object sender, RoutedEventArgs e)
-        {
-            recorder.startRecording();
-        }
-        private void button4_Click(object sender, RoutedEventArgs e)
-        {
-            recorder.stopRecording();
-        }
-        private void button5_Click_1(object sender, RoutedEventArgs e)
-        {
-            recorder.saveRecordings("test");
-        }
-        
     }
 }

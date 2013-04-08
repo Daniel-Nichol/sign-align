@@ -22,7 +22,7 @@ namespace SignAlign
         private Stopwatch sw = new Stopwatch(); //We use the stopwatch object to do this
 
         //This is a constanst array which contains those JointTypes which we track (the upper body)
-        private readonly JointType[] trackedJoints = 
+        public static readonly JointType[] trackedJoints = 
         {
             JointType.HandRight, 
             JointType.HandLeft, 
@@ -40,7 +40,7 @@ namespace SignAlign
             = new Dictionary<JointType,List<double[]>>();
 
         //We record the positions of the upper body joints given by kinect
-        public List<Tuple<float, float, float>> hand_right        {get; private set;}
+        /*public List<Tuple<float, float, float>> hand_right        {get; private set;}
         public List<Tuple<float, float, float>> wrist_right       {get; private set;}
         public List<Tuple<float, float, float>> elbow_right       {get; private set;}
         public List<Tuple<float, float, float>> shoulder_right    {get; private set;}
@@ -49,25 +49,18 @@ namespace SignAlign
         public List<Tuple<float, float, float>> elbow_left        {get; private set;}
         public List<Tuple<float, float, float>> shoulder_left     {get; private set;}
         public List<Tuple<float, float, float>> shoulder_centre   {get; private set;}
-        public List<Tuple<float, float, float>> head              {get; private set;}
+        public List<Tuple<float, float, float>> head              {get; private set;}*/
 
 
         public GestureRecording()
         {
             jointReadings = new Dictionary<JointType, List<double[]>>(trackedJoints.Count());
+            foreach (JointType j in trackedJoints)
+            {
+                jointReadings.Add(j, new List<double[]>());
+            }
             sw.Stop(); //Start timing
-
-
-            /*hand_right = new List<Tuple<float, float, float>>();
-            wrist_right = new List<Tuple<float, float, float>>();
-            elbow_right = new List<Tuple<float, float, float>>();
-            shoulder_right = new List<Tuple<float, float, float>>();
-            hand_left = new List<Tuple<float, float, float>>();
-            wrist_left = new List<Tuple<float, float, float>>();
-            elbow_left = new List<Tuple<float, float, float>>();
-            shoulder_left = new List<Tuple<float, float, float>>();
-            shoulder_centre = new List<Tuple<float, float, float>>();
-            head = new List<Tuple<float, float, float>>();*/
+                                  
             
         }
         //given a joint and a dimension (0=x, 1=y, 2=z) returns as a string the position sequence of that joint in that dimension

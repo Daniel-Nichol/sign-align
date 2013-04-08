@@ -13,16 +13,31 @@ namespace SignAlign
         private GestureRecording currentRecording;
         private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
         private SkeletonFrame skeletonFrame;
-        private bool areRecording;
+        public bool areRecording { get; private set; }
+        private string gestureName;
+        private bool training; //If true record training data, else record test data
+        private bool handsUp = true; //Do we record for hands above the waistw?
 
-        public GestureRecorder()
+
+        public GestureRecorder(string gestureName, bool training)
         {
+            this.gestureName = gestureName;
+            this.training = training;
             kinectSensor.AllFramesReady += new EventHandler<AllFramesReadyEventArgs>(KinectAllFramesReady);
+        }
+
+        public void setHandsUpTraining(bool handsUp)
+        {
+            this.handsUp = handsUp;
         }
 
         //Update current recording with kinect readings when frame ready
         protected override void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
         {
+            if (handsUp)
+            {
+                checkRecordingPos(e);
+            }
             Skeleton[] skeletonData;
             SkeletonFrame skeletonFrame;
             if (areRecording)
@@ -40,6 +55,44 @@ namespace SignAlign
             }
         }
 
+        private void checkRecordingPos(AllFramesReadyEventArgs e)
+        {
+            Skeleton[] skelData = new Skeleton[kinectSensor.SkeletonStream.FrameSkeletonArrayLength];
+            SkeletonFrame skelFrame = e.OpenSkeletonFrame();
+                if (skelFrame != null)
+                {
+                    skelFrame.CopySkeletonDataTo(skelData);
+                    if (skelData[0].TrackingState == SkeletonTrackingState.Tracked)
+                    {
+
+                        double[] leftHand = { 
+                                        skelData[0].Joints[JointType.HandLeft].Position.X, 
+                                        skelData[0].Joints[JointType.HandLeft].Position.Y, 
+                                        skelData[0].Joints[JointType.HandLeft].Position.Z 
+                                    };
+                        double[] rightHand = { 
+                                        skelData[0].Joints[JointType.HandRight].Position.X, 
+                                        skelData[0].Joints[JointType.HandRight].Position.Y, 
+                                        skelData[0].Joints[JointType.HandRight].Position.Z 
+                                    };
+                        double dist = Math.Sqrt(
+                            Math.Pow((rightHand[0] - leftHand[0]), 2)
+                            + Math.Pow((rightHand[1] - leftHand[1]), 2)
+                            + Math.Pow((rightHand[2] - leftHand[2]), 2));
+
+                        if (skelData[0].Joints[JointType.HandLeft].Position.Y < skelData[0].Joints[JointType.HipLeft].Position.Y)
+                        {
+                            if(areRecording)
+                                stopRecording();
+                        }
+                        else if(!areRecording && dist < 1)
+                        {
+                            startRecording();
+                        }
+                    }
+                }
+        }
+
         //Starts recording from the kinect
         public void startRecording()
         {
@@ -54,16 +107,46 @@ namespace SignAlign
         }
 
         //Saves the current recordings as .csv with joint annotations
-        public void saveRecordings(String filename)
+        public void saveRecordings(string dataFile)
         {
-            using (var writer = new StreamWriter("C:/Users/user/Desktop/signAlign/"+filename+".csv"))
+            string datLoc;
+            datLoc = training ? "Training/" : "Test/";
+
+            if (!Directory.Exists(dataFile + datLoc + "/" + gestureName + "/"))
             {
-                foreach(GestureRecording g in recordings)
+                Directory.CreateDirectory(dataFile + datLoc + "/" + gestureName + "/");
+            }
+
+            foreach (JointType j in GestureRecording.trackedJoints)
+            {
+                
+                using (var writer = new StreamWriter(dataFile + datLoc + "/"+gestureName+"/"+j.ToString("G")+"_x"+".csv"))
                 {
-                    writer.WriteLine(g.asString(g.hand_left, 0));
+                    foreach (GestureRecording g in recordings)
+                    {
+                        writer.WriteLine(g.asString(j, 0));
+                    }
+                    writer.Flush();
+                    writer.Dispose();
                 }
-                writer.Flush();
-                writer.Dispose();
+                using (var writer = new StreamWriter(dataFile + datLoc + "/" + gestureName + "/" + j.ToString("G") + "_y" + ".csv"))
+                {
+                    foreach (GestureRecording g in recordings)
+                    {
+                        writer.WriteLine(g.asString(j, 1));
+                    }
+                    writer.Flush();
+                    writer.Dispose();
+                }
+                using (var writer = new StreamWriter(dataFile + datLoc + "/" + gestureName + "/" + j.ToString("G") + "_z" + ".csv"))
+                {
+                    foreach (GestureRecording g in recordings)
+                    {
+                        writer.WriteLine(g.asString(j, 2));
+                    }
+                    writer.Flush();
+                    writer.Dispose();
+                }
             }
         }
 

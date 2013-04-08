@@ -1,0 +1,15 @@
+﻿<Window x:Class="SignAlign.recordingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kt="Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+        Title="recordingWindow" xmlns:my="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers" ResizeMode="NoResize" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="473" Width="1068">
+    <Grid Height="448" Width="1059" Background="#30000000">
+        <my:KinectSensorChooser Margin="138,18,157,0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="SensorChooser" />
+        <my:KinectDepthViewer Height="240" HorizontalAlignment="Left" Margin="736,0,0,0" Name="kinectDepthViewer1" VerticalAlignment="Top" Width="320" Kinect="{Binding ElementName=SensorChooser, Path=Kinect}" />
+        <my:KinectSkeletonViewer Height="240" HorizontalAlignment="Left" Margin="736,0,0,0" Name="kinectSkeletonViewer" VerticalAlignment="Top" Width="320" Kinect="{Binding ElementName=SensorChooser, Path=Kinect}" />
+        <TextBox Height="436" HorizontalAlignment="Left" Name="textBox1" VerticalAlignment="Top" Width="350" />
+        <Button Content="Button" Height="37" HorizontalAlignment="Left" Margin="-10,398,0,0" Name="button1" VerticalAlignment="Top" Width="359" Click="button1_Click" />
+        <Ellipse Height="39" HorizontalAlignment="Left" Margin="696,0,0,0" Name="ellipse1" Stroke="Black" VerticalAlignment="Top" Width="40" Fill="Blue" />
+        <Label Content="Recording:" Height="53" Margin="630,5,355,0" Name="label1" VerticalAlignment="Top" />
+    </Grid>
+</Window>
