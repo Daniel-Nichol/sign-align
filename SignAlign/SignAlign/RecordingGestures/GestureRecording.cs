@@ -90,65 +90,12 @@ namespace SignAlign
             return builder.ToString();
         }
 
-        //given a joint and a dimension (0=x, 1=y, 2=z) returns as a string the position sequence of that joint in that dimension
-        /*public String asString(List<Tuple<float, float, float>> jointlist, int dimension)
+        public bool lengthIsLessThan(int length)
         {
-            
-            StringBuilder builder = new StringBuilder();
-            bool firstColumn = true;
-            if (dimension == 0)
-            {
-                foreach (Tuple<float, float, float> pos in jointlist)
-                {
-                    if (firstColumn)
-                    {
-                        builder.Append(pos.Item1.ToString());
-                        firstColumn = false;
-                    }
-                    else
-                    {
-                        builder.Append(",");
-                        builder.Append(pos.Item1.ToString());
-                    }
-                }
-            }
-
-            if (dimension == 1)
-            {
-                foreach (Tuple<float, float, float> pos in jointlist)
-                {
-                    if (firstColumn)
-                    {
-                        builder.Append(pos.Item2.ToString());
-                        firstColumn = false;
-                    }
-                    else
-                    {
-                        builder.Append(",");
-                        builder.Append(pos.Item2.ToString());
-                    }
-                }
-            }
-
-            if (dimension == 2)
-            {
-                foreach (Tuple<float, float, float> pos in jointlist)
-                {
-                    if (firstColumn)
-                    {
-                        builder.Append(pos.Item3.ToString());
-                        firstColumn = false;
-                    }
-                    else
-                    {
-                        builder.Append(",");
-                        builder.Append(pos.Item3.ToString());
-                    }
-                }
-            }
-            return builder.ToString();
-        }*/
-
+            List<double[]> reads;
+            jointReadings.TryGetValue(trackedJoints[0], out reads);
+            return reads.Count < length;
+        }
 
         //Takes a skeleton and adds it's position to the current recording
         public void addReading(Skeleton skeleton)
@@ -160,16 +107,6 @@ namespace SignAlign
                 jReadings.Add(asDoubleArray(skeleton.Joints[j].Position)); 
                 //Note that this works as jReadings is passed by reference. We really do update the value in the hash table.
             }
-            /*hand_right.Add(makeTuple(skeleton.Joints[JointType.HandRight].Position));
-            wrist_right.Add(makeTuple(skeleton.Joints[JointType.WristRight].Position));
-            elbow_right.Add(makeTuple(skeleton.Joints[JointType.ElbowRight].Position));
-            shoulder_right.Add(makeTuple(skeleton.Joints[JointType.ShoulderRight].Position));
-            hand_left.Add(makeTuple(skeleton.Joints[JointType.HandLeft].Position));
-            wrist_left.Add(makeTuple(skeleton.Joints[JointType.WristLeft].Position));
-            elbow_left.Add(makeTuple(skeleton.Joints[JointType.ElbowLeft].Position));
-            shoulder_left.Add(makeTuple(skeleton.Joints[JointType.ShoulderLeft].Position));
-            shoulder_centre.Add(makeTuple(skeleton.Joints[JointType.ShoulderCenter].Position));
-            head.Add(makeTuple(skeleton.Joints[JointType.Head].Position));*/
         }
 
         /// <summary>

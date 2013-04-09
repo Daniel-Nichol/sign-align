@@ -24,12 +24,8 @@ namespace SignAlign
     /// </summary>
     public partial class MainWindow : Window
     {
-        GestureController controller;
-        GestureRecorder recorder;
         public MainWindow()
         {
-            controller = new GestureController();
-            InitializeComponent();   
         }
 
         //Open the training data window
@@ -37,6 +33,14 @@ namespace SignAlign
         {
             var newWindow = new recordingWindow("test");
             newWindow.ShowDialog();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -400);
+            string sign = sc.testFromFile("C:/Users/user/Desktop/signAlign/Data/Test/My/");
+
+            button3.Content = "done";
         }
     }
 }

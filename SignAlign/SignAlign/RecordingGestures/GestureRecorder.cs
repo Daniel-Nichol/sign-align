@@ -16,28 +16,29 @@ namespace SignAlign
         public bool areRecording { get; private set; }
         private string gestureName;
         private bool training; //If true record training data, else record test data
-        private bool handsUp = true; //Do we record for hands above the waistw?
+        //private bool handsUp = true; //Do we record for hands above the waistw?
+        private bool handsTogether = false;
+        public bool handsMet = false;
+        private int minRecordingLength = 5;
 
 
         public GestureRecorder(string gestureName, bool training)
         {
             this.gestureName = gestureName;
             this.training = training;
-            kinectSensor.AllFramesReady += new EventHandler<AllFramesReadyEventArgs>(KinectAllFramesReady);
+            kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(KinectAllFramesReady);
         }
 
         public void setHandsUpTraining(bool handsUp)
         {
-            this.handsUp = handsUp;
+            //this.handsUp = handsUp;
         }
 
         //Update current recording with kinect readings when frame ready
-        protected override void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
+        protected override void KinectAllFramesReady(object sender, SkeletonFrameReadyEventArgs e)
         {
-            if (handsUp)
-            {
-                checkRecordingPos(e);
-            }
+            checkRecordingPos(e);
+            
             Skeleton[] skeletonData;
             SkeletonFrame skeletonFrame;
             if (areRecording)
@@ -55,7 +56,7 @@ namespace SignAlign
             }
         }
 
-        private void checkRecordingPos(AllFramesReadyEventArgs e)
+        private void checkRecordingPos(SkeletonFrameReadyEventArgs e)
         {
             Skeleton[] skelData = new Skeleton[kinectSensor.SkeletonStream.FrameSkeletonArrayLength];
             SkeletonFrame skelFrame = e.OpenSkeletonFrame();
@@ -82,13 +83,19 @@ namespace SignAlign
 
                         if (skelData[0].Joints[JointType.HandLeft].Position.Y < skelData[0].Joints[JointType.HipLeft].Position.Y)
                         {
-                            if(areRecording)
+                            if (areRecording)
                                 stopRecording();
+                            handsMet = false;
                         }
-                        else if(!areRecording && dist < 1)
+                        else
                         {
-                            startRecording();
+                            handsTogether = (dist < 0.3);
+                            if (handsTogether)
+                                handsMet = true;
+                            if (handsMet && !handsTogether)
+                                startRecording();
                         }
+                        
                     }
                 }
         }
@@ -103,7 +110,10 @@ namespace SignAlign
         {
             areRecording = false;
             currentRecording.finish();
-            recordings.Add(currentRecording);
+            if (!currentRecording.lengthIsLessThan(minRecordingLength))
+            {
+                recordings.Add(currentRecording);
+            }
         }
 
         //Saves the current recordings as .csv with joint annotations
@@ -111,6 +121,11 @@ namespace SignAlign
         {
             string datLoc;
             datLoc = training ? "Training/" : "Test/";
+
+            foreach (GestureRecording g in recordings)
+            {
+                
+            }
 
             if (!Directory.Exists(dataFile + datLoc + "/" + gestureName + "/"))
             {

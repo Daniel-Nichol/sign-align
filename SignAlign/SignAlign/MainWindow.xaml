@@ -5,6 +5,6 @@
     <Grid Height="122" Width="463">
        <Button Content="Record Training Data" Height="59" HorizontalAlignment="Left" Name="button1" VerticalAlignment="Top" Width="163" Click="Btn_Click" Margin="0,56,0,0" />
         <Button Content="Record Test Data" Height="56" HorizontalAlignment="Left" Name="button2" VerticalAlignment="Top" Width="163" />
-        <Button Content="Translate Signs" Height="123" HorizontalAlignment="Left" Margin="162,-1,0,0" Name="button3" VerticalAlignment="Top" Width="294" />
+        <Button Content="Translate Signs" Height="123" HorizontalAlignment="Left" Margin="162,-1,0,0" Name="button3" VerticalAlignment="Top" Width="294" Click="button3_Click" />
     </Grid>
 </Window>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Microsoft.Kinect;
 
 namespace SignAlign
 {
@@ -43,8 +44,53 @@ namespace SignAlign
             }
             else
             {
-                return null;
+                return "none";
             }
+        }
+
+        public string testFromFile(string folder)
+        {
+            Dictionary<string, double[][]> jointObsSeqs = new Dictionary<string, double[][]>();
+            foreach (JointType j in GestureRecording.trackedJoints)
+            {
+                double[][] obsSeq = buildObservationSequence(folder, j);
+                jointObsSeqs.Add(j.ToString(), obsSeq);
+            }
+
+            string sign = getSign(jointObsSeqs);
+            
+
+            return sign;
+        }
+
+        private double[][] buildObservationSequence(string folder, JointType j)
+        {
+            double[][] obsSeq = null;
+            using (StreamReader srx = new StreamReader(folder +"/" + j.ToString() + "_x.csv"))
+            {
+                using (StreamReader sry = new StreamReader(folder + "/" + j.ToString() + "_y.csv"))
+                {
+                    using (StreamReader srz = new StreamReader(folder + "/" + j.ToString() + "_z.csv"))
+                    {
+                        string linex;
+                        string[] xrow, yrow, zrow;
+                        if ((linex = srx.ReadLine()) != null)
+                        {
+                            xrow = linex.Split(',');
+                            yrow = sry.ReadLine().Split(',');
+                            zrow = srz.ReadLine().Split(',');
+                            obsSeq = new double[xrow.Length][];
+                            for (int i = 0; i < xrow.Length; i++)
+                            {
+                                obsSeq[i] = new double[] {Convert.ToDouble(xrow[i]), 
+                                Convert.ToDouble(yrow[i]), Convert.ToDouble(zrow[i])};
+                            }
+                        }
+                       
+                    }
+                }
+            }
+            return obsSeq;
         }
 
         /// <summary>

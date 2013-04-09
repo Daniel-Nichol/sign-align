@@ -28,7 +28,7 @@ namespace SignAlign
             kinectSensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
             kinectSensor.DepthStream.Enable();
             //Wait for the frames of all 3 streams to be read. Then we will call AllFramesReady
-            kinectSensor.AllFramesReady += new EventHandler<AllFramesReadyEventArgs>(KinectAllFramesReady);
+            kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(KinectAllFramesReady);
             kinectSensor.Start();
         }
 
@@ -40,7 +40,7 @@ namespace SignAlign
         /// <summary>
         /// Called each time new frames are ready
         /// </summary>
-        protected virtual void KinectAllFramesReady(object sender, AllFramesReadyEventArgs e)
+        protected virtual void KinectAllFramesReady(object sender, SkeletonFrameReadyEventArgs e)
         {
             Skeleton[] skeletonData;
             SkeletonFrame skeletonFrame;

@@ -26,7 +26,7 @@ namespace SignAlign
         GestureRecorder recorder;
         public recordingWindow(string gestureName)
         {
-            recorder = new GestureRecorder(gestureName, true);
+            recorder = new GestureRecorder("My", true);
             InitializeComponent();
             recorder.kinectSensor.AllFramesReady+=new EventHandler<AllFramesReadyEventArgs>(updateVis);
             //unsub
@@ -38,6 +38,10 @@ namespace SignAlign
             if (recorder.areRecording)
             {
                 ellipse1.Fill = new SolidColorBrush(Colors.Red);
+            }
+            else if (recorder.handsMet)
+            {
+                ellipse1.Fill = new SolidColorBrush(Colors.Blue);
             }
             else
             {

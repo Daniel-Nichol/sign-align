@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.IO;
+using Microsoft.Kinect;
 namespace SignAlign
 {
 
@@ -16,7 +17,6 @@ namespace SignAlign
         public string name { get; private set; }
         private KMeansClassifier KMClassifier; //A K-means classifier to determine clusters in the training sets;
         public const int CLUSTERS = 8; //The number of clusters the K-M class will divide the input data into (determines the number of symbols)
-        public const int JOINTS = 6; 
 
         /* We store one DHMM and one weight for each of the joints as a hashmap taking joint names (taken from file)
          * to a pair of weighting and D_HMM. This approach ensures that we can associate memebers new joint observation collections
@@ -24,11 +24,7 @@ namespace SignAlign
          * */
 
         private Dictionary<string, D_HMM> jointHMMs = new Dictionary<string, D_HMM>();
-
-
-        //private LinkedList<D_HMM> jointHMMs = new LinkedList<D_HMM>();
-        //The weightings used to combine the HMMs
-        private LinkedList<double> weights = new LinkedList<double>();
+        private Dictionary<string, double> weights = new Dictionary<string, double>();
 
         /// <summary>
         /// Creates a signModel object by specifying the data path and name
@@ -76,21 +72,20 @@ namespace SignAlign
                 hmm = trainNewHMM(fileNames[i], fileNames[i + 1], fileNames[i + 2]);
                 hmm.saveParameters(dataPath + "Parameters/"+name+"/");
                 jointHMMs.Add(hmm.name, hmm);
+                if (hmm.name == "HandRight" || hmm.name == "HandLeft")
+                {
+                    weights.Add(hmm.name, 1.0f);
+                }
+                else
+                {
+                    weights.Add(hmm.name, 0.0f);
+                }
             }
 
-            trainWeights();
+            
 
         }
-
-        /// <summary>
-        /// Uses the training data to compute the best weightings for combining the HMMs
-        /// </summary>
-        private void trainWeights()
-        {
-            for (int i = 0; i < jointHMMs.Count; i++)
-                weights.AddLast(1.0f);
-        }
-
+          
 
         /// <summary>
         /// Returns a newly initialized HMM. This method is where we encode our initial markov chain topology
@@ -139,10 +134,11 @@ namespace SignAlign
         private D_HMM trainNewHMM(string x_fileLoc, string y_fileLoc, string z_fileLoc)
         {
             //Compute the number of different training sequences there are in the training data files
-            int numberOfSeqs;
+            int numberOfSeqs = 0;
             using (StreamReader srx = new StreamReader(x_fileLoc))
             {
-                numberOfSeqs = srx.ReadLine().Split(',').Length;
+                while (srx.ReadLine() != null)
+                    numberOfSeqs++;
             }
 
             //Construct from the data files the (x,y,z) sequences
@@ -153,6 +149,7 @@ namespace SignAlign
             }
             //Also amalgamate them all in one list for use in clustering
             List<double[]> allObservations = new List<double[]>();
+            int currentObs = 0;
             using (StreamReader srx = new StreamReader(x_fileLoc))
             {
                 using (StreamReader sry = new StreamReader(y_fileLoc))
@@ -168,11 +165,16 @@ namespace SignAlign
                             xrow = linex.Split(',');
                             yrow = liney.Split(',');
                             zrow = linez.Split(',');
-
-                            for (int j = 0; j < xrow.Length; j++)
+                            if (linex != "")
                             {
-                                obsSeqList[j].Add(new double[3] { Convert.ToDouble(xrow[j]), Convert.ToDouble(yrow[j]), Convert.ToDouble(zrow[j]) });
-                                allObservations.Add(new double[3] { Convert.ToDouble(xrow[j]), Convert.ToDouble(yrow[j]), Convert.ToDouble(zrow[j]) });
+                                for (int i = 0; i < xrow.Length; i++)
+                                {
+                                    obsSeqList[currentObs].Add(new double[] {Convert.ToDouble(xrow[i]), 
+                                Convert.ToDouble(yrow[i]), Convert.ToDouble(zrow[i])});
+                                    allObservations.Add(new double[] {Convert.ToDouble(xrow[i]), 
+                                Convert.ToDouble(yrow[i]), Convert.ToDouble(zrow[i])});
+                                }
+                                currentObs++;
                             }
                         }
                     }
@@ -232,10 +234,10 @@ namespace SignAlign
              * If the list joint observation collection does not specify the same
              * joints as the jointsHMMs then we return 0
              */
-            if (!jointObsSeqs.Keys.Equals(jointHMMs.Keys))
+            /*if (!jointObsSeqs.Keys.Equals(jointHMMs.Keys))
             {
                 return 0;
-            }
+            }*/
 
             //Else compute the weighted sum. Here we assume the joints observation list and joints HMM lists are in the same order.
             double logProbSum = 0;
