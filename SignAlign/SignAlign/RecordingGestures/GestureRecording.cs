@@ -36,41 +36,39 @@ namespace SignAlign
             JointType.Head
         };
 
-        private Dictionary<JointType, List<double[]>> jointReadings 
+        private Dictionary<JointType, List<double[]>> jointReadingsAbsolute 
             = new Dictionary<JointType,List<double[]>>();
 
-        //We record the positions of the upper body joints given by kinect
-        /*public List<Tuple<float, float, float>> hand_right        {get; private set;}
-        public List<Tuple<float, float, float>> wrist_right       {get; private set;}
-        public List<Tuple<float, float, float>> elbow_right       {get; private set;}
-        public List<Tuple<float, float, float>> shoulder_right    {get; private set;}
-        public List<Tuple<float, float, float>> hand_left         {get; private set;}
-        public List<Tuple<float, float, float>> wrist_left        {get; private set;}
-        public List<Tuple<float, float, float>> elbow_left        {get; private set;}
-        public List<Tuple<float, float, float>> shoulder_left     {get; private set;}
-        public List<Tuple<float, float, float>> shoulder_centre   {get; private set;}
-        public List<Tuple<float, float, float>> head              {get; private set;}*/
-
+        private Dictionary<JointType, List<double[]>> jointReadingsHeadRelative
+            = new Dictionary<JointType, List<double[]>>();
 
         public GestureRecording()
         {
-            jointReadings = new Dictionary<JointType, List<double[]>>(trackedJoints.Count());
+            jointReadingsAbsolute = new Dictionary<JointType, List<double[]>>(trackedJoints.Count());
             foreach (JointType j in trackedJoints)
             {
-                jointReadings.Add(j, new List<double[]>());
+                jointReadingsAbsolute.Add(j, new List<double[]>());
+                jointReadingsHeadRelative.Add(j, new List<double[]>());
             }
             sw.Stop(); //Start timing
                                   
             
         }
         //given a joint and a dimension (0=x, 1=y, 2=z) returns as a string the position sequence of that joint in that dimension
-        public string asString(JointType j, int dimension)
+        public string asString(JointType j, int dimension, bool absolute)
         {
 
             StringBuilder builder = new StringBuilder();
 
             List<double[]> jStream;
-            jointReadings.TryGetValue(j, out jStream);
+            if (absolute)
+            {
+                jointReadingsAbsolute.TryGetValue(j, out jStream);
+            }
+            else
+            {
+                jointReadingsHeadRelative.TryGetValue(j, out jStream);
+            }
             
             bool firstColumn = true;
             foreach (double[] pos in jStream)
@@ -93,8 +91,22 @@ namespace SignAlign
         public bool lengthIsLessThan(int length)
         {
             List<double[]> reads;
-            jointReadings.TryGetValue(trackedJoints[0], out reads);
+            jointReadingsAbsolute.TryGetValue(trackedJoints[0], out reads);
             return reads.Count < length;
+        }
+
+        public int getLength()
+        {
+            List<double[]> reads;
+            jointReadingsAbsolute.TryGetValue(trackedJoints[0], out reads);
+            if (reads != null)
+            {
+                return reads.Count;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         //Takes a skeleton and adds it's position to the current recording
@@ -102,10 +114,18 @@ namespace SignAlign
         {
             foreach (JointType j in trackedJoints)
             {
-                List<double[]> jReadings;
-                jointReadings.TryGetValue(j, out jReadings);
-                jReadings.Add(asDoubleArray(skeleton.Joints[j].Position)); 
-                //Note that this works as jReadings is passed by reference. We really do update the value in the hash table.
+                //Note: the following works as jReadings is 
+                //passed by reference. We really do update the value in the hash table.
+                List<double[]> jReadings, jReadingsRel;
+                jointReadingsAbsolute.TryGetValue(j, out jReadings);
+                jointReadingsHeadRelative.TryGetValue(j, out jReadingsRel);
+                jReadings.Add(asDoubleArray(skeleton.Joints[j].Position));
+                double[] rel = {
+                                   skeleton.Joints[JointType.Head].Position.X - skeleton.Joints[j].Position.X,
+                                   skeleton.Joints[JointType.Head].Position.Y - skeleton.Joints[j].Position.Y,
+                                   skeleton.Joints[JointType.Head].Position.Z - skeleton.Joints[j].Position.Z
+                               };
+                jReadingsRel.Add(rel);
             }
         }
 

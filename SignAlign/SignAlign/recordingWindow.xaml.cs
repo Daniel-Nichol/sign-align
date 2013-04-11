@@ -24,14 +24,15 @@ namespace SignAlign
     {
         //Initialize a recorder
         GestureRecorder recorder;
-        public recordingWindow(string gestureName)
+        public recordingWindow(string gestureName, bool training)
         {
-            recorder = new GestureRecorder("My", true);
+            recorder = new GestureRecorder(gestureName, training);
             InitializeComponent();
             recorder.kinectSensor.AllFramesReady+=new EventHandler<AllFramesReadyEventArgs>(updateVis);
-            //unsub
             //ellipse1 = new Ellipse();
         }
+
+    
 
         private void updateVis(object sender, AllFramesReadyEventArgs e)
         {
@@ -47,11 +48,19 @@ namespace SignAlign
             {
                 ellipse1.Fill = new SolidColorBrush(Colors.Green);
             }
+            if (e.OpenSkeletonFrame() != null)
+            {
+                Skeleton[] skelData = new Skeleton[6];
+                e.OpenSkeletonFrame().CopySkeletonDataTo(skelData);
+                label1.Content = (skelData[0].Joints[JointType.HandLeft].Position.X - skelData[0].Joints[JointType.HandRight].Position.X).ToString();
+            }
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            recorder.saveRecordings("C:/Users/user/Desktop/signAlign/Data/");
+            recorder.saveRecordings("C:/Users/user/Desktop/signAlign/Data/", true);
+            recorder.saveRecordings("C:/Users/user/Desktop/signAlign/Data/", false);
+            button1.IsEnabled = false;
         }
 
 

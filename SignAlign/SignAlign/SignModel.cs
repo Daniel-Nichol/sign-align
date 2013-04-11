@@ -16,7 +16,7 @@ namespace SignAlign
         private string dataPath;
         public string name { get; private set; }
         private KMeansClassifier KMClassifier; //A K-means classifier to determine clusters in the training sets;
-        public const int CLUSTERS = 8; //The number of clusters the K-M class will divide the input data into (determines the number of symbols)
+        public int clusters; //The number of clusters the K-M class will divide the input data into (determines the number of symbols)
 
         /* We store one DHMM and one weight for each of the joints as a hashmap taking joint names (taken from file)
          * to a pair of weighting and D_HMM. This approach ensures that we can associate memebers new joint observation collections
@@ -32,11 +32,12 @@ namespace SignAlign
         /// <param name="path">The location on disk of the signAlign data folder</param>
         /// <param name="name">The name of the sign this model corresponds to</param>
         /// <param name="train">Set true if the model should be trained from the training data<param>
-        public SignModel(string path, string name)
+        public SignModel(string path, string name, int clusters)
         {
             dataPath = path;
             this.name = name;
-            KMClassifier = new KMeansClassifier(CLUSTERS);
+            this.clusters = clusters;
+            KMClassifier = new KMeansClassifier(clusters);
 
             
             //If there is a parameters file corresponding to this sign model
@@ -47,16 +48,17 @@ namespace SignAlign
             //Otherwise, train the model from the training file
             else
             {
-                trainModel();
+                trainModel(true);
             }
         }
 
         /// <summary>
         /// Uses the recordings files in the ~/Data/Training/ folder to parametrise a collection of HMMs.
         /// </summary>
-        public void trainModel()
+        public void trainModel(bool absolute)
         {
-            string trainingPath = dataPath + "Training/"+name+"/";
+            string datType = absolute ? "Absolute/" : "Relative/";
+            string trainingPath = dataPath + "Training/"+datType+name+"/";
 
             //Create a directory in which to store the hmm parameters
             Directory.CreateDirectory(dataPath + "Parameters/" + name + "/");
@@ -72,7 +74,7 @@ namespace SignAlign
                 hmm = trainNewHMM(fileNames[i], fileNames[i + 1], fileNames[i + 2]);
                 hmm.saveParameters(dataPath + "Parameters/"+name+"/");
                 jointHMMs.Add(hmm.name, hmm);
-                if (hmm.name == "HandRight" || hmm.name == "HandLeft")
+                if (hmm.name == "HandRight")
                 {
                     weights.Add(hmm.name, 1.0f);
                 }
@@ -81,9 +83,6 @@ namespace SignAlign
                     weights.Add(hmm.name, 0.0f);
                 }
             }
-
-            
-
         }
           
 
@@ -107,13 +106,13 @@ namespace SignAlign
                 A[11, 11] = 1;
             }
             //Create B
-            double[,] B = new double[12, 9];
+            double[,] B = new double[12, centroids.Length+1];
 
             for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int j = 0; j < centroids.Length+1; j++)
                 {
-                    B[i, j] = (1.0 / 9.0);
+                    B[i, j] = (1.0 / (centroids.Length+1));
                 }
             }
             //Pi
@@ -188,7 +187,7 @@ namespace SignAlign
             }
             //Compute the clusters for the hmm
             double[][] data = allObservations.ToArray();
-            double[][] centroids = new double[CLUSTERS][];
+            double[][] centroids = new double[clusters][];
             KMClassifier.computeClusters(data, 0, out centroids);
 
             //Name the hmm from the training data names
@@ -196,7 +195,7 @@ namespace SignAlign
             hmmname = (hmmname.Split('/').Last()).Split('_').First(); //Also the joint name
             
             D_HMM dhmm = initializeNewHMM(hmmname, centroids);
-            dhmm.Reestimate(obsSeqsArray, 200, 0.03f);
+            dhmm.Reestimate(obsSeqsArray, 50, 0.03f);
 
             return dhmm;
         }
@@ -217,7 +216,6 @@ namespace SignAlign
                 hmmname = hmmname.Split('/').Last();
                 
                 dhmm = new D_HMM(hmmname, parametersFile);
-                //dhmm.loadParameters(parametersFile);
                 jointHMMs.Add(hmmname, dhmm);
             }
         }
@@ -234,10 +232,6 @@ namespace SignAlign
              * If the list joint observation collection does not specify the same
              * joints as the jointsHMMs then we return 0
              */
-            /*if (!jointObsSeqs.Keys.Equals(jointHMMs.Keys))
-            {
-                return 0;
-            }*/
 
             //Else compute the weighted sum. Here we assume the joints observation list and joints HMM lists are in the same order.
             double logProbSum = 0;

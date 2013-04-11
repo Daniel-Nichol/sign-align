@@ -12,21 +12,18 @@ namespace SignAlign
         private List<GestureRecording> recordings = new List<GestureRecording>(); //A list of recordings
         private GestureRecording currentRecording;
         private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
-        private SkeletonFrame skeletonFrame;
         public bool areRecording { get; private set; }
         private string gestureName;
         private bool training; //If true record training data, else record test data
         //private bool handsUp = true; //Do we record for hands above the waistw?
-        private bool handsTogether = false;
         public bool handsMet = false;
         private int minRecordingLength = 5;
-
 
         public GestureRecorder(string gestureName, bool training)
         {
             this.gestureName = gestureName;
             this.training = training;
-            kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(KinectAllFramesReady);
+            //kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(KinectAllFramesReady);
         }
 
         public void setHandsUpTraining(bool handsUp)
@@ -85,14 +82,10 @@ namespace SignAlign
                         {
                             if (areRecording)
                                 stopRecording();
-                            handsMet = false;
                         }
                         else
                         {
-                            handsTogether = (dist < 0.3);
-                            if (handsTogether)
-                                handsMet = true;
-                            if (handsMet && !handsTogether)
+                            if (!areRecording)
                                 startRecording();
                         }
                         
@@ -116,53 +109,68 @@ namespace SignAlign
             }
         }
 
-        //Saves the current recordings as .csv with joint annotations
-        public void saveRecordings(string dataFile)
+        public int getNumberOfFrames()
         {
-            string datLoc;
+            if (currentRecording != null)
+            {
+                return currentRecording.getLength();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        //Saves the current recordings as .csv with joint annotations
+        public void saveRecordings(string dataFile, bool absolute)
+        {
+            string datLoc, datType;
+            datType = absolute ? "Absolute/" : "Relative/";
             datLoc = training ? "Training/" : "Test/";
 
-            foreach (GestureRecording g in recordings)
+            if (!Directory.Exists(dataFile + datLoc + datType + "/" + gestureName + "/"))
             {
-                
+                Directory.CreateDirectory(dataFile + datLoc + datType + "/" + gestureName + "/");
             }
 
-            if (!Directory.Exists(dataFile + datLoc + "/" + gestureName + "/"))
-            {
-                Directory.CreateDirectory(dataFile + datLoc + "/" + gestureName + "/");
-            }
+            string saveLoc = dataFile + datLoc + datType;
 
             foreach (JointType j in GestureRecording.trackedJoints)
             {
                 
-                using (var writer = new StreamWriter(dataFile + datLoc + "/"+gestureName+"/"+j.ToString("G")+"_x"+".csv"))
+                using (var writer = new StreamWriter(saveLoc + "/"+gestureName+"/"+j.ToString("G")+"_x"+".csv",true))
                 {
                     foreach (GestureRecording g in recordings)
                     {
-                        writer.WriteLine(g.asString(j, 0));
+                        writer.WriteLine(g.asString(j, 0, absolute));
                     }
                     writer.Flush();
                     writer.Dispose();
                 }
-                using (var writer = new StreamWriter(dataFile + datLoc + "/" + gestureName + "/" + j.ToString("G") + "_y" + ".csv"))
+                using (var writer = new StreamWriter(saveLoc + "/" + gestureName + "/" + j.ToString("G") + "_y" + ".csv", true))
                 {
                     foreach (GestureRecording g in recordings)
                     {
-                        writer.WriteLine(g.asString(j, 1));
+                        writer.WriteLine(g.asString(j, 1, absolute));
                     }
                     writer.Flush();
                     writer.Dispose();
                 }
-                using (var writer = new StreamWriter(dataFile + datLoc + "/" + gestureName + "/" + j.ToString("G") + "_z" + ".csv"))
+                using (var writer = new StreamWriter(saveLoc + "/" + gestureName + "/" + j.ToString("G") + "_z" + ".csv",true))
                 {
                     foreach (GestureRecording g in recordings)
                     {
-                        writer.WriteLine(g.asString(j, 2));
+                        writer.WriteLine(g.asString(j, 2, absolute));
                     }
                     writer.Flush();
                     writer.Dispose();
                 }
             }
+        }
+
+        public void Uninitialize()
+        {
+            kinectSensor.Stop();
         }
 
 

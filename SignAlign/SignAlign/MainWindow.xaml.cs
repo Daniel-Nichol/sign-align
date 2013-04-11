@@ -31,16 +31,28 @@ namespace SignAlign
         //Open the training data window
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            var newWindow = new recordingWindow("test");
+            var newWindow = new recordingWindow(textBox1.Text, true);
             newWindow.ShowDialog();
         }
 
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new recordingWindow(textBox1.Text, false);
+            newWindow.ShowDialog();
+        }
+
+
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -400);
-            string sign = sc.testFromFile("C:/Users/user/Desktop/signAlign/Data/Test/My/");
+            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", Double.MinValue, true);
+            int fn; int fp; double per;
+            per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Training/Absolute/", out fn, out fp);
+            //sc.clustersTest();
+            //sc.acceptanceThreshTest(-12000, 100);
+            //double correctPercent = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/");
 
-            button3.Content = "done";
+             button3.Content = "done";
         }
+
     }
 }

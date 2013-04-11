@@ -87,6 +87,11 @@ namespace SignAlign
                     dist = EuclideanDist(centroids[i], observation);
                 }
             }
+
+            if (dist > 0.3)
+            {
+                nearestLabel = centroids.Length;
+            }
             return nearestLabel;
         }
         //Helper function computes the Euclidean distance between two vectors.
