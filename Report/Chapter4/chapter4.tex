@@ -5,6 +5,16 @@
     \graphicspath{{Chapter3/Chapter3Figs/EPS/}{Chapter3/Chapter3Figs/}}
 \fi
 
+\section{Determining the Classifier Parameters}
+
+\subsection{The Cluster Number}
+
+\subsection{The Acceptance Threshold}
+Given a collection of joint observations $\mathcal{O}$, the sign classifier determines the sign model $m$ which is most likely to have generated it and if $\mathbb{P}[\mathcal{O}|m]$ is sufficiently large, say larger that some threshold $\tau$, concludes that $\mathcal{O}$ corresponds to the sign that trained $m$. However there is no \emph{a priori} reason to choose a given value for probability threshold $\tau$. If $\tau$ is chosen too small then the classifier is more likely to associate a non-sign observation sequence with a sign, resulting in a false positive. Conversely, if $\tau$ is chosen too great then the classifier may fail to associate the observation sequence of a sign with the appropriate sign model, resulting in a false negative. To determine the appropriate value of $\tau$ we trained the classifier on the training set and tested the classifier on half of the test data for values of $\log(\tau)$ 0 from $-4000$ up to $0$ in increments of $100$. We recorded for each value of $\log(\tau)$ we recorded the number of false postives and false negatives and plotted them together (See Figure: ), from this we determined that $\log(\tau) = -610$ to be an appropriate choice. It should be noted that we cannot test the values of $\tau$ on the full testing set as this constitutes training the data on the test set and could overfitting in our model.
+
+\section{Sign Recognition Accuracy}
+Once parameterised we 
+
 % ------------------------------------------------------------------------
 
 %%% Local Variables: 

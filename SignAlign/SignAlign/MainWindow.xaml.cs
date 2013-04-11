@@ -51,7 +51,7 @@ namespace SignAlign
             //sc.acceptanceThreshTest(-12000, 100);
             //double correctPercent = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/");
 
-             button3.Content = "done";
+              button3.Content = "done";
         }
 
     }

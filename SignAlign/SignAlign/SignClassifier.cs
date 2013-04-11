@@ -100,7 +100,7 @@ namespace SignAlign
                 {
                     string jname = j.ToString();
                     double[][] jointObsSeq = buildObsSeq(file + "/" + jname + "_x.csv",
-                        file + "/" + jname + "_y.csv", file + "/" + jname + "_y.csv", i);
+                        file + "/" + jname + "_y.csv", file + "/" + jname + "_z.csv", i);
                     test.Add(j.ToString(), jointObsSeq);
                 }
                 tests.Add(test);

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  7 APR 2013 20:39
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  11 APR 2013 17:50
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -527,7 +527,7 @@ Chapter 2.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 45.
 
-<ThesisFigs/HMMExample.pdf, id=246, 845.07718pt x 597.55246pt>
+<ThesisFigs/HMMExample.pdf, id=273, 845.07718pt x 597.55246pt>
 File: ThesisFigs/HMMExample.pdf Graphic file (type pdf)
 
 <use ThesisFigs/HMMExample.pdf>
@@ -546,7 +546,7 @@ Chapter 3.
 
 
 
-] [13] [14] <ThesisFigs/DHMMDiag.pdf, id=401, 375.0261pt x 311.78984pt>
+] [13] [14] <ThesisFigs/DHMMDiag.pdf, id=428, 375.0261pt x 311.78984pt>
 File: ThesisFigs/DHMMDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/DHMMDiag.pdf>
@@ -556,7 +556,7 @@ Package pdftex.def Info: ThesisFigs/DHMMDiag.pdf used on input line 62.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] <ThesisFigs/ClusteringDiag.pdf, id=409, 845.07718pt x 597.55246pt>
+[15] <ThesisFigs/ClusteringDiag.pdf, id=436, 845.07718pt x 597.55246pt>
 File: ThesisFigs/ClusteringDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/ClusteringDiag.pdf>
@@ -568,7 +568,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [16 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/DHMMDiag.pdf>] [17 <C:/U
 sers/user/Desktop/signAlign/Report/ThesisFigs/ClusteringDiag.pdf>]
-<ThesisFigs/signModelDiag.pdf, id=457, 481.17265pt x 247.80078pt>
+<ThesisFigs/signModelDiag.pdf, id=484, 481.17265pt x 247.80078pt>
 File: ThesisFigs/signModelDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/signModelDiag.pdf>
@@ -576,21 +576,21 @@ Package pdftex.def Info: ThesisFigs/signModelDiag.pdf used on input line 95.
 (pdftex.def)             Requested size: 371.30594pt x 191.2231pt.
  [18] [19 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/signModelDiag.pdf>
 ]
-<ThesisFigs/erdogicMC.png, id=500, 395.4775pt x 326.21875pt>
+<ThesisFigs/erdogicMC.png, id=527, 395.4775pt x 326.21875pt>
 File: ThesisFigs/erdogicMC.png Graphic file (type png)
 
 <use ThesisFigs/erdogicMC.png>
 Package pdftex.def Info: ThesisFigs/erdogicMC.png used on input line 110.
 (pdftex.def)             Requested size: 206.28247pt x 170.15738pt.
 
-<ThesisFigs/del1LRMC.png, id=501, 518.93875pt x 134.5025pt>
+<ThesisFigs/del1LRMC.png, id=528, 518.93875pt x 134.5025pt>
 File: ThesisFigs/del1LRMC.png Graphic file (type png)
 
 <use ThesisFigs/del1LRMC.png>
 Package pdftex.def Info: ThesisFigs/del1LRMC.png used on input line 116.
 (pdftex.def)             Requested size: 206.28247pt x 53.4655pt.
 
-<ThesisFigs/del2LRMC.png, id=502, 520.94624pt x 165.61874pt>
+<ThesisFigs/del2LRMC.png, id=529, 520.94624pt x 165.61874pt>
 File: ThesisFigs/del2LRMC.png Graphic file (type png)
 
 <use ThesisFigs/del2LRMC.png>
@@ -599,7 +599,7 @@ Package pdftex.def Info: ThesisFigs/del2LRMC.png used on input line 122.
  [20 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/erdogicMC.png> <C:/User
 s/user/Desktop/signAlign/Report/ThesisFigs/del1LRMC.png> <C:/Users/user/Desktop
 /signAlign/Report/ThesisFigs/del2LRMC.png>]
-[21] <ThesisFigs/classDiag.pdf, id=517, 699.48828pt x 288.45265pt>
+[21] <ThesisFigs/classDiag.pdf, id=544, 699.48828pt x 288.45265pt>
 File: ThesisFigs/classDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/classDiag.pdf>
@@ -612,39 +612,50 @@ Chapter 4.
 
 
 
-] <ThesisFigs/gestRecDiag.pdf, id=564, 691.96016pt x 469.88046pt>
+] <ThesisFigs/gestRecDiag.pdf, id=591, 691.96016pt x 469.88046pt>
 File: ThesisFigs/gestRecDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/gestRecDiag.pdf>
-Package pdftex.def Info: ThesisFigs/gestRecDiag.pdf used on input line 20.
+Package pdftex.def Info: ThesisFigs/gestRecDiag.pdf used on input line 18.
 (pdftex.def)             Requested size: 412.56496pt x 280.15952pt.
- [25 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/gestRecDiag.pdf>]) [26]
+ [25 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/gestRecDiag.pdf>]
+<ThesisFigs/brokenHandTracking.png, id=640, 323.2075pt x 240.9pt>
+File: ThesisFigs/brokenHandTracking.png Graphic file (type png)
 
-(C:\Users\user\Desktop\signAlign\Report\Chapter4/chapter4.tex
+<use ThesisFigs/brokenHandTracking.png>
+Package pdftex.def Info: ThesisFigs/brokenHandTracking.png used on input line 3
+2.
+(pdftex.def)             Requested size: 412.56496pt x 307.51651pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [26] [27 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/brokenHandTrackin
+g.png>] (C:\Users\user\Desktop\signAlign\Report\Chapter4/chapter4.tex
 Chapter 5.
-) [27
-
-
-
-] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
-Chapter 6.
 ) [28
+
+
+
+] [29] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
+Chapter 6.
+) [30
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.tex
 Chapter 7.
-) [29
+) [31
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
-[30
+[32
 
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [31
+] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [33
 
 
 
@@ -652,17 +663,17 @@ Chapter 7.
 (C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
 (C:\Users\user\Desktop\signAlign\Report\projectReport.brf)
 \tf@brf=\write7
- [32
+ [34
 
 
-] [33] [34]
+] [35] [36]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
 
-[35]
+[37]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
 (C:\Users\user\Desktop\signAlign\Report\Dedication/dedication.aux)
@@ -680,7 +691,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
-(rerunfilecheck)             Checksum: 0350353F4091D7BB0858CEBC1F9F5FF8;2237.
+(rerunfilecheck)             Checksum: A721487006F86C7505F0F89909C7B07F;2646.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
 (rerunfilecheck)             Checksum: 71D48D3DD3A3CA34401B199EE8D410C6;2524.
 
@@ -690,13 +701,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 8868 strings out of 494049
- 136142 string characters out of 3146069
- 230066 words of memory out of 3000000
- 11752 multiletter control sequences out of 15000+200000
+ 8859 strings out of 494049
+ 135927 string characters out of 3146069
+ 230147 words of memory out of 3000000
+ 11738 multiletter control sequences out of 15000+200000
  19063 words of font info for 71 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 39i,15n,50p,1140b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,15n,50p,1703b,508s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
@@ -716,9 +727,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on projectReport.pdf (42 pages, 617259 bytes).
+Output written on projectReport.pdf (44 pages, 645599 bytes).
 PDF statistics:
- 794 PDF objects out of 1000 (max. 8388607)
- 124 named destinations out of 1000 (max. 500000)
- 302 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 829 PDF objects out of 1000 (max. 8388607)
+ 128 named destinations out of 1000 (max. 500000)
+ 347 words of extra memory for PDF output out of 10000 (max. 10000000)
 

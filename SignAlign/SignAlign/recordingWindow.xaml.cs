@@ -29,7 +29,6 @@ namespace SignAlign
             recorder = new GestureRecorder(gestureName, training);
             InitializeComponent();
             recorder.kinectSensor.AllFramesReady+=new EventHandler<AllFramesReadyEventArgs>(updateVis);
-            //ellipse1 = new Ellipse();
         }
 
     

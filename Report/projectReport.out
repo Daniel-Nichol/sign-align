@@ -23,10 +23,15 @@
 \BOOKMARK [1][]{section.3.3}{3.3 Building a Sign Classifier}{chapter.3}% 23
 \BOOKMARK [0][]{chapter.4}{4 Interfacing With The Kinect Sensor}{}% 24
 \BOOKMARK [1][]{section.4.1}{4.1 Recording Training Data}{chapter.4}% 25
-\BOOKMARK [1][]{section.4.2}{4.2 A Controller for Detecting Gestures}{chapter.4}% 26
-\BOOKMARK [0][]{chapter.5}{5 Testing and Experimentation}{}% 27
-\BOOKMARK [0][]{chapter.6}{6 Analysis and Conclusions}{}% 28
-\BOOKMARK [0][]{chapter.7}{7 Additional Work}{}% 29
-\BOOKMARK [0][]{appendix*.10}{Appdx A}{}% 30
-\BOOKMARK [0][]{appendix*.11}{Appdx B}{}% 31
-\BOOKMARK [0][]{appendix*.12}{References}{}% 32
+\BOOKMARK [2][]{subsection.4.1.1}{4.1.1 The Training Data}{section.4.1}% 26
+\BOOKMARK [2][]{subsection.4.1.2}{4.1.2 Limitations in the Training Data}{section.4.1}% 27
+\BOOKMARK [0][]{chapter.5}{5 Testing and Experimentation}{}% 28
+\BOOKMARK [1][]{section.5.1}{5.1 Determining the Classifier Parameters}{chapter.5}% 29
+\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 The Cluster Number}{section.5.1}% 30
+\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 The Acceptance Threshold}{section.5.1}% 31
+\BOOKMARK [1][]{section.5.2}{5.2 Sign Recognition Accuracy}{chapter.5}% 32
+\BOOKMARK [0][]{chapter.6}{6 Analysis and Conclusions}{}% 33
+\BOOKMARK [0][]{chapter.7}{7 Additional Work}{}% 34
+\BOOKMARK [0][]{appendix*.11}{Appdx A}{}% 35
+\BOOKMARK [0][]{appendix*.12}{Appdx B}{}% 36
+\BOOKMARK [0][]{appendix*.13}{References}{}% 37

@@ -10,6 +10,7 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces The signClassifier in UML\relax }}{22}{figure.caption.8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces A UML diagram of the gesture recording classes\relax }}{25}{figure.caption.9}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces An example of the broken hand tracking with the hands placed together. The yellow joints are inferred by the sensor incorrectly, the actual location of the hands is just below the chin.\relax }}{27}{figure.caption.10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

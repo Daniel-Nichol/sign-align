@@ -50,6 +50,22 @@ namespace SignAlign
             {
                 trainModel(true);
             }
+            setWeights();
+        }
+        private void setWeights()
+        {
+            foreach (JointType j in GestureRecording.trackedJoints)
+            {
+                string jname = j.ToString();
+                if (jname == "HandRight")
+                {
+                    weights.Add(jname, 1.0f);
+                }
+                else
+                {
+                    weights.Add(jname, 0.0f);
+                }
+            }
         }
 
         /// <summary>
@@ -74,14 +90,6 @@ namespace SignAlign
                 hmm = trainNewHMM(fileNames[i], fileNames[i + 1], fileNames[i + 2]);
                 hmm.saveParameters(dataPath + "Parameters/"+name+"/");
                 jointHMMs.Add(hmm.name, hmm);
-                if (hmm.name == "HandRight")
-                {
-                    weights.Add(hmm.name, 1.0f);
-                }
-                else
-                {
-                    weights.Add(hmm.name, 0.0f);
-                }
             }
         }
           
@@ -240,9 +248,11 @@ namespace SignAlign
             {
                 D_HMM tempHmm;
                 double[][] tempObsSeq;
+                double weight;
                 jointHMMs.TryGetValue(joint, out tempHmm);
                 jointObsSeqs.TryGetValue(joint, out tempObsSeq);
-                logProbSum += tempHmm.Evaluate(tempObsSeq, true);
+                weights.TryGetValue(joint, out weight);
+                logProbSum += weight*tempHmm.Evaluate(tempObsSeq, true);
             }
             if (log)
             {

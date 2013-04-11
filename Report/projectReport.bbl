@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -73,11 +73,6 @@ Richard Durbin, Sean~R Eddy, Anders Krogh, and Graeme Mitchison.
   and nucleic acids}.
 \newblock Cambridge university press, 1998.
 
-\bibitem[Dymarski(2011)]{dym2011hmm}
-Przemyslaw Dymarski.
-\newblock \emph{Hidden Markov Models, Theory and Applications}.
-\newblock In{T}ech, 2011.
-
 \bibitem[I.~Oikonomidis(2013)]{Forth:2013:Online}
 A.~A.~Argyros I.~Oikonomidis, N.~Kyriazis.
 \newblock Kinect 3d {H}and {T}racking, March 2013.
@@ -95,23 +90,10 @@ Frederick Jelinek, L~Bahl, and R~Mercer.
 \newblock \emph{Information Theory, IEEE Transactions on}, 21\penalty0
   (3):\penalty0 250--256, 1975.
 
-\bibitem[Juang(1985)]{juang1985maximum}
-B-H Juang.
-\newblock Maximum-likelihood estimation for mixture multivariate stochastic
-  observation of markov chains.
-\newblock \emph{AT \& T TECH. J.}, 64\penalty0 (6):\penalty0 1235--1250, 1985.
-
 \bibitem[Juang and Rabiner(1991)]{juang1991hidden}
 Biing-Hwang Juang and Lawrence~R Rabiner.
 \newblock Hidden markov models for speech recognition.
 \newblock \emph{Technometrics}, 33\penalty0 (3):\penalty0 251--272, 1991.
-
-\bibitem[Juang et~al.(1986)Juang, Levinson, and Sondhi]{juang1986maximum}
-Bing-Hwang Juang, Stephene Levinson, and M~Sondhi.
-\newblock Maximum likelihood estimation for multivariate mixture observations
-  of markov chains (corresp.).
-\newblock \emph{Information Theory, IEEE Transactions on}, 32\penalty0
-  (2):\penalty0 307--309, 1986.
 
 \bibitem[Jurafsky et~al.(2002)Jurafsky, Martin, and Kehler]{jurafsky2002speech}
 Dan Jurafsky, James~H Martin, and Andrew Kehler.
@@ -156,13 +138,6 @@ Xiaolin Li, Marc Parizeau, and R{\'e}jean Plamondon.
 Pietro Li{\`o} and Nick Goldman.
 \newblock Models of molecular evolution and phylogeny.
 \newblock \emph{Genome research}, 8\penalty0 (12):\penalty0 1233--1244, 1998.
-
-\bibitem[Liporace(1982)]{liporace1982maximum}
-L~Liporace.
-\newblock Maximum likelihood estimation for multivariate observations of markov
-  sources.
-\newblock \emph{Information Theory, IEEE Transactions on}, 28\penalty0
-  (5):\penalty0 729--734, 1982.
 
 \bibitem[Lloyd(1982)]{lloyd1982least}
 Stuart Lloyd.
