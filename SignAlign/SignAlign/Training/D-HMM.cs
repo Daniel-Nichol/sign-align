@@ -15,7 +15,7 @@ namespace SignAlign
         private int N, M;
         public string name{get; set;}
 
-        private double[][] centroids; //The centroids of the clusters, used to determine the symbols from 3-space readings.
+        private double[][] centroids; //The centroids of the clusters, used to determine the symbols from 3D readings.
 
         public D_HMM(double[] pi, double[,] A, double[,] B, double[][] centroids, string name)
         {
@@ -88,13 +88,14 @@ namespace SignAlign
                 }
             }
 
+            //If the distance is too far, then return the non-centroid symbol.
             if (dist > 0.3)
             {
                 nearestLabel = centroids.Length;
             }
             return nearestLabel;
         }
-        //Helper function computes the Euclidean distance between two vectors.
+        //Helper function computes the Euclidean distance between two points.
         private double EuclideanDist(double[] v1, double[] v2)
         {
             double sum = 0;
@@ -212,7 +213,7 @@ namespace SignAlign
             bool stop = false;
 
             // Initialization
-            double[][, ,] digammas = new double[K][, ,]; // also referred as ksi or psi
+            double[][, ,] digammas = new double[K][, ,];
             double[][,] gammas = new double[K][,];
 
             for (int i = 0; i < K; i++)
@@ -222,35 +223,37 @@ namespace SignAlign
                 gammas[i] = new double[T, N];
             }
 
-
-            // Calculate initial model log-likelihood
+            //Used to determine if we've finished (by comparison with threshold).
             double oldProb = Double.MinValue;
             double newProb = 0;
 
-
-            do // Until convergence or max iterations is reached
+            do //Repeat until our model is sufficiently well trained
             {
                 // For each sequence in the observations input
                 for (int i = 0; i < K; i++)
                 {
-                    var sequence = observations[i];
-                    int T = sequence.Length;
-                    double[] scaling;
+                    var obsSeq = observations[i];
+                    int T = obsSeq.Length;
+                    double[] scales;
 
-                    double[,] alphas = computeAlphas(observations[i], out scaling);
-                    double[,] betas = computeBetas(observations[i], scaling);
+                    double[,] alphas = computeAlphas(observations[i], out scales);
+                    double[,] betas = computeBetas(observations[i], scales);
 
                     for (int t = 0; t < T; t++)
                     {
                         double s = 0;
 
                         for (int k = 0; k < N; k++)
+                        {
                             s += gammas[i][t, k] = alphas[t, k] * betas[t, k];
+                        }
 
                         if (s != 0) 
                         {
                             for (int k = 0; k < N; k++)
+                            {
                                 gammas[i][t, k] /= s;
+                            }
                         }
                     }
 
@@ -263,7 +266,7 @@ namespace SignAlign
                         {
                             for (int l = 0; l < N; l++)
                             {
-                                s += digammas[i][t, k, l] = alphas[t, k] * A[k, l] * betas[t + 1, l] * B[l, sequence[t + 1]];
+                                s += digammas[i][t, k, l] = alphas[t, k] * A[k, l] * betas[t + 1, l] * B[l, obsSeq[t + 1]];
                             }
                         }
                         if (s != 0)
@@ -274,34 +277,30 @@ namespace SignAlign
                         }
                     }
 
-                    // Compute log-likelihood for the given sequence
-                    for (int t = 0; t < scaling.Length; t++)
+                    for (int t = 0; t < scales.Length; t++)
                     {
-                        newProb += Math.Log(scaling[t]);
+                        newProb += Math.Log(scales[t]);
                     }
                 }
 
-
-                // Average the likelihood for all sequences
                 newProb /= observations.Length;
 
 
-                // Check if the model has converged or we should stop
-                if (checkConvergence(oldProb, newProb,
-                    currentIteration, iterations, threshold))
+                //If we should stop
+                if (converged(oldProb, newProb, currentIteration, iterations, threshold))
                 {
-                    stop = true;
+                    stop = true; //Say so
                 }
-
+                //Otherwise we shouldn't stop. So re-estimate.
                 else
                 {
-                    // 3. Continue with parameter re-estimation
+                    //Update parameters which decide when we stop
                     currentIteration++;
                     oldProb = newProb;
                     newProb = 0.0;
 
 
-                    // 3.1 Re-estimation of initial state probabilities 
+                    //Re-estimate pi
                     for (int k = 0; k < N; k++)
                     {
                         double sum = 0;
@@ -310,7 +309,7 @@ namespace SignAlign
                         pi[k] = sum / N;
                     }
 
-                    // 3.2 Re-estimation of transition probabilities 
+                    //Re-estimate A.
                     for (int i = 0; i < N; i++)
                     {
                         for (int j = 0; j < N; j++)
@@ -321,18 +320,18 @@ namespace SignAlign
                             {
                                 int T = observations[k].Length;
 
-                                for (int l = 0; l < T - 1; l++)
-                                    num += digammas[k][l, i, j];
+                                for (int t = 0; t < T - 1; t++)
+                                    num += digammas[k][t, i, j];
 
-                                for (int l = 0; l < T - 1; l++)
-                                    den += gammas[k][l, i];
+                                for (int t = 0; t < T - 1; t++)
+                                    den += gammas[k][t, i];
                             }
 
                             A[i, j] = (den != 0) ? num / den : 0.0;
                         }
                     }
 
-                    // 3.3 Re-estimation of emission probabilities
+                    //Re-estimate B
                     for (int i = 0; i < N; i++)
                     {
                         for (int j = 0; j < M; j++)
@@ -343,17 +342,16 @@ namespace SignAlign
                             {
                                 int T = observations[k].Length;
 
-                                for (int l = 0; l < T; l++)
+                                for (int t = 0; t < T; t++)
                                 {
-                                    if (observations[k][l] == j)
-                                        num += gammas[k][l, i];
+                                    if (observations[k][t] == j)
+                                        num += gammas[k][t, i];
                                 }
 
-                                for (int l = 0; l < T; l++)
-                                    den += gammas[k][l, i];
+                                for (int t = 0; t < T; t++)
+                                    den += gammas[k][t, i];
                             }
-
-                            // avoid locking a parameter in zero.
+                                                        
                             B[i, j] = (num == 0) ? 1e-10 : num / den;
                         }
                     }
@@ -506,10 +504,10 @@ namespace SignAlign
             }
         }
 
-        private bool checkConvergence(double oldLikelihood, double newLikelihood,
-                    int currentIteration, int iterations, double tolerance)
+        private bool converged(double oldProb, double newProb,
+                    int currIter, int maxIters, double threshold)
         {
-            return (currentIteration > iterations);
+            return (currIter > maxIters);
         }
     }
 }
