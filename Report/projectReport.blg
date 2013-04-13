@@ -22,14 +22,21 @@ I was expecting a `,' or a `}'---line 34 of file References/references.bib
  : urldate = {19/03/2013}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--entry type for "Forth:2013:Online" isn't style-file defined
+Warning--entry type for "Microsoft:2013:Face" isn't style-file defined
 --line 37 of file References/references.bib
 I was expecting a `,' or a `}'---line 43 of file References/references.bib
  : 
  : urldate = {19/03/2013}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
+Warning--entry type for "Forth:2013:Online" isn't style-file defined
+--line 46 of file References/references.bib
+I was expecting a `,' or a `}'---line 52 of file References/references.bib
+ : 
+ : urldate = {19/03/2013}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--entry type for "rahimi2000" isn't style-file defined
---line 201 of file References/references.bib
+--line 210 of file References/references.bib
 Warning--can't use both volume and number fields in bishop2006pattern
-(There were 2 error messages)
+(There were 3 error messages)

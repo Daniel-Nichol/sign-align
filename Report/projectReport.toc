@@ -33,6 +33,6 @@
 \contentsline {section}{\numberline {5.2}Sign Recognition Accuracy}{29}{section.5.2}
 \contentsline {chapter}{\numberline {6}Analysis and Conclusions}{30}{chapter.6}
 \contentsline {chapter}{\numberline {7}Additional Work}{31}{chapter.7}
-\contentsline {chapter}{Appdx A}{32}{appendix*.11}
-\contentsline {chapter}{Appdx B}{33}{appendix*.12}
-\contentsline {chapter}{References}{34}{appendix*.13}
+\contentsline {chapter}{Appdx A}{33}{appendix*.11}
+\contentsline {chapter}{Appdx B}{34}{appendix*.12}
+\contentsline {chapter}{References}{35}{appendix*.13}

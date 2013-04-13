@@ -57,7 +57,7 @@ namespace SignAlign
             foreach (JointType j in GestureRecording.trackedJoints)
             {
                 string jname = j.ToString();
-                if (jname == "HandRight")
+                if (jname == "HandRight" || jname == "HandLeft")
                 {
                     weights.Add(jname, 1.0f);
                 }

@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{31}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -150,9 +150,14 @@ Christopher~D Manning and Hinrich Sch{\"u}tze.
 \newblock \emph{Foundations of statistical natural language processing}.
 \newblock MIT press, 1999.
 
-\bibitem[Microsoft(2013)]{Microsoft:2013:Online}
+\bibitem[Microsoft(2013{\natexlab{a}})]{Microsoft:2013:Face}
 Microsoft.
-\newblock What's {N}ew - {K}inect {SDK} 1.7, March 2013.
+\newblock {F}ace {T}racking, March 2013{\natexlab{a}}.
+\newblock URL \url{http://msdn.microsoft.com/en-us/library/jj130970.aspx}.
+
+\bibitem[Microsoft(2013{\natexlab{b}})]{Microsoft:2013:Online}
+Microsoft.
+\newblock What's {N}ew - {K}inect {SDK} 1.7, March 2013{\natexlab{b}}.
 \newblock URL
   \url{http://www.microsoft.com/en-us/kinectforwindows/Develop/New.aspx}.
 

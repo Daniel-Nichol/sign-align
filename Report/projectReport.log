@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  11 APR 2013 17:50
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  13 APR 2013 17:24
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -645,17 +645,17 @@ Chapter 6.
 
 ] (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.tex
 Chapter 7.
-) [31
+[31
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
-[32
+]) [32] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
+[33
 
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [33
+] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [34
 
 
 
@@ -663,17 +663,17 @@ Chapter 7.
 (C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
 (C:\Users\user\Desktop\signAlign\Report\projectReport.brf)
 \tf@brf=\write7
- [34
+ [35
 
 
-] [35] [36]
+] [36] [37]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
 
-[37]
+[38]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
  (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
 (C:\Users\user\Desktop\signAlign\Report\Dedication/dedication.aux)
@@ -693,7 +693,7 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
 (rerunfilecheck)             Checksum: A721487006F86C7505F0F89909C7B07F;2646.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
-(rerunfilecheck)             Checksum: 71D48D3DD3A3CA34401B199EE8D410C6;2524.
+(rerunfilecheck)             Checksum: C2FC3C75AFDA685EFA87E83543659952;2577.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -701,13 +701,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
  ) 
 Here is how much of TeX's memory you used:
- 8859 strings out of 494049
- 135927 string characters out of 3146069
- 230147 words of memory out of 3000000
- 11738 multiletter control sequences out of 15000+200000
+ 8867 strings out of 494049
+ 136108 string characters out of 3146069
+ 230182 words of memory out of 3000000
+ 11744 multiletter control sequences out of 15000+200000
  19063 words of font info for 71 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 39i,15n,50p,1703b,508s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,15n,50p,1703b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/P
@@ -727,9 +727,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on projectReport.pdf (44 pages, 645599 bytes).
+Output written on projectReport.pdf (45 pages, 650568 bytes).
 PDF statistics:
- 829 PDF objects out of 1000 (max. 8388607)
- 128 named destinations out of 1000 (max. 500000)
+ 839 PDF objects out of 1000 (max. 8388607)
+ 130 named destinations out of 1000 (max. 500000)
  347 words of extra memory for PDF output out of 10000 (max. 10000000)
 
