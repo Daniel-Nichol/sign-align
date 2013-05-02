@@ -10,13 +10,15 @@ namespace SignAlign
     class SignClassifier
     {
         private List<SignModel> signModels;
-        private int clusters = 8;
+        private int clusters = 4;
         private string dataPath; //The location on disk of the data files.
         private double acceptanceThreshold;
         private bool absolute;
         private readonly string[] ignoreList = 
         {
-            
+           /* "Blue", "Bus","Cat","Circle","Coffee","Computer",
+            "Dark","Day","Green","House","My","Orange","Red",
+            "Snow","Swan","Tea","Where","Your" */
         };
         List<string> ignore; 
 
@@ -58,66 +60,7 @@ namespace SignAlign
             }
         }
         
-        public double runTests(string folder, out int falsePositives, out int falseNegatives)
-        {
-            int totalAttempts = 0;
-            int correct = 0;
-            string[] setLocs = Directory.GetDirectories(folder);
-            falsePositives = 0; falseNegatives = 0;
-            foreach (string loc in setLocs)
-            {
-                int numOfTests = 0;
-                string signName = loc.Split('.')[0].Split('/').Last();
-                if (!ignore.Contains(signName))
-                {
-                    int t1, t2;
-                    correct += testFile(loc, signName, out numOfTests, out t1, out t2);
-                    falsePositives += t1;
-                    falseNegatives += t2;
-                }
-                totalAttempts += numOfTests;
-            }
-            return (double)correct / (double)totalAttempts;
-        }
-
-        private int testFile(string file, string signName, out int numOfTests, out int falsePos, out int falseNeg)
-        {
-            numOfTests = 0;
-            int correct = 0;
-            falseNeg = 0; falsePos = 0;
-            using (StreamReader sr = new StreamReader(file + "/HandRight_x.csv"))
-            {
-                while (sr.ReadLine() != null)
-                    numOfTests++;
-            }
-
-            List<Dictionary<string ,double[][]>> tests = new List<Dictionary<string ,double[][]>>(numOfTests);
-
-            for (int i = 0; i < numOfTests; i++)
-            {
-                Dictionary<string, double[][]> test = new Dictionary<string, double[][]>();
-                foreach (JointType j in GestureRecording.trackedJoints)
-                {
-                    string jname = j.ToString();
-                    double[][] jointObsSeq = buildObsSeq(file + "/" + jname + "_x.csv",
-                        file + "/" + jname + "_y.csv", file + "/" + jname + "_z.csv", i);
-                    test.Add(j.ToString(), jointObsSeq);
-                }
-                tests.Add(test);
-            }
-            foreach (Dictionary<string, double[][]> test in tests)
-            {
-                string sign = getSign(test);
-                if (sign == signName)
-                    correct++;
-                if (sign == "none" && signName != "none")
-                    falseNeg++;
-                if (sign != "none" && signName == "none")
-                    falsePos++;
-            }
-            return correct;
-        }
-
+     
         private double[][] buildObsSeq(string x_fileLoc, string y_fileLoc, string z_fileLoc, int testNum)
         {
             List<double[]> obsSeq = new List<double[]>();
@@ -209,6 +152,68 @@ namespace SignAlign
         }
 
         #region Testing procedures
+
+        public double runTests(string folder, out int falsePositives, out int falseNegatives, out int fpRate, out int tpRate)
+        {
+            int totalAttempts = 0;
+            int correct = 0;
+            string[] setLocs = Directory.GetDirectories(folder);
+            falsePositives = 0; falseNegatives = 0; fpRate = 0; tpRate = 0;
+            foreach (string loc in setLocs)
+            {
+                int numOfTests = 0;
+                string signName = loc.Split('.')[0].Split('/').Last();
+                if (!ignore.Contains(signName))
+                {
+                    int t1, t2;
+                    correct += testFile(loc, signName, out numOfTests, out t1, out t2);
+                    falsePositives += t1;
+                    falseNegatives += t2;
+                }
+                totalAttempts += numOfTests;
+            }
+            return (double)correct / (double)totalAttempts;
+        }
+
+        private int testFile(string file, string signName, out int numOfTests, out int falsePos, out int falseNeg)
+        {
+            numOfTests = 0;
+            int correct = 0;
+            falseNeg = 0; falsePos = 0;
+            using (StreamReader sr = new StreamReader(file + "/HandRight_x.csv"))
+            {
+                while (sr.ReadLine() != null)
+                    numOfTests++;
+            }
+
+            List<Dictionary<string, double[][]>> tests = new List<Dictionary<string, double[][]>>(numOfTests);
+
+            for (int i = 0; i < numOfTests; i++)
+            {
+                Dictionary<string, double[][]> test = new Dictionary<string, double[][]>();
+                foreach (JointType j in GestureRecording.trackedJoints)
+                {
+                    string jname = j.ToString();
+                    double[][] jointObsSeq = buildObsSeq(file + "/" + jname + "_x.csv",
+                        file + "/" + jname + "_y.csv", file + "/" + jname + "_z.csv", i);
+                    test.Add(j.ToString(), jointObsSeq);
+                }
+                tests.Add(test);
+            }
+            foreach (Dictionary<string, double[][]> test in tests)
+            {
+                string sign = getSign(test);
+                if (sign == signName)
+                    correct++;
+                if (sign == "none" && signName != "none")
+                    falseNeg++;
+                if (sign != "none" && signName == "none")
+                    falsePos++;
+            }
+            return correct;
+        }
+
+
         public void acceptanceThreshTest(double minTresh, double increment)
         {
             if(minTresh>0)
@@ -220,25 +225,131 @@ namespace SignAlign
                 for (double tempThresh = minTresh; tempThresh < 0; tempThresh += increment)
                 {
                     acceptanceThreshold = tempThresh;
-                    int falsePos = 0; int falseNeg = 0;
-                    runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out falsePos, out falseNeg);
+                    int falsePos = 0; int falseNeg = 0; int fprate = 0; int tprate = 0;
+                    runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out falsePos, out falseNeg, out fprate, out tprate);
                     sr.WriteLine(tempThresh.ToString() + "," + falsePos.ToString() + "," + falseNeg.ToString());
                 }
 
             }
         }
 
+        public void clustersRocTest(string sign, string folder, int minclusts, int maxclusts, double minThresh, double increment)
+        {
+            for (int i = minclusts; i < maxclusts; i+=3 )
+            {
+                clusters = i;
+                delParams();
+                buildClassifier();
+                makeRocCurve(sign, folder, minThresh, increment);
+            }
+        }
+
+        /// <summary>
+        /// Saves to file a one-vs-many RoC curve using "sign" as a the one
+        /// </summary>
+        /// <param name="sign">the sign to be used for tru positives</param>
+        /// <param name="folder">the hold out data location</param>
+        /// <param name="minThresh">the minimum threshold to start the RoC curve from</param>
+        /// <param name="increment">the threshold increment</param>
+        public void makeRocCurve(string sign, string folder, double minThresh, double increment)
+        {
+            if (minThresh > 0)
+            {
+                return;
+            }
+            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/"+sign+"_RoC"+clusters.ToString()+".csv"))
+            {
+                for (double tempThresh = minThresh; tempThresh < 0; tempThresh += increment)
+                {
+                    acceptanceThreshold = tempThresh;
+                    double fprate = 0.0f; double tprate = 0.0f;
+                    oneManyTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", sign, out fprate, out tprate);
+                    sr.WriteLine(tempThresh.ToString() + "," + fprate.ToString() + "," + tprate.ToString());
+                }
+            }
+        }
+        /// <summary>
+        /// Computes the true positive and false postive rates of "sign" vs all other signs
+        /// Uses the current threshold value.
+        /// </summary>
+        /// <param name="folder">The test data folder</param>
+        /// <param name="sign">The sign used for true positives</param>
+        /// <param name="fpRate">out: will return the false positive rate</param>
+        public void oneManyTests(string folder, string sign,out double fpRate, out double tpRate)
+        {
+            int falsePositives = 0; int truePositives = 0; int positives = 0; int negatives = 0;
+            string[] setLocs = Directory.GetDirectories(folder);
+            fpRate = 0; tpRate = 0;
+            foreach (string loc in setLocs)
+            {
+                int numOfTests = 0;
+                string signName = loc.Split('.')[0].Split('/').Last();
+                if (!ignore.Contains(signName))
+                {
+                    //If we are testing the true sign, update our numbers accordingly
+                    if (sign == signName)
+                    {
+                        int t1, t2;
+                        truePositives += testFile(loc, signName, out numOfTests, out t1, out t2);
+                        positives += numOfTests;
+                    }
+                    else //We should be classifying negatives (ie other signs)
+                    {
+                        int negs, falses;
+                        oneManyFalsePos(loc, sign, signName, out negs, out falses);
+                        falsePositives += falses;
+                        negatives += negs;
+                    }
+                }
+            }
+            fpRate = (double)falsePositives / (double)negatives;
+            tpRate = (double)truePositives / (double) positives;
+        }
+
+        private void oneManyFalsePos(string file, string trueSign ,string signName, out int negatives, out int falsePos)
+        {
+            negatives = 0;
+            falsePos = 0;
+            using (StreamReader sr = new StreamReader(file + "/HandRight_x.csv"))
+            {
+                while (sr.ReadLine() != null)
+                    negatives++;
+            }
+
+            List<Dictionary<string, double[][]>> tests = new List<Dictionary<string, double[][]>>(negatives);
+
+            for (int i = 0; i < negatives; i++)
+            {
+                Dictionary<string, double[][]> test = new Dictionary<string, double[][]>();
+                foreach (JointType j in GestureRecording.trackedJoints)
+                {
+                    string jname = j.ToString();
+                    double[][] jointObsSeq = buildObsSeq(file + "/" + jname + "_x.csv",
+                        file + "/" + jname + "_y.csv", file + "/" + jname + "_z.csv", i);
+                    test.Add(j.ToString(), jointObsSeq);
+                }
+                tests.Add(test);
+            }
+            foreach (Dictionary<string, double[][]> test in tests)
+            {
+                string sign = getSign(test);
+                if (sign == trueSign)
+                    falsePos++;
+            }
+            return; 
+        }
+        
         public void clustersTest()
         {
             using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/clusterNumberTest.csv"))
             {
-                for (int i = 1; i < 10; i++)
+                for (int i = 3; i < 10; i++)
                 {
                     clusters = i;
                     delParams();
                     buildClassifier();
-                    int falsePos = 0; int falseNeg = 0; double correctPC;
-                    correctPC = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out falsePos, out falseNeg);
+                    int falsePos = 0; int falseNeg = 0; int fprate = 0; int tprate = 0; double correctPC;
+                    correctPC = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out falsePos, out falseNeg, out fprate, out tprate);
                     sr.WriteLine(clusters.ToString() + "," +correctPC.ToString()+","+ falsePos.ToString() + "," + falseNeg.ToString());
                 }
             }

@@ -29,7 +29,14 @@ Microsoft released the Kinect software development kit (SDK) for public use on J
 The Kinect camera was originially designed with the ability to detect hand and finger positions. In fact the original patent claims the device would be able to detect American Sign Language ~\citep{LATTA:2010:biblatex}, however this functionality was removed from the original release of the Kinect sensor. The SDK was updated to recognise open and closed hands on March 18th, 2013~\citep{Microsoft:2013:Online} and it is believed that the next iteration of the Kinect hardware will be able to fully detect hand gestures.
 
 Third party hand gesture recognition frameworks do exist, however the most successful of these do not make use of the Kinect SDK and so do not make use of its features at all~\citep{Forth:2013:Online}. We aim to build a framework that will be easily extended when the capabilities of the Kinect are improved and for this reason we choose to only use the tools provided within the Kinect SDK.
-\section{Outline}
+
+\section{Project Outline}
+The majority of this project is dedicated to answering the following question: Given an a stream of input from the Kinect Sensor and a known sign, what is the probability that the person in the input stream was performing the sign? The answer to this question is implemented as a \verb|signModel| class which can be instantiated and trained for each sign. These \verb|signModel| objects are then combined into a \verb|signClassifier| object which takes an input stream from the Kinect and determined which, if any, sign the stream corresponds to.
+
+A second component of this project is to implement a means of reading, preparing and storing the skeletal stream provided by the Kinect Sensor to build a set of training and test data for the \verb|signClassifier|. Figure X shows a basic overview of the structure of the signAlign system.
+
+In chapter 2 we introduce the theory of Hidden Markov Models and explore their strengths and limitations with regard to the problem of gesture recognition. In chapter 3 we show how we implemented and combined these models to create the \verb|signModel| objects and how these were then combined to build a \verb|signClassifier|. In chapter 4 we show how we built an interface to the Kinect Sensor and how we collected training, hold-out and testing data sets for the classifier. In chapter 5 we explore how the parameters chosen in building the classifier effect the overall accuracy of the system and use the hold-out set to determine parameter values which optimise performance. Finally in chapters 6 and 7 we evaluate the success of the signAlign system and offer extensions to the system which could be used to improve the accuracy and range of communication that the system can translate.
+
 
 %%% ----------------------------------------------------------------------
 

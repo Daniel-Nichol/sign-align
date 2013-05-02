@@ -46,12 +46,12 @@ namespace SignAlign
         {
             SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", Double.MinValue, true);
             int fn; int fp; double per;
-            per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Training/Absolute/", out fn, out fp);
-            //sc.clustersTest();
-            //sc.acceptanceThreshTest(-12000, 100);
+            //per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Training/Absolute/", out fn, out fp);
+            sc.clustersTest();
+            //sc.clustersRocTest("Hello", "C:/Users/user/Desktop/signAlign/Data/", 3,10, -1000, 50);
             //double correctPercent = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/");
 
-              button3.Content = "done";
+            button3.Content = "done";
         }
 
     }

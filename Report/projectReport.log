@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  13 APR 2013 17:24
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  28 APR 2013 21:40
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -425,20 +425,20 @@ LaTeX Warning: Label `sub@fig:clust' multiply defined.
 (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -454,8 +454,8 @@ LaTeX Font Info:    ... okay on input line 32.
 \everyMPtoPDFconversion=\toks29
 )
 \AtBeginShipoutBox=\box29
-Package backref Info: ** backref set up for natbib ** on input line 32.
-Package hyperref Info: Link coloring ON on input line 32.
+Package backref Info: ** backref set up for natbib ** on input line 33.
+Package hyperref Info: Link coloring ON on input line 33.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -464,9 +464,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 
 (C:\Users\user\Desktop\signAlign\Report\projectReport.out)
 (C:\Users\user\Desktop\signAlign\Report\projectReport.out)
@@ -516,9 +516,9 @@ Chapter 1.
 
 
 
-] [2]) [3] (C:\Users\user\Desktop\signAlign\Report\Chapter1/chapter1.tex
+] [2] [3]) [4] (C:\Users\user\Desktop\signAlign\Report\Chapter1/chapter1.tex
 Chapter 2.
-[4
+[5
 
 
 
@@ -527,26 +527,26 @@ Chapter 2.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 45.
 
-<ThesisFigs/HMMExample.pdf, id=273, 845.07718pt x 597.55246pt>
+<ThesisFigs/HMMExample.pdf, id=278, 845.07718pt x 597.55246pt>
 File: ThesisFigs/HMMExample.pdf Graphic file (type pdf)
 
 <use ThesisFigs/HMMExample.pdf>
 Package pdftex.def Info: ThesisFigs/HMMExample.pdf used on input line 47.
 (pdftex.def)             Requested size: 288.7942pt x 204.20459pt.
- [5 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/HMMExample.pdf>]
+ [6 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/HMMExample.pdf>]
 LaTeX Font Info:    Try loading font information for U+eus on input line 72.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueus.fd"
 File: ueus.fd 2009/06/22 v3.00 Euler Script
-) [6] [7]
-[8] [9] [10]) [11]
+) [7] [8]
+[9] [10] [11]) [12]
 (C:\Users\user\Desktop\signAlign\Report\Chapter2/chapter2.tex
 Chapter 3.
-[12
+[13
 
 
 
-] [13] [14] <ThesisFigs/DHMMDiag.pdf, id=428, 375.0261pt x 311.78984pt>
+] [14] [15] <ThesisFigs/DHMMDiag.pdf, id=432, 375.0261pt x 311.78984pt>
 File: ThesisFigs/DHMMDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/DHMMDiag.pdf>
@@ -556,7 +556,7 @@ Package pdftex.def Info: ThesisFigs/DHMMDiag.pdf used on input line 62.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15] <ThesisFigs/ClusteringDiag.pdf, id=436, 845.07718pt x 597.55246pt>
+[16] <ThesisFigs/ClusteringDiag.pdf, id=440, 845.07718pt x 597.55246pt>
 File: ThesisFigs/ClusteringDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/ClusteringDiag.pdf>
@@ -566,60 +566,64 @@ Package pdftex.def Info: ThesisFigs/ClusteringDiag.pdf used on input line 75.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/DHMMDiag.pdf>] [17 <C:/U
+[17 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/DHMMDiag.pdf>] [18 <C:/U
 sers/user/Desktop/signAlign/Report/ThesisFigs/ClusteringDiag.pdf>]
-<ThesisFigs/signModelDiag.pdf, id=484, 481.17265pt x 247.80078pt>
+<ThesisFigs/signModelDiag.pdf, id=489, 481.17265pt x 247.80078pt>
 File: ThesisFigs/signModelDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/signModelDiag.pdf>
 Package pdftex.def Info: ThesisFigs/signModelDiag.pdf used on input line 95.
 (pdftex.def)             Requested size: 371.30594pt x 191.2231pt.
- [18] [19 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/signModelDiag.pdf>
+ [19] [20 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/signModelDiag.pdf>
 ]
-<ThesisFigs/erdogicMC.png, id=527, 395.4775pt x 326.21875pt>
+<ThesisFigs/erdogicMC.png, id=530, 395.4775pt x 326.21875pt>
 File: ThesisFigs/erdogicMC.png Graphic file (type png)
 
 <use ThesisFigs/erdogicMC.png>
 Package pdftex.def Info: ThesisFigs/erdogicMC.png used on input line 110.
 (pdftex.def)             Requested size: 206.28247pt x 170.15738pt.
 
-<ThesisFigs/del1LRMC.png, id=528, 518.93875pt x 134.5025pt>
+<ThesisFigs/del1LRMC.png, id=531, 518.93875pt x 134.5025pt>
 File: ThesisFigs/del1LRMC.png Graphic file (type png)
 
 <use ThesisFigs/del1LRMC.png>
 Package pdftex.def Info: ThesisFigs/del1LRMC.png used on input line 116.
 (pdftex.def)             Requested size: 206.28247pt x 53.4655pt.
 
-<ThesisFigs/del2LRMC.png, id=529, 520.94624pt x 165.61874pt>
+<ThesisFigs/del2LRMC.png, id=532, 520.94624pt x 165.61874pt>
 File: ThesisFigs/del2LRMC.png Graphic file (type png)
 
 <use ThesisFigs/del2LRMC.png>
 Package pdftex.def Info: ThesisFigs/del2LRMC.png used on input line 122.
 (pdftex.def)             Requested size: 206.28247pt x 65.58168pt.
- [20 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/erdogicMC.png> <C:/User
-s/user/Desktop/signAlign/Report/ThesisFigs/del1LRMC.png> <C:/Users/user/Desktop
-/signAlign/Report/ThesisFigs/del2LRMC.png>]
-[21] <ThesisFigs/classDiag.pdf, id=544, 699.48828pt x 288.45265pt>
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21] [22 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/erdogicMC.png> <C:/
+Users/user/Desktop/signAlign/Report/ThesisFigs/del1LRMC.png> <C:/Users/user/Des
+ktop/signAlign/Report/ThesisFigs/del2LRMC.png>] [23]
+<ThesisFigs/classDiag.pdf, id=552, 699.48828pt x 288.45265pt>
 File: ThesisFigs/classDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/classDiag.pdf>
-Package pdftex.def Info: ThesisFigs/classDiag.pdf used on input line 166.
+Package pdftex.def Info: ThesisFigs/classDiag.pdf used on input line 175.
 (pdftex.def)             Requested size: 371.30594pt x 153.12125pt.
- [22 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/classDiag.pdf>]) [23]
+ [24 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/classDiag.pdf>]) [25]
 (C:\Users\user\Desktop\signAlign\Report\Chapter3/chapter3.tex
 Chapter 4.
-[24
+[26
 
 
 
-] <ThesisFigs/gestRecDiag.pdf, id=591, 691.96016pt x 469.88046pt>
+] <ThesisFigs/gestRecDiag.pdf, id=599, 691.96016pt x 469.88046pt>
 File: ThesisFigs/gestRecDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/gestRecDiag.pdf>
 Package pdftex.def Info: ThesisFigs/gestRecDiag.pdf used on input line 18.
 (pdftex.def)             Requested size: 412.56496pt x 280.15952pt.
- [25 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/gestRecDiag.pdf>]
-<ThesisFigs/brokenHandTracking.png, id=640, 323.2075pt x 240.9pt>
+ [27 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/gestRecDiag.pdf>]
+<ThesisFigs/brokenHandTracking.png, id=648, 323.2075pt x 240.9pt>
 File: ThesisFigs/brokenHandTracking.png Graphic file (type png)
 
 <use ThesisFigs/brokenHandTracking.png>
@@ -630,32 +634,32 @@ Package pdftex.def Info: ThesisFigs/brokenHandTracking.png used on input line 3
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [26] [27 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/brokenHandTrackin
+) [28] [29 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/brokenHandTrackin
 g.png>] (C:\Users\user\Desktop\signAlign\Report\Chapter4/chapter4.tex
 Chapter 5.
-) [28
-
-
-
-] [29] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
-Chapter 6.
 ) [30
+
+
+
+] [31] (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
+Chapter 6.
+) [32
 
 
 
 ] (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.tex
 Chapter 7.
-[31
-
-
-
-]) [32] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
 [33
 
 
 
+]) [34] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
+[35
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [34
+
+
+
+] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [36
 
 
 
@@ -663,18 +667,18 @@ Chapter 7.
 (C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
 (C:\Users\user\Desktop\signAlign\Report\projectReport.brf)
 \tf@brf=\write7
- [35
+ [37
 
 
-] [36] [37]
+] [38] [39]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 83.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 84.
 
-[38]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
+[40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 84.
  (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
 (C:\Users\user\Desktop\signAlign\Report\Dedication/dedication.aux)
 (C:\Users\user\Desktop\signAlign\Report\Acknowledgement/acknowledgement.aux)
@@ -688,23 +692,23 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 83.
 (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 83.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 83.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 84.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 84.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
-(rerunfilecheck)             Checksum: A721487006F86C7505F0F89909C7B07F;2646.
+(rerunfilecheck)             Checksum: 7091A10F7137C37EEEFA4BEDD024E427;2654.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
-(rerunfilecheck)             Checksum: C2FC3C75AFDA685EFA87E83543659952;2577.
+(rerunfilecheck)             Checksum: A9EFDC307FA59945098AE74B1BADD5E2;2579.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 83.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 84.
  ) 
 Here is how much of TeX's memory you used:
- 8867 strings out of 494049
- 136108 string characters out of 3146069
- 230182 words of memory out of 3000000
- 11744 multiletter control sequences out of 15000+200000
+ 8871 strings out of 494049
+ 136129 string characters out of 3146069
+ 230194 words of memory out of 3000000
+ 11746 multiletter control sequences out of 15000+200000
  19063 words of font info for 71 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  39i,15n,50p,1703b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -727,9 +731,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on projectReport.pdf (45 pages, 650568 bytes).
+Output written on projectReport.pdf (47 pages, 657397 bytes).
 PDF statistics:
- 839 PDF objects out of 1000 (max. 8388607)
- 130 named destinations out of 1000 (max. 500000)
+ 847 PDF objects out of 1000 (max. 8388607)
+ 132 named destinations out of 1000 (max. 500000)
  347 words of extra memory for PDF output out of 10000 (max. 10000000)
 

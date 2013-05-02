@@ -1,16 +1,16 @@
 \select@language {english}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces A Hidden Markov Model. The underlying Markov Chain contains 4 states (depicted as circles) which emit two possible observations (a or b).\relax }}{5}{figure.caption.3}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A Hidden Markov Model. The underlying Markov Chain contains 4 states (depicted as circles) which emit two possible observations (a or b).\relax }}{6}{figure.caption.3}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces A UML skeleton of the DHMM class\relax }}{16}{figure.caption.4}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces The K-Means method for vector quantization\relax }}{17}{figure.caption.5}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces A UML diagram for the signModel class\relax }}{19}{figure.caption.6}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Different Markov Chain Topologies\relax }}{20}{figure.caption.7}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces The signClassifier in UML\relax }}{22}{figure.caption.8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces A UML skeleton of the DHMM class\relax }}{17}{figure.caption.4}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The K-Means method for vector quantization\relax }}{18}{figure.caption.5}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces A UML diagram for the signModel class\relax }}{20}{figure.caption.6}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Different Markov Chain Topologies\relax }}{22}{figure.caption.7}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The signClassifier in UML\relax }}{24}{figure.caption.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces A UML diagram of the gesture recording classes\relax }}{25}{figure.caption.9}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces An example of the broken hand tracking with the hands placed together. The yellow joints are inferred by the sensor incorrectly, the actual location of the hands is just below the chin.\relax }}{27}{figure.caption.10}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A UML diagram of the gesture recording classes\relax }}{27}{figure.caption.9}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces An example of the broken hand tracking with the hands placed together. The yellow joints are inferred by the sensor incorrectly, the actual location of the hands is just below the chin.\relax }}{29}{figure.caption.10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
