@@ -44,12 +44,13 @@ namespace SignAlign
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", Double.MinValue, true);
-            int fn; int fp; double per;
-            //per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Training/Absolute/", out fn, out fp);
-            sc.clustersTest();
+            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -400, true);
+            int fn; int fp; double per; int mc;
+            //sc.misclassTest();
+            //sc.acceptanceThreshTest(-2000, 25);
+            //per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out fp, out fn, out mc);
+            //sc.clustersTest(3,9);
             //sc.clustersRocTest("Hello", "C:/Users/user/Desktop/signAlign/Data/", 3,10, -1000, 50);
-            //double correctPercent = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/");
 
             button3.Content = "done";
         }

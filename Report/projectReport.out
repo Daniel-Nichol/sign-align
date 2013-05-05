@@ -29,9 +29,10 @@
 \BOOKMARK [1][]{section.5.1}{5.1 Determining the Classifier Parameters}{chapter.5}% 29
 \BOOKMARK [2][]{subsection.5.1.1}{5.1.1 The Cluster Number}{section.5.1}% 30
 \BOOKMARK [2][]{subsection.5.1.2}{5.1.2 The Acceptance Threshold}{section.5.1}% 31
-\BOOKMARK [1][]{section.5.2}{5.2 Sign Recognition Accuracy}{chapter.5}% 32
-\BOOKMARK [0][]{chapter.6}{6 Analysis and Conclusions}{}% 33
-\BOOKMARK [0][]{chapter.7}{7 Additional Work}{}% 34
-\BOOKMARK [0][]{appendix*.11}{Appdx A}{}% 35
-\BOOKMARK [0][]{appendix*.12}{Appdx B}{}% 36
-\BOOKMARK [0][]{appendix*.13}{References}{}% 37
+\BOOKMARK [1][]{section.5.2}{5.2 Lowering the Misclassification Rate}{chapter.5}% 32
+\BOOKMARK [1][]{section.5.3}{5.3 Data Representation}{chapter.5}% 33
+\BOOKMARK [0][]{chapter.6}{6 Analysis and Conclusions}{}% 34
+\BOOKMARK [0][]{chapter.7}{7 Additional Work}{}% 35
+\BOOKMARK [0][]{appendix*.15}{Appdx A}{}% 36
+\BOOKMARK [0][]{appendix*.16}{Appdx B}{}% 37
+\BOOKMARK [0][]{appendix*.17}{References}{}% 38

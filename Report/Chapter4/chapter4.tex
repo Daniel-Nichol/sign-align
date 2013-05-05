@@ -6,13 +6,72 @@
 \fi
 
 \section{Determining the Classifier Parameters}
+In building the \verb|signClassifier| we introduced parameters to determine how the sign likelihoods are calculated. For example in the \verb|signModel| class we used k-means clustering to quantize the continuous Kinect sensor readings to a discrete observation set and hence had to chose a number of observation symbols. Further, in the \verb|signClassifier| we introduced a threshold value $\tau$ which determined whether the likelihood that a sign was observed was high enough to conclude that it indeed was observed. The choices of these parameter values have a significant impact on the performance of our classifier and for this reason we determined their values by experimentation. To avoid overfitting our model by training on the test data set we instead used a hold-out set for these experiments.
+
+In carrying out our experiments we used several standard measures to quantify the performance of our classifier, for example measures of \emph{true positives}, \emph{true negatives}, \emph{false positives} and \emph{false negatives}. We take the definition of negative here to mean that no sign was/should be detected. Hence if the input for one sign is erroneously classified as a different sign this does not count as a false positive but rather as a \emph{misclassification}. The definitions of these terms are summarised in table \ref{tab:errors}.
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{c c|c c c c c c}         
+\multicolumn{7}{c}{Hypothesised Sign} \\   
+    			& & 1 & 2 & 3 & \dots & 20 & No Sign \\
+  \hline
+\multirow{6}{*}{\begin{sideways} Actual Sign \end{sideways}} &  1 & TP & MC & MC & \dots& MC&FN \\
+  &2 		 	& MC & TP & MC & \dots& MC&FN \\
+  &3 			& MC & MC & TP & \dots& MC&FN \\
+  &\vdots 	& \vdots & \vdots & \vdots& $\ddots$ & \vdots & \vdots \\
+  &20 		& MC & MC & MC &  \dots & TP & FN \\
+  &No Sign 	& FP & FP & FP & \dots & FP & TN \\
+
+  \end{tabular}
+  \caption{A confusing matrix showing when different performance measures occur in a classifier trained to recognise 20 signs. Key: MC - misclassification, TP - true positive, TN - true negative, FP - false positive, FN - false negative. }
+  \label{tab:errors}
+\end{table}
 
 \subsection{The Cluster Number}
+As each choice of cluster number, $k$, defines a different classifier we decided to test these different classifiers to find a value for $k$ which optimises the perfomance of our system. There are a number of methods to measure how well a given classifier performs in comparison to others. One technique is to plot ROC curves - plots of true-positive rate against the false-positive rate - of the different classifiers and use these to determine the best performance (either by observation or calculation of the area under the curve). This method is well documented for binary classifiers and has been extended for use with multiple bin classifiers, for example by considering higher dimensional ROC curves~\citep{landgrebe2006simplified}. As we tested our system on a dictionary of $20$ signs, this method would require us to consider a hypersurface in at least 20 dimensions and would require a very large hold-out data set to provide meaningful insight into the performance of our classifier. Due to the time restrictions of this project it was not possible to collect sufficiently large data sets and hence this method for comparing classifiers was unsuitable. 
+
+A second method for comparing classifiers is to consider a one class vs all others binary classifier for each class and to generate a 2-dimensional ROC curve for each. We attempted to use this method to determine the ideal cluster number but quickly found it to be innappropriate as for a given sign the number of false positives (that is test data streams that are incorrectly classified as that sign) was extremely low; regardless of the thresholding value and cluster number. As a result the ROC plots were mostly degenerate, provided only information about the true positive rate, and could not be use to determine an appropriate number for $k$.
+
+As such we decided to use the accuracy, defined to be 
+\begin{equation*}
+\text{accuracy} = \frac{\text{true positives}+\text{true negatives}}{\text{number of tests}}
+\end{equation*}
+as our measure of performance for each classifier. For cluster numbers ranging from $3$ to $9$ we retrained the classifier, tested it on the hold-out set for different threshold values and recorded its accuracy measure (see fig \ref{fig:clustTest}). This experiment provided some unexpected results, showing that a cluster number of $4$ made for a more accurate classifer. We had assumed that a higher cluster number would make for a more accurate classifier because a more fine grained discretisation of the continuous input stream should allow the classifier to utilise more information about the input stream. However this was not the case and we found that the smaller cluster number of $k=4$ yielded an accuracy of 80.9\% (for $\tau = -800$) which was considerably (almost 20\%) better than classifiers trained with a higher cluster number, as such we chose a cluster number of $k=4$. Further inspection into the parameterisations of the \verb|signModel| objects with higher cluster number found that many clusters contained few or no points and this may have caused the translation from continuous space to observation symbol space to translate very similar continous streams to considerably different symbol streams.
+
+\begin{figure}[h!]
+        \centering
+        \includegraphics[width=1.0\textwidth]{ThesisFigs/clusterNumberTest}
+        \caption{Recognition accuracy of classifiers with different cluster numbers}\label{fig:clustTest}
+\end{figure}
+
 
 \subsection{The Acceptance Threshold}
-Given a collection of joint observations $\mathcal{O}$, the sign classifier determines the sign model $m$ which is most likely to have generated it and if $\mathbb{P}[\mathcal{O}|m]$ is sufficiently large, say larger that some threshold $\tau$, concludes that $\mathcal{O}$ corresponds to the sign that trained $m$. However there is no \emph{a priori} reason to choose a given value for probability threshold $\tau$. If $\tau$ is chosen too small then the classifier is more likely to associate a non-sign observation sequence with a sign, resulting in a false positive. Conversely, if $\tau$ is chosen too great then the classifier may fail to associate the observation sequence of a sign with the appropriate sign model, resulting in a false negative. To determine the appropriate value of $\tau$ we trained the classifier on the training set and tested the classifier on half of the test data for values of $\log(\tau)$ 0 from $-4000$ up to $0$ in increments of $100$. We recorded for each value of $\log(\tau)$ we recorded the number of false postives and false negatives and plotted them together (See Figure: ), from this we determined that $\log(\tau) = -610$ to be an appropriate choice. It should be noted that we cannot test the values of $\tau$ on the full testing set as this constitutes training the data on the test set and could overfitting in our model.
+Given a collection of joint observations $\mathcal{O}$, the sign classifier determines the sign model $m$ which is most likely to have generated it and if $L[\mathcal{O}|m]$ is sufficiently large, say larger that some threshold $\tau$, concludes that $\mathcal{O}$ corresponds to the sign that trained $m$. However there is no \emph{a priori} reason to choose a given value for probability threshold $\tau$. If $\tau$ is chosen too small then the classifier is more likely to associate a non-sign observation sequence with a sign, resulting in a false positive. Conversely, if $\tau$ is chosen too great then the classifier may fail to associate the observation sequence of a sign with the appropriate sign model, resulting in a false negative. To determine the appropriate value of $\tau$ we trained the classifier on the half of the training training set and tested the classifier on the full hold-out data set for values of $\tau$ from $-2000$ up to $0$ in increments of $50$. In training our classifier on only half of the training data we essentially designated the signs from the other half as signs that should be classified as "No Sign" by our classifier and hence provided a large enough data set to test for false positives. The rationale here is that recording a large test data set of nonsense gestures is particularly time consuming and adds little value beyond this specific test. We recorded for each value of $\tau$ the number of false postives and false negatives and plotted them together (See figure: \ref{fig:misclassTest} ), from this we determined that $\tau = -300$ to be an appropriate choice. 
 
-\section{Sign Recognition Accuracy}
+
+\begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.9\textwidth]{ThesisFigs/thresholdTradeoff}
+        \caption{The trade off between false positives and false negatives}\label{fig:misclassTest}
+\end{figure}
+
+\section{Lowering the Misclassification Rate}
+Whilst false positive and false negatives can be altered by changing the threshold value it is considerably more difficult to prevent misclassifications - the situation where the input sign for some sign is classified as another. From experimentation we find, predictably, that the misclassification rate increases with the number of signs (See fig: ). It seems then that the only way we can reduce the misclassification rate is to reduce the number of signs in our system is expected to distinguish between.
+
+\begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.9\textwidth]{ThesisFigs/misclassTest}
+        \caption{A graph comparing the number of signs the classifier decided between to the misclassification rate. As expected if there are more possible signs to decide between the misclassification rate increases.}\label{fig:misclassTest}
+\end{figure}
+
+It is in fact possible to reduce the number of signs considered in each classification without reducing the total number of signs the system is able to recognise. To do this we can restrict the grammar of the sentences our classifier will recognise to so that it need only look into a certain subclass of words when attempting to recognise a sign. As BSL uses a topic-comment sentence structure we could restrict to a simple sentence structure, for example \emph{noun pronoun question} which encapsulates questions such as "what is your name" (name-your-what). Then when the classifier receives the first input stream it will need only look amongst the sign models for nouns to try and place the sign and will not suffer from misclassifications between nouns and other sign types. Following this the classifier, having just recognised a noun, will need only look amongst the pronoun sign models to classify the next input sequence. 
+
+To test how the difference a grammar restriction could make our classifier system we grouped our signs by word class into one of \emph{pronoun, question, noun} or \emph{adjective}. We then retested the classifier on the hold-out set but this time only considering sign models with the same word class as the test case. This method reduced our misclassification rate ...
+
+Using a restrict grammar for our system certainly impacts on its utility and expressiveness and this is undesirable. The results of this experiment do however show us that we can significantly improve our classification accuracy by removing one of our most restrictive assumptions - that signs will be performed independently of one another. By restricting to a specific grammar we have reversed this assumption entirely and insisted that signs can only occur in one of a number of predetermined orders, an assumption that again is deleteriously restrictive but this time impacting the expressiveness of our system rather than the accuracy. It seems the ideal solution lies somewhere between the two approaches, allowing each sign model knowledge of the previously recognised signs so that it can be factored in to the likelihood calculation. This approach requires a great deal of knowledge of the grammar of sign language to be made useful and was hence beyond the scope of this project. It does however suggest an avenue of further research - building a model of the grammar of sign language and using it to predict the most likely word class of the next word in a partial setence.
+
+
+\section{Data Representation}
 Once parameterised we 
 
 % ------------------------------------------------------------------------

@@ -12,6 +12,9 @@
 \contentsline {figure}{\numberline {4.1}{\ignorespaces A UML diagram of the gesture recording classes\relax }}{27}{figure.caption.9}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces An example of the broken hand tracking with the hands placed together. The yellow joints are inferred by the sensor incorrectly, the actual location of the hands is just below the chin.\relax }}{29}{figure.caption.10}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Recognition accuracy of classifiers with different cluster numbers\relax }}{33}{figure.caption.12}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The trade off between false positives and false negatives\relax }}{34}{figure.caption.13}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A graph comparing the number of signs the classifier decided between to the misclassification rate. As expected if there are more possible signs to decide between the misclassification rate increases.\relax }}{35}{figure.caption.14}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

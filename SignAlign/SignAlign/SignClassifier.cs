@@ -14,11 +14,32 @@ namespace SignAlign
         private string dataPath; //The location on disk of the data files.
         private double acceptanceThreshold;
         private bool absolute;
-        private readonly string[] ignoreList = 
+
+        private readonly string[] nouns = 
         {
-           /* "Blue", "Bus","Cat","Circle","Coffee","Computer",
-            "Dark","Day","Green","House","My","Orange","Red",
-            "Snow","Swan","Tea","Where","Your" */
+            "Bus","Cat","Circle","Coffee","Computer",
+            "Day", "House","Name","Snow","Swan","Tea"
+        };
+
+        private readonly string[] questions = 
+        {
+            "Where"
+        };
+        private readonly string[] adjectives =
+        {
+            "Blue", "Dark", "Green","Orange","Red"
+        };
+        private readonly string[] pronouns =
+        {
+            "My","Your"
+        };
+
+
+        private string[] ignoreList = 
+        {
+            /*"Blue", "Bus","Cat","Circle","Coffee","Computer",
+            "Dark","Day", "Green","Hello","House","My","Name","Orange","Red",
+            "Snow","Swan","Tea","Where","Your"*/
         };
         List<string> ignore; 
 
@@ -43,11 +64,14 @@ namespace SignAlign
             double tempLogProb;
             foreach (SignModel sm in signModels)
             {
-                tempLogProb = sm.Evaluate(jointObsSeq, true);
-                if (tempLogProb > bestLogProb)
+                if (!ignoreList.Contains(sm.name)) //Only use the sign models for signs we aren't ignoring
                 {
-                    bestLogProb = tempLogProb;
-                    bestSignMatch = sm.name;
+                    tempLogProb = sm.Evaluate(jointObsSeq, true);
+                    if (tempLogProb > bestLogProb)
+                    {
+                        bestLogProb = tempLogProb;
+                        bestSignMatch = sm.name;
+                    }
                 }
             }
             if (bestLogProb > acceptanceThreshold)
@@ -59,6 +83,34 @@ namespace SignAlign
                 return "none";
             }
         }
+
+        public string getSignFromRestrictedGrammar(Dictionary<string, double[][]> jointObsSeq, string[] wordClass)
+        {
+            string bestSignMatch = "";
+            double bestLogProb = double.MinValue;
+            double tempLogProb;
+            foreach (SignModel sm in signModels)
+            {
+                if (!ignoreList.Contains(sm.name) && wordClass.Contains(sm.name)) //Only use the sign models for signs we aren't ignoring
+                {
+                    tempLogProb = sm.Evaluate(jointObsSeq, true);
+                    if (tempLogProb > bestLogProb)
+                    {
+                        bestLogProb = tempLogProb;
+                        bestSignMatch = sm.name;
+                    }
+                }
+            }
+            if (bestLogProb > acceptanceThreshold)
+            {
+                return bestSignMatch;
+            }
+            else
+            {
+                return "none";
+            }
+        }
+
         
      
         private double[][] buildObsSeq(string x_fileLoc, string y_fileLoc, string z_fileLoc, int testNum)
@@ -136,50 +188,47 @@ namespace SignAlign
             string[] trainingSetLocs = Directory.GetDirectories(trainingPath); //Get the list of training sets
             signModels = new List<SignModel>();
             SignModel sm;
-             
+
             //foreach training set (files are named by sign)
             foreach (string setLoc in trainingSetLocs)
             {
                 //Create a new sign model with that name and add it
                 string signName = setLoc.Split('/').Last().Split('\\').Last();
-                
-                if (!ignore.Contains(signName))
-                {
-                    sm = new SignModel(dataPath, signName,clusters);
-                    signModels.Add(sm);
-                }
+
+                sm = new SignModel(dataPath, signName, clusters);
+                signModels.Add(sm);
             }
         }
 
         #region Testing procedures
 
-        public double runTests(string folder, out int falsePositives, out int falseNegatives, out int fpRate, out int tpRate)
+        public double runTests(string folder, out int totalAttempts, out int falsePositives, out int falseNegatives, out int misclasses)
         {
-            int totalAttempts = 0;
+            totalAttempts = 0;
             int correct = 0;
             string[] setLocs = Directory.GetDirectories(folder);
-            falsePositives = 0; falseNegatives = 0; fpRate = 0; tpRate = 0;
+            falsePositives = 0; falseNegatives = 0; misclasses = 0;
             foreach (string loc in setLocs)
             {
                 int numOfTests = 0;
                 string signName = loc.Split('.')[0].Split('/').Last();
-                if (!ignore.Contains(signName))
-                {
-                    int t1, t2;
-                    correct += testFile(loc, signName, out numOfTests, out t1, out t2);
-                    falsePositives += t1;
-                    falseNegatives += t2;
-                }
+                int fp, fn, mc;
+
+                correct += testFile(loc, signName, out numOfTests, out fp, out fn, out mc);
+
+                falsePositives += fp;
+                falseNegatives += fn;
+                misclasses += mc;
                 totalAttempts += numOfTests;
             }
             return (double)correct / (double)totalAttempts;
         }
 
-        private int testFile(string file, string signName, out int numOfTests, out int falsePos, out int falseNeg)
+        private int testFile(string file, string signName, out int numOfTests, out int falsePos, out int falseNeg, out int misclasses)
         {
             numOfTests = 0;
             int correct = 0;
-            falseNeg = 0; falsePos = 0;
+            falseNeg = 0; falsePos = 0; misclasses = 0;
             using (StreamReader sr = new StreamReader(file + "/HandRight_x.csv"))
             {
                 while (sr.ReadLine() != null)
@@ -202,13 +251,23 @@ namespace SignAlign
             }
             foreach (Dictionary<string, double[][]> test in tests)
             {
+                //If this is training data for a sign we have chosen to ignore, then the sign name should be "none"
+                if (ignoreList.Contains(signName))
+                {
+                    signName = "none";
+                }
                 string sign = getSign(test);
                 if (sign == signName)
-                    correct++;
-                if (sign == "none" && signName != "none")
-                    falseNeg++;
-                if (sign != "none" && signName == "none")
-                    falsePos++;
+                    correct++; //That is a true positive or a true negative
+                else //We have made a mistake
+                {
+                    if (sign == "none" && signName != "none")
+                        falseNeg++; //If we've missed a real sign then we have a false negative
+                    else if (sign != "none" && signName == "none")
+                        falsePos++; //We've detected a sign from nonsense input
+                    else
+                        misclasses++; //We've taken input for one sign and classified it as another sign
+                }
             }
             return correct;
         }
@@ -225,9 +284,9 @@ namespace SignAlign
                 for (double tempThresh = minTresh; tempThresh < 0; tempThresh += increment)
                 {
                     acceptanceThreshold = tempThresh;
-                    int falsePos = 0; int falseNeg = 0; int fprate = 0; int tprate = 0;
-                    runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out falsePos, out falseNeg, out fprate, out tprate);
-                    sr.WriteLine(tempThresh.ToString() + "," + falsePos.ToString() + "," + falseNeg.ToString());
+                    int falsePos = 0; int falseNeg = 0; int mc = 0; int ta = 0;
+                    runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/",out ta, out falsePos, out falseNeg, out mc);
+                    sr.WriteLine(tempThresh.ToString() + "," + falsePos.ToString() + "," + falseNeg.ToString() + "," + mc.ToString());
                 }
 
             }
@@ -284,24 +343,21 @@ namespace SignAlign
             {
                 int numOfTests = 0;
                 string signName = loc.Split('.')[0].Split('/').Last();
-                if (!ignore.Contains(signName))
+                int fp, fn, mc, corr;
+                corr = testFile(loc, signName, out numOfTests, out fp, out fn, out mc);
+                if (sign == signName)
                 {
-                    //If we are testing the true sign, update our numbers accordingly
-                    if (sign == signName)
-                    {
-                        int t1, t2;
-                        truePositives += testFile(loc, signName, out numOfTests, out t1, out t2);
-                        positives += numOfTests;
-                    }
-                    else //We should be classifying negatives (ie other signs)
-                    {
-                        int negs, falses;
-                        oneManyFalsePos(loc, sign, signName, out negs, out falses);
-                        falsePositives += falses;
-                        negatives += negs;
-                    }
+                    truePositives += corr;
+                    positives += numOfTests;
                 }
+                else
+                {
+                    falsePositives += fp;
+                    negatives += numOfTests;
+                }
+                positives += numOfTests;
             }
+            
             fpRate = (double)falsePositives / (double)negatives;
             tpRate = (double)truePositives / (double) positives;
         }
@@ -339,21 +395,124 @@ namespace SignAlign
             return; 
         }
         
-        public void clustersTest()
+        /// <summary>
+        /// For each parameterisation with cluster numbers between the min and max
+        /// plots a threshold-accuracy curve.
+        /// </summary>
+        /// <param name="minClusters"></param>
+        /// <param name="maxClusters"></param
+        public void clustersTest(int minClusters, int maxClusters)
         {
             using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/clusterNumberTest.csv"))
             {
-                for (int i = 3; i < 10; i++)
+                for (int i = minClusters; i < maxClusters; i++)
                 {
                     clusters = i;
                     delParams();
                     buildClassifier();
-                    int falsePos = 0; int falseNeg = 0; int fprate = 0; int tprate = 0; double correctPC;
-                    correctPC = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out falsePos, out falseNeg, out fprate, out tprate);
-                    sr.WriteLine(clusters.ToString() + "," +correctPC.ToString()+","+ falsePos.ToString() + "," + falseNeg.ToString());
+                    int falsePos = 0; int falseNeg = 0; int mc = 0; int ta = 0; double accuracy;
+                    sr.WriteLine(clusters.ToString());
+                    string threshString, accString;
+                    threshString = "Threshold:,"; accString = "Accuracy:,"; 
+                    for (int thresh = -2000; thresh < 0; thresh += 50)
+                    {
+                        acceptanceThreshold = thresh;
+                        accuracy = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/",out ta, out falsePos, out falseNeg, out mc);
+                        threshString += thresh.ToString() + ",";
+                        accString += accuracy.ToString() + ",";
+                    }
+                    sr.WriteLine(threshString);
+                    sr.WriteLine(accString);
                 }
             }
         }
+                
+        private int testFileRestricted(string file, string signName, out int numOfTests, out int falsePos, out int falseNeg, out int misclasses, string[] wordclass)
+        {
+            numOfTests = 0;
+            int correct = 0;
+            falseNeg = 0; falsePos = 0; misclasses = 0;
+            using (StreamReader sr = new StreamReader(file + "/HandRight_x.csv"))
+            {
+                while (sr.ReadLine() != null)
+                    numOfTests++;
+            }
+
+            List<Dictionary<string, double[][]>> tests = new List<Dictionary<string, double[][]>>(numOfTests);
+
+            for (int i = 0; i < numOfTests; i++)
+            {
+                Dictionary<string, double[][]> test = new Dictionary<string, double[][]>();
+                foreach (JointType j in GestureRecording.trackedJoints)
+                {
+                    string jname = j.ToString();
+                    double[][] jointObsSeq = buildObsSeq(file + "/" + jname + "_x.csv",
+                        file + "/" + jname + "_y.csv", file + "/" + jname + "_z.csv", i);
+                    test.Add(j.ToString(), jointObsSeq);
+                }
+                tests.Add(test);
+            }
+            foreach (Dictionary<string, double[][]> test in tests)
+            {
+                //If this is training data for a sign we have chosen to ignore, then the sign name should be "none"
+                if (ignoreList.Contains(signName))
+                {
+                    signName = "none";
+                }
+                string sign = getSignFromRestrictedGrammar(test, wordclass);
+                if (sign == signName)
+                    correct++; //That is a true positive or a true negative
+                else //We have made a mistake
+                {
+                    if (sign == "none" && signName != "none")
+                        falseNeg++; //If we've missed a real sign then we have a false negative
+                    else if (sign != "none" && signName == "none")
+                        falsePos++; //We've detected a sign from nonsense input
+                    else
+                        misclasses++; //We've taken input for one sign and classified it as another sign
+                }
+            }
+            return correct;
+        }
+
+        //Returns the misclassification rate 
+        public double restrictedGrammarTest()
+        {
+            int missclasses = 0; int numOfTests = 0;
+            foreach (string sign in nouns)
+            {
+                int mc = 0; int ta = 0; int falsePos, falseNeg;
+                //TODO
+
+            }
+
+            return 0.0f;
+        }
+
+        public void misclassTest()
+        {
+            List<string> allSignsList = new List<string>();
+            string[] strlist = {
+                "Blue", "Bus","Cat","Circle","Coffee","Computer",
+                "Dark","Day", "Green","Hello","House","My","Name","Orange","Red",
+                "Snow","Swan","Tea","Where","Your"
+            };
+            allSignsList = strlist.ToList<string>();
+            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/misclassTest.csv"))
+            {
+                int numOfSigns = allSignsList.Count;
+                foreach(string sign in allSignsList)
+                {
+                    int falsePos = 0; int falseNeg = 0; int mc = 0; int ta = 0; double accuracy;
+                    accuracy = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out ta, out falsePos, out falseNeg, out mc);
+                    sr.WriteLine(numOfSigns.ToString() +","+ mc.ToString());
+                    ignore.Add(sign);
+                    ignoreList = ignore.ToArray();
+                    numOfSigns--;
+                }
+            } 
+        }
+
 
         /// <summary>
         /// Deletes the parameterisations and retrains
