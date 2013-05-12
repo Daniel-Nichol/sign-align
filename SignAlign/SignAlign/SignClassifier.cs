@@ -33,14 +33,14 @@ namespace SignAlign
         {
             "My","Your",
         };
-
-
+        
         private string[] ignoreList = 
         {
             /*"Blue", "Bus","Cat","Circle","Coffee","Computer",
             "Dark","Day", "Green","Hello","House","My","Name","Orange","Red",
             "Snow","Swan","Tea","Where","Your"*/
         };
+
         List<string> ignore; 
 
         public SignClassifier(string dataPath, double acceptanceThreshold, bool absolute)

@@ -19,8 +19,8 @@
 \contentsline {subsection}{\numberline {3.1.2}Training From Multiple Observation Sequences}{16}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}Observation Vector Quantization}{17}{subsection.3.1.3}
 \contentsline {section}{\numberline {3.2}Implementing the signModel class}{19}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Determining The Initial Topology and Parameters}{21}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Determining the Weightings}{24}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.1}Determining the Weightings}{21}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Determining The Initial Topology and Parameters}{22}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Building a Sign Classifier}{25}{section.3.3}
 \contentsline {chapter}{\numberline {4}Interfacing With The Kinect Sensor}{27}{chapter.4}
 \contentsline {section}{\numberline {4.1}Recording Training Data}{27}{section.4.1}
@@ -33,7 +33,9 @@
 \contentsline {section}{\numberline {5.2}Lowering the Misclassification Rate}{35}{section.5.2}
 \contentsline {section}{\numberline {5.3}Data Representation}{37}{section.5.3}
 \contentsline {chapter}{\numberline {6}Analysis and Conclusions}{39}{chapter.6}
-\contentsline {chapter}{\numberline {7}Additional Work}{40}{chapter.7}
-\contentsline {chapter}{Appdx A}{42}{appendix*.15}
-\contentsline {chapter}{Appdx B}{43}{appendix*.16}
-\contentsline {chapter}{References}{44}{appendix*.17}
+\contentsline {chapter}{\numberline {7}Additional Work}{41}{chapter.7}
+\contentsline {section}{\numberline {7.1}Improvements to the Current Classifier}{41}{section.7.1}
+\contentsline {section}{\numberline {7.2}Extensions of SignAlign}{42}{section.7.2}
+\contentsline {chapter}{Appdx A}{44}{appendix*.15}
+\contentsline {chapter}{Appdx B}{45}{appendix*.16}
+\contentsline {chapter}{References}{46}{appendix*.17}

@@ -18,8 +18,8 @@
 \BOOKMARK [2][]{subsection.3.1.2}{3.1.2 Training From Multiple Observation Sequences}{section.3.1}% 18
 \BOOKMARK [2][]{subsection.3.1.3}{3.1.3 Observation Vector Quantization}{section.3.1}% 19
 \BOOKMARK [1][]{section.3.2}{3.2 Implementing the signModel class}{chapter.3}% 20
-\BOOKMARK [2][]{subsection.3.2.1}{3.2.1 Determining The Initial Topology and Parameters}{section.3.2}% 21
-\BOOKMARK [2][]{subsection.3.2.2}{3.2.2 Determining the Weightings}{section.3.2}% 22
+\BOOKMARK [2][]{subsection.3.2.1}{3.2.1 Determining the Weightings}{section.3.2}% 21
+\BOOKMARK [2][]{subsection.3.2.2}{3.2.2 Determining The Initial Topology and Parameters}{section.3.2}% 22
 \BOOKMARK [1][]{section.3.3}{3.3 Building a Sign Classifier}{chapter.3}% 23
 \BOOKMARK [0][]{chapter.4}{4 Interfacing With The Kinect Sensor}{}% 24
 \BOOKMARK [1][]{section.4.1}{4.1 Recording Training Data}{chapter.4}% 25
@@ -33,6 +33,8 @@
 \BOOKMARK [1][]{section.5.3}{5.3 Data Representation}{chapter.5}% 33
 \BOOKMARK [0][]{chapter.6}{6 Analysis and Conclusions}{}% 34
 \BOOKMARK [0][]{chapter.7}{7 Additional Work}{}% 35
-\BOOKMARK [0][]{appendix*.15}{Appdx A}{}% 36
-\BOOKMARK [0][]{appendix*.16}{Appdx B}{}% 37
-\BOOKMARK [0][]{appendix*.17}{References}{}% 38
+\BOOKMARK [1][]{section.7.1}{7.1 Improvements to the Current Classifier}{chapter.7}% 36
+\BOOKMARK [1][]{section.7.2}{7.2 Extensions of SignAlign}{chapter.7}% 37
+\BOOKMARK [0][]{appendix*.15}{Appdx A}{}% 38
+\BOOKMARK [0][]{appendix*.16}{Appdx B}{}% 39
+\BOOKMARK [0][]{appendix*.17}{References}{}% 40

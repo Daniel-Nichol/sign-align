@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  12 MAY 2013 14:50
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.2.7)  12 MAY 2013 22:22
 entering extended mode
 **C:/Users/user/Desktop/signAlign/Report/projectReport.tex
 (C:/Users/user/Desktop/signAlign/Report/projectReport.tex
@@ -431,11 +431,8 @@ LaTeX Warning: Label `fig:clust' multiply defined.
 LaTeX Warning: Label `sub@fig:clust' multiply defined.
 
 ) (C:\Users\user\Desktop\signAlign\Report\Chapter3/chapter3.aux)
-(C:\Users\user\Desktop\signAlign\Report\Chapter4/chapter4.aux
-
-LaTeX Warning: Label `fig:misclassTest' multiply defined.
-
-) (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.aux)
+(C:\Users\user\Desktop\signAlign\Report\Chapter4/chapter4.aux)
+(C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.aux)
 (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.aux)
 (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.aux))
@@ -542,7 +539,7 @@ Chapter 2.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 44.
 
-<ThesisFigs/HMMExample.pdf, id=291, 845.07718pt x 597.55246pt>
+<ThesisFigs/HMMExample.pdf, id=301, 845.07718pt x 597.55246pt>
 File: ThesisFigs/HMMExample.pdf Graphic file (type pdf)
 
 <use ThesisFigs/HMMExample.pdf>
@@ -561,85 +558,100 @@ Chapter 3.
 
 
 
-] [15] [16] <ThesisFigs/DHMMDiag.pdf, id=455, 316.30672pt x 311.78984pt>
+] [15] [16] <ThesisFigs/DHMMDiag.pdf, id=465, 316.30672pt x 311.78984pt>
 File: ThesisFigs/DHMMDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/DHMMDiag.pdf>
 Package pdftex.def Info: ThesisFigs/DHMMDiag.pdf used on input line 69.
-(pdftex.def)             Requested size: 371.30594pt x 366.0296pt.
+(pdftex.def)             Requested size: 330.05322pt x 325.36229pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[17] <ThesisFigs/ClusteringDiag.pdf, id=464, 845.07718pt x 597.55246pt>
+[17] <ThesisFigs/ClusteringDiag.pdf, id=474, 845.07718pt x 597.55246pt>
 File: ThesisFigs/ClusteringDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/ClusteringDiag.pdf>
 Package pdftex.def Info: ThesisFigs/ClusteringDiag.pdf used on input line 82.
 (pdftex.def)             Requested size: 371.30594pt x 262.55005pt.
- [18 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/DHMMDiag.pdf>] [19 <C:/
-Users/user/Desktop/signAlign/Report/ThesisFigs/ClusteringDiag.pdf>] [20]
-<ThesisFigs/signModelDiag.pdf, id=516, 529.35266pt x 260.59859pt>
-File: ThesisFigs/signModelDiag.pdf Graphic file (type pdf)
-
-<use ThesisFigs/signModelDiag.pdf>
-Package pdftex.def Info: ThesisFigs/signModelDiag.pdf used on input line 102.
-(pdftex.def)             Requested size: 371.30594pt x 182.79153pt.
- [21 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/signModelDiag.pdf>]
-<ThesisFigs/erdogicMC.png, id=553, 395.4775pt x 326.21875pt>
-File: ThesisFigs/erdogicMC.png Graphic file (type png)
-
-<use ThesisFigs/erdogicMC.png>
-Package pdftex.def Info: ThesisFigs/erdogicMC.png used on input line 117.
-(pdftex.def)             Requested size: 206.28247pt x 170.15738pt.
-
-<ThesisFigs/del1LRMC.png, id=554, 518.93875pt x 134.5025pt>
-File: ThesisFigs/del1LRMC.png Graphic file (type png)
-
-<use ThesisFigs/del1LRMC.png>
-Package pdftex.def Info: ThesisFigs/del1LRMC.png used on input line 123.
-(pdftex.def)             Requested size: 206.28247pt x 53.4655pt.
-
-<ThesisFigs/del2LRMC.png, id=555, 520.94624pt x 165.61874pt>
-File: ThesisFigs/del2LRMC.png Graphic file (type png)
-
-<use ThesisFigs/del2LRMC.png>
-Package pdftex.def Info: ThesisFigs/del2LRMC.png used on input line 129.
-(pdftex.def)             Requested size: 206.28247pt x 65.58168pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[22] [23 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/erdogicMC.png> <C:/
-Users/user/Desktop/signAlign/Report/ThesisFigs/del1LRMC.png> <C:/Users/user/Des
-ktop/signAlign/Report/ThesisFigs/del2LRMC.png>] [24]
-<ThesisFigs/classDiag.pdf, id=578, 791.3314pt x 300.49765pt>
+[18 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/DHMMDiag.pdf>] [19 <C:/U
+sers/user/Desktop/signAlign/Report/ThesisFigs/ClusteringDiag.pdf>]
+<ThesisFigs/signModelDiag.pdf, id=522, 529.35266pt x 260.59859pt>
+File: ThesisFigs/signModelDiag.pdf Graphic file (type pdf)
+
+<use ThesisFigs/signModelDiag.pdf>
+Package pdftex.def Info: ThesisFigs/signModelDiag.pdf used on input line 102.
+(pdftex.def)             Requested size: 424.94139pt x 209.19887pt.
+
+Overfull \hbox (12.37643pt too wide) in paragraph at lines 102--103
+ [][] 
+ []
+
+[20] [21 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/signModelDiag.pdf>]
+[22] <ThesisFigs/erdogicMC.png, id=568, 395.4775pt x 326.21875pt>
+File: ThesisFigs/erdogicMC.png Graphic file (type png)
+
+<use ThesisFigs/erdogicMC.png>
+Package pdftex.def Info: ThesisFigs/erdogicMC.png used on input line 128.
+(pdftex.def)             Requested size: 185.65297pt x 153.13864pt.
+
+<ThesisFigs/del1LRMC.png, id=569, 518.93875pt x 134.5025pt>
+File: ThesisFigs/del1LRMC.png Graphic file (type png)
+
+<use ThesisFigs/del1LRMC.png>
+Package pdftex.def Info: ThesisFigs/del1LRMC.png used on input line 134.
+(pdftex.def)             Requested size: 206.28247pt x 53.4655pt.
+
+<ThesisFigs/del2LRMC.png, id=570, 520.94624pt x 165.61874pt>
+File: ThesisFigs/del2LRMC.png Graphic file (type png)
+
+<use ThesisFigs/del2LRMC.png>
+Package pdftex.def Info: ThesisFigs/del2LRMC.png used on input line 140.
+(pdftex.def)             Requested size: 206.28247pt x 65.58168pt.
+ [23 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/erdogicMC.png> <C:/User
+s/user/Desktop/signAlign/Report/ThesisFigs/del1LRMC.png> <C:/Users/user/Desktop
+/signAlign/Report/ThesisFigs/del2LRMC.png>]
+[24] <ThesisFigs/classDiag.pdf, id=586, 798.10672pt x 300.49765pt>
 File: ThesisFigs/classDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/classDiag.pdf>
 Package pdftex.def Info: ThesisFigs/classDiag.pdf used on input line 182.
-(pdftex.def)             Requested size: 371.30594pt x 141.00006pt.
- [25 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/classDiag.pdf>]) [26]
-(C:\Users\user\Desktop\signAlign\Report\Chapter3/chapter3.tex
+(pdftex.def)             Requested size: 429.06477pt x 161.54643pt.
+
+Overfull \hbox (16.49982pt too wide) in paragraph at lines 182--183
+ [][] 
+ []
+
+[25 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/classDiag.pdf>])
+[26] (C:\Users\user\Desktop\signAlign\Report\Chapter3/chapter3.tex
 Chapter 4.
 [27
 
 
 
-] <ThesisFigs/gestRecDiag.pdf, id=625, 664.1061pt x 375.7789pt>
+] <ThesisFigs/gestRecDiag.pdf, id=633, 664.1061pt x 375.7789pt>
 File: ThesisFigs/gestRecDiag.pdf Graphic file (type pdf)
 
 <use ThesisFigs/gestRecDiag.pdf>
-Package pdftex.def Info: ThesisFigs/gestRecDiag.pdf used on input line 18.
-(pdftex.def)             Requested size: 412.56496pt x 233.44496pt.
- [28 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/gestRecDiag.pdf>]
-<ThesisFigs/brokenHandTracking.png, id=666, 323.2075pt x 240.9pt>
+Package pdftex.def Info: ThesisFigs/gestRecDiag.pdf used on input line 17.
+(pdftex.def)             Requested size: 433.19446pt x 245.11922pt.
+
+Overfull \hbox (20.6295pt too wide) in paragraph at lines 17--18
+ [][] 
+ []
+
+[28 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/gestRecDiag.pdf>]
+<ThesisFigs/brokenHandTracking.png, id=674, 323.2075pt x 240.9pt>
 File: ThesisFigs/brokenHandTracking.png Graphic file (type png)
 
 <use ThesisFigs/brokenHandTracking.png>
 Package pdftex.def Info: ThesisFigs/brokenHandTracking.png used on input line 3
-2.
-(pdftex.def)             Requested size: 412.56496pt x 307.51651pt.
+1.
+(pdftex.def)             Requested size: 330.05322pt x 246.01614pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -659,77 +671,70 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 41.
 
-<ThesisFigs/clusterNumberTest.pdf, id=690, 845.07718pt x 597.55246pt>
+<ThesisFigs/clusterNumberTest.pdf, id=698, 845.07718pt x 597.55246pt>
 File: ThesisFigs/clusterNumberTest.pdf Graphic file (type pdf)
 
 <use ThesisFigs/clusterNumberTest.pdf>
 Package pdftex.def Info: ThesisFigs/clusterNumberTest.pdf used on input line 43
 .
 (pdftex.def)             Requested size: 412.56496pt x 291.72736pt.
+Missing character: There is no  in font eusm10!
  [33] [34 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/clusterNumberTest.
 pdf>]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 52.
-
-<ThesisFigs/thresholdTradeoff.pdf, id=718, 845.07718pt x 597.55246pt>
+<ThesisFigs/thresholdTradeoff.pdf, id=726, 845.07718pt x 597.55246pt>
 File: ThesisFigs/thresholdTradeoff.pdf Graphic file (type pdf)
 
 <use ThesisFigs/thresholdTradeoff.pdf>
-Package pdftex.def Info: ThesisFigs/thresholdTradeoff.pdf used on input line 54
+Package pdftex.def Info: ThesisFigs/thresholdTradeoff.pdf used on input line 53
 .
 (pdftex.def)             Requested size: 371.30594pt x 262.55005pt.
  [35 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/thresholdTradeoff.pdf>]
 
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 61.
-
-<ThesisFigs/misclassTest.pdf, id=741, 845.07718pt x 597.55246pt>
+<ThesisFigs/misclassTest.pdf, id=750, 845.07718pt x 597.55246pt>
 File: ThesisFigs/misclassTest.pdf Graphic file (type pdf)
 
 <use ThesisFigs/misclassTest.pdf>
-Package pdftex.def Info: ThesisFigs/misclassTest.pdf used on input line 63.
+Package pdftex.def Info: ThesisFigs/misclassTest.pdf used on input line 62.
 (pdftex.def)             Requested size: 371.30594pt x 262.55005pt.
  [36 <C:/Users/user/Desktop/signAlign/Report/ThesisFigs/misclassTest.pdf>] [37]
 ) [38]
 (C:\Users\user\Desktop\signAlign\Report\Conclusions/conclusions.tex
 Chapter 6.
-) [39
+[39
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.tex
+]) [40] (C:\Users\user\Desktop\signAlign\Report\Furtherwork/furtherwork.tex
 Chapter 7.
-[40
+[41
 
 
 
-]) [41] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex)
-[42
+] [42]) [43] (C:\Users\user\Desktop\signAlign\Report\Appendix1/appendix1.tex) [
+44
 
 
 
 
-] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex) [43
+] (C:\Users\user\Desktop\signAlign\Report\Appendix2/appendix2.tex)
+[45
 
 
 
-]
-(C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
+] (C:\Users\user\Desktop\signAlign\Report\projectReport.bbl
 (C:\Users\user\Desktop\signAlign\Report\projectReport.brf)
 \tf@brf=\write7
- [44
+ [46
 
 
-] [45] [46]
+] [47] [48]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
 
-[47]
+[49]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
  (C:\Users\user\Desktop\signAlign\Report\projectReport.aux
 (C:\Users\user\Desktop\signAlign\Report\Dedication/dedication.aux)
@@ -747,9 +752,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 86.
 Package rerunfilecheck Info: File `projectReport.out' has not changed.
-(rerunfilecheck)             Checksum: 63621142AB8D3DB0A23494005F6BA16C;2734.
+(rerunfilecheck)             Checksum: DB98FB232195E64E156ABA14A51C32C0;2897.
 Package rerunfilecheck Info: File `projectReport.brf' has not changed.
-(rerunfilecheck)             Checksum: AF57505D173DF222B2E6A240155C56D6;2762.
+(rerunfilecheck)             Checksum: B6C47A1AFA2749B144CBFA4AF7F6605A;2870.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -757,13 +762,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 8996 strings out of 494049
- 138512 string characters out of 3146069
- 233398 words of memory out of 3000000
- 11845 multiletter control sequences out of 15000+200000
+ 9003 strings out of 494049
+ 138588 string characters out of 3146069
+ 232491 words of memory out of 3000000
+ 11848 multiletter control sequences out of 15000+200000
  19063 words of font info for 71 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 39i,15n,50p,1723b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,15n,50p,1747b,510s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
@@ -781,9 +786,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on projectReport.pdf (54 pages, 1325724 bytes).
+Output written on projectReport.pdf (56 pages, 1333507 bytes).
 PDF statistics:
- 945 PDF objects out of 1000 (max. 8388607)
- 147 named destinations out of 1000 (max. 500000)
- 370 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 970 PDF objects out of 1000 (max. 8388607)
+ 151 named destinations out of 1000 (max. 500000)
+ 386 words of extra memory for PDF output out of 10000 (max. 10000000)
 
