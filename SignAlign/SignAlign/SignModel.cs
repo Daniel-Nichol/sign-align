@@ -48,7 +48,7 @@ namespace SignAlign
             //Otherwise, train the model from the training file
             else
             {
-                trainModel(true);
+                trainModel(false);
             }
             setWeights();
         }

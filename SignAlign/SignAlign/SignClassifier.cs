@@ -18,12 +18,12 @@ namespace SignAlign
         private readonly string[] nouns = 
         {
             "Bus","Cat","Circle","Coffee","Computer",
-            "Day", "House","Name","Snow","Swan","Tea"
+            "Day", "Tea"
         };
 
         private readonly string[] questions = 
         {
-            "Where"
+            "Where", "Hello","House","Name","Snow","Swan"
         };
         private readonly string[] adjectives =
         {
@@ -31,7 +31,7 @@ namespace SignAlign
         };
         private readonly string[] pronouns =
         {
-            "My","Your"
+            "My","Your",
         };
 
 
@@ -476,17 +476,49 @@ namespace SignAlign
         }
 
         //Returns the misclassification rate 
-        public double restrictedGrammarTest()
+        public double restrictedGrammarTest(string folder, out int missclasses, out int numOfTests, out double accuracy)
         {
-            int missclasses = 0; int numOfTests = 0;
-            foreach (string sign in nouns)
+            missclasses = 0; numOfTests = 0; int correct = 0;
+            string[] setLocs = Directory.GetDirectories(folder);
+            foreach(string loc in setLocs)
             {
-                int mc = 0; int ta = 0; int falsePos, falseNeg;
-                //TODO
-
+                string signName = loc.Split('.')[0].Split('/').Last();
+                string[] wordclass = getWordClass(signName);
+                //Determine the word class of this sign
+                int mc = 0; int ta = 0; int falsePos, falseNeg; 
+                correct+= testFileRestricted(loc, signName, out ta, out falsePos,
+                    out falseNeg, out mc, wordclass);
+                missclasses += mc;
+                numOfTests += ta;
             }
+            accuracy = (double)correct / (double)numOfTests;
+            return (double)missclasses / (double)numOfTests;
+        }
 
-            return 0.0f;
+
+        /// <summary>
+        /// Given a sign name (ie word) returns the class of word
+        /// </summary>
+        /// <param name="signName">The name of the sign</param>
+        /// <returns>The world class of this sign</returns>
+        private string[] getWordClass(string signName)
+        {
+            if (nouns.Contains(signName))
+            {
+                return nouns;
+            }
+            else if (questions.Contains(signName))
+            {
+                return questions;
+            }
+            else if (adjectives.Contains(signName))
+            {
+                return adjectives;
+            }
+            else
+            {
+                return pronouns;
+            }
         }
 
         public void misclassTest()

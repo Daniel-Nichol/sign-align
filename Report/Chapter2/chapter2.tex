@@ -7,53 +7,60 @@
 % ------------------------------------------------------------------------
 
 \section{Implementing a Hidden Markov Model Class}
-Our first task in implementing a classifier for signed languages was to implement a general purpose class \verb|DHMM| (figure: ~\ref{fig:dhmmdiag}) which can be instantiated to model a Hidden Markov Model $\lambda = (A,B,\pi)$ by providing appropriate parameters. In this class we implemented solutions to the evaluation and training problems and provided methods for saving and loading the trained parameters. Extending the methods described in the previous section we taylored this implementation for use learning from a collection of data recorded from the Kinect Sensor. 
+Our first task in implementing a classifier for signed languages was to implement a general purpose class \verb|DHMM| (figure:~\ref{fig:dhmmdiag}) which can be instantiated to model a Hidden Markov Model $\lambda = (A,B,\pi)$ by providing appropriate parameters. In this class we implemented solutions to the evaluation and training problems and provided methods for saving and loading the trained parameters. Extending the methods described in the previous section we taylored this implementation for use learning from a collection of data recorded from the Kinect Sensor. 
 \subsection{Scaling}
-In the previous section we introduced methods for solving the evaluation and re-estimation problems for hidden markov models. These methods, whilst mathematically sound, introduced certain problems during implementation. In particular these solutions involve the products of a large number of probabilities, especially for long observation sequence and as a consequence when implemented in C\# (which lacks arbitrary precision floats) can cause errors due to underflow. This problem is a common one in the implementation of Hidden Markov Models and to solve it we used the methods used by~\citet{rabiner1989tutorial} (and corrected by~\cite{rahimi2000})  and scale the intermediate $\alpha$, $\beta$ and $\gamma$ variables to prevent underflow. To do this we normalize the $\alpha_t(i)$ by setting
+In the previous section we introduced methods for solving the evaluation and re-estimation problems for Hidden Markov Models. These methods, whilst mathematically sound, introduced certain problems during implementation. In particular these solutions involve the products of a large number of probabilities, especially for long observation sequences, and as a consequence when implemented in C\# (which lacks arbitrary precision floats) can cause errors due to underflow. This problem is a common one in the implementation of Hidden Markov Models and to solve it we used the methods used by~\citet{rabiner1989tutorial} (and corrected by~\cite{rahimi2000}) and scaled the intermediate $\alpha$, $\beta$ and $\gamma$ variables to prevent underflow. To do this we normalize the $\alpha_t(i)$ by setting
 \begin{align*}
-\overline{\alpha}_0(i) = \alpha_0(i) \text{ for each $0\leq i<N$} 
+\overline{\alpha}_1(i) = \alpha_1(i) \text{ for each $1\leq i\leq N$} 
 \end{align*}
-and inductively define for each $0\leq t < T$
+and inductively define for each $1 \leq t < T$
 \begin{align*}
-c_t &= \frac{1}{\sum_{i=0}^{N-1}\overline{\alpha}_t(i)}\\
+c_t &= \frac{1}{\sum_{i=1}^{N}\overline{\alpha}_t(i)}\\
 \hat{\alpha}_t(i) &= c_t\overline{\alpha}_t(i)\text{ for each $i$}\\
-\overline{\alpha}_{t+1}(i) &= \sum_{i=0}^{N-1}\hat{\alpha}_t(i)a_{ij}b_j(O_{t+1}) \text{ for each $i$}\\
+\overline{\alpha}_{t+1}(i) &= \sum_{j=1}^{N}\hat{\alpha}_t(j)a_{ji}b_i(O_{t+1}) \text{ for each $i$}
 \end{align*}
-Which prevents underflow in the intermediate calculation of the $\alpha$ variables. Further we then have~\citep{rabiner1989tutorial} that
+Which prevents underflow in the intermediate calculation of the $\alpha$ variables. These scaled variables satisfy for each $1\leq i \leq N$ and $1 \leq t \leq T$
 \begin{align*}
-1 = \sum_{i=0}^{N}\hat{\alpha}_{T-1}(i) &= c_0c_1\dots c_{T-1}\sum_{i=0}^{N}\alpha_{T-i}(j)\\
-&=c_0c_1\dots c_{T-1}\mathbb{P}(\mathbf{O}|\lambda)\\
+\hat{\alpha}_t(i) = c_1\dots c_t \alpha_t(i) 
+\end{align*}
+by induction on $t$~\citep{stamp2004revealing}. We then have that
+\begin{align*}
+1 = \sum_{i=1}^{N}\hat{\alpha}_{T}(i) &= c_1\dots c_{T}\sum_{i=1}^{N}\alpha_{T}(i)\\
+&=c_1\dots c_{T}\mathbb{P}[\mathbf{O}|\lambda]
 \end{align*}
 and hence we can compute the log-probability of an observation sequence $\mathbf{O}$ by
 \begin{equation*}
-\log(\mathbb{P}[\mathbf{O}|\lambda]) = -\sum_{t=0}^{T-1}\log(c_t)
+\log(\mathbb{P}[\mathbf{O}|\lambda]) = -\sum_{t=1}^{T}\log(c_t)
 \end{equation*}
 which allows us to determine probabilities which might have otherwise been lost due to underflow. 
-We then use the same scale factors on the $\beta$ variables by inductively defining
+We then use the same scale factors on the $\beta$ variables by defining
 \begin{align*}
-\overline{\beta}_{T-1}(i) &= \beta_{T-1}(i) \\
-\hat{\beta}_{t}(i) &= c_t\overline{\beta}_t(i)\\
-\overline{\beta}_{t+1}(i) &= \sum_{j=0}^{N-1}a_{ij}b_j(\mathbf{O}_{t+1})\hat{\beta}_{t+1}(i)
+\overline{\beta}_{T}(i) &= \beta_{T}(i) \text{ for each $1 \leq i \leq N$}
 \end{align*}
-and redefine the $\gamma$ variables as
+and then inductively setting, for $1\leq t < T$
 \begin{align*}
-\gamma_t(i,j)&=\hat{\alpha}(i)a_{ij}b_j(\mathbf{O}_{t+1})\beta_{t+1}(j)\\
+\hat{\beta}_{t}(i) &= c_t\overline{\beta}_t(i) \text{ for each $i$}\\
+\overline{\beta}_{t}(i) &= \sum_{j=1}^{N}a_{ij}b_j(O_{t+1})\hat{\beta}_{t+1}(i) \text{ for each $i$}
+\end{align*}
+We then redefine the $\gamma$ variables for $1 \leq t < T$ and $1 \leq i,j \leq N$ as 
+\begin{align*}
+\gamma_t(i,j)&=\hat{\alpha}(i)a_{ij}b_j(O_{t+1})\hat{\beta}_{t+1}(j)\\
 \gamma_t(i) &= \hat{\alpha}_t(i)\hat{\beta}_t(i)\frac{1}{c_t}
 \end{align*}
-Then if we use these variables in the re-estimation it is still the case that the the probability $\mathbb{P}[\mathbf{O}|\lambda]$ increases with each iteration~\citep{rabiner1989tutorial} and hence we can perform the iterative reestimation procedure for HMMs without introducing underflow errors.
+Now if we use these variables in the re-estimation it is still the case that the the probability $\mathbb{P}[\mathbf{O}|\lambda]$ increases with each iteration~\citep{rabiner1989tutorial} and hence we can perform the iterative reestimation procedure for HMMs without introducing underflow errors.
 
 \subsection{Training From Multiple Observation Sequences}
-A second restriction of the training procedure presented in chapter 2 is that it restricts the training data of the HMM to be a single observation sequence. As we are going to train our HMMs on data which is derived from the Kinect Sensor data of a person performing a sign this is too great of a restriction. For example, the way in which a person performs a sign will be unique each time and will certainly differ between signers and so to train a recogniser on a single observation sequence of a sign would not fully capture the range of movements which mighht be interpreted as a sign. Fortunately the reestimation procedure can be extended~\citep{li2000training, van2010can, rabiner1989tutorial} to allow training from a set of multiple observation sequences $\mathcal{O} =\{\mathbf{O}_0, \dots, \mathbf{O}_{K-1}\}$ to maximise 
+A second restriction of the training procedure presented in chapter 2 is that it restricts the training data of the HMM to be a single observation sequence. As we are going to train our HMMs on data which is derived from the Kinect Sensor data of a person performing a sign this is too great of a restriction. For example the way in which a person performs a sign will be unique each time and will differ between signers, and so to train a recogniser on a single observation sequence would not fully capture the range of movements which might be interpreted as a sign. Fortunately the reestimation procedure can be extended~\citep{li2000training, van2010can, rabiner1989tutorial} to allow training from a set of multiple observation sequences $\mathcal{O} =\{\mathbf{O}_1, \dots, \mathbf{O}_{K}\}$ to maximise 
 \begin{equation*}
-\mathbb{P}[\mathcal{O}|\lambda] = \prod_{i=0}^{K-1}\mathbb{P}[\mathbf{O}_i|\lambda]
+\mathbb{P}[\mathcal{O}|\lambda] = \prod_{i=1}^{K}\mathbb{P}[\mathbf{O}_i|\lambda]
 \end{equation*}
-by computing for each $0 \leq i < K$ the set of scaled $\hat{\alpha}$, $\hat{\beta}$ and $\hat{\gamma}$ variables associated with the observation sequence $\mathbf{O}_i$ and the associated scales. Using these scaled variables we can reestimate the parameters of our HMM as
+by computing for each $1 \leq i \leq K$ the set of scaled $\hat{\alpha}$, $\hat{\beta}$ and $\hat{\gamma}$ variables associated with the observation sequence $\mathbf{O}_i$ and the associated scales. Using these scaled variables we can reestimate the parameters of our HMM as
 \begin{align*}
-\overline{\pi_i} &= \frac{\sum_{k=0}^{K-1}\gamma^{(k)}_0(i)}{\sum_{j=0}^{N-1}\sum_{k=0}^{K-1}\gamma^{(k)}_0(j)}\\
+\overline{\pi_i} &= \frac{\sum_{k=1}^{K}\gamma^{(k)}_1(i)}{\sum_{j=1}^{N}\sum_{k=1}^{K}\gamma^{(k)}_1(j)}\\
 \vspace{30mm}\\
-\overline{a}_{ij} &= \frac{\sum_{k=0}^{K-1}\sum_{t=0}^{T_k-2}\hat{\alpha}^{(k)}_t(i) a_{ij} b_j(O^{(k)}_{t+1}) \hat{\beta}^{(k)}_{t+1}(j)}{\sum_{k=0}^{K-1}\sum_{t=0}^{T_k-2}\hat{\alpha}^{(k)}_t(i)\hat{\beta}^{(k)}_t(i)\frac{1}{c^{(k)}_t}}\\
+\overline{a}_{ij} &= \frac{\sum_{k=1}^{K}\sum_{t=1}^{T_k-1}\hat{\alpha}^{(k)}_t(i) a_{ij} b_j(O^{(k)}_{t+1}) \hat{\beta}^{(k)}_{t+1}(j)}{\sum_{k=1}^{K}\sum_{t=1}^{T_k-1}\hat{\alpha}^{(k)}_t(i)\hat{\beta}^{(k)}_t(i)\frac{1}{c^{(k)}_t}}\\
 \vspace{30mm}\\
-\overline{b}_j(l) &= \frac{\sum_{k=0}^{K-1}\sum_{t \in \{0,\dots,T_k-2\}\text{ and $O_t = v_l$}}\hat{\alpha}^{(k)}_t(i)\hat{\beta}^{(k)}_t(i)\frac{1}{c^{(k)}_t}}{\sum_{k=0}^{K-1}\sum{t=0}^{T_k=1}\hat{\alpha}^{(k)}_t(i)\hat{\beta}^{(k)}_t(i)\frac{1}{c^{(k)}_t}} \\
+\overline{b}_j(l) &= \frac{\sum_{k=1}^{K}\sum_{t \in \{1,\dots,T_k-1\}\text{ and $O_t = v_l$}}\hat{\alpha}^{(k)}_t(i)\hat{\beta}^{(k)}_t(i)\frac{1}{c^{(k)}_t}}{\sum_{k=1}^{K}\sum_{t=1}^{T_k}\hat{\alpha}^{(k)}_t(i)\hat{\beta}^{(k)}_t(i)\frac{1}{c^{(k)}_t}} \\
 \end{align*}
 and this will ensure that $\mathbb{P}[\mathcal{O}|\overline{\lambda}] \geq \mathbb{P}[\mathcal{O}|\lambda]$. Using this procedure we implemented the \verb|Reestimate| method of our \verb|DHMM| class.
 
@@ -64,9 +71,9 @@ and this will ensure that $\mathbb{P}[\mathcal{O}|\overline{\lambda}] \geq \math
 \end{figure}
 
 \subsection{Observation Vector Quantization}
-In order to use discrete observation hidden markov models for the problem of gesture recognition we must restrict the continuous observation space to a discrete set of observation symbols. This set of symbols should not be too large (say no more than 30 symbols) to ensure that the problems of training and evaluation can be solved quickly enough for use in a real-time recognition system. Further, an increase in the number of symbols will cause a decrease in the evaluated probability of a given observation sequence being generated by some HMM. If the symbol count is too high this can cause underflow in spite of the effects of scaling. Of course the symbol set should not be too small either, as otherwise some subtle aspects of signs will be lost similar signs will be indistinguishable.
+In order to use discrete observation Hidden Markov Models for the problem of gesture recognition we must restrict the continuous observation space to a discrete set of observation symbols. The set of symbols should not be too large as an increase in the number of symbols will cause a decrease in the evaluated probability of a given observation sequence being generated by some HMM. Hence so if the symbol count is too high this can cause underflow despite of the effects of scaling. Of course the symbol set should not be too small either, as otherwise some subtle aspects of signs will be lost similar signs will be indistinguishable.
 
-To quantize the training data for a single discrete HMM instance we merged all of the points of all of the training data into a single 3D point cloud and partitioned this point cloud into $k$ clusters. To do this we implemented Lloyd's algorithm~\citep{lloyd1982least} to solve the k-means clustering problem (Figure: \ref{fig:kmeans}). Then we defined a translation from the continuous $\mathbb{R}^3$ observation space provided by the Kinect Sensor to a finite set of $k+1$ observations by assigning to each point the number of the cluster with the centroid closest (via Euclidean distance) to it, or if the distance from the point to each of the means exceeds some threshold assigning the symbol $k+1$. In fact, this quantization method will work just as well to translate arbtirary dimension continuous spaces to a finite sequence set and hence offers us the oppurtunity to extend our training data sets to include not only spatial positions but other information as well, say velocity or positions relative to some fixed location.
+To quantize the training data for a single discrete HMM instance we merged all of the points of all of the training data into a single 3D point cloud and partitioned this point cloud into $k$ clusters. To do this we implemented Lloyd's algorithm~\citep{lloyd1982least} to solve the k-means clustering problem (Figure:~\ref{fig:kmeans}). Then we defined a translation from the continuous $\mathbb{R}^3$ observation space provided by the Kinect Sensor to a finite set of $k+1$ observations by assigning to each point the number of the cluster with the centroid closest (via Euclidean distance) to it, or if the distance from the point to each of the means exceeds some threshold assigning the symbol $k+1$. In fact, this quantization method will work just as well to translate arbtirary dimension continuous spaces to a finite sequence set and hence offers us the oppurtunity to extend our training data sets to include not only spatial positions but other information as well, say velocity or positions relative to some fixed location.
 
 Using this vector quantization method we were able to extend the \verb|Evaluate| and \verb|Reestimate| method of \verb|DHMM| to take as input streams of $(x,y,z)$ coordinates captured by the Kinect Sensor.
 

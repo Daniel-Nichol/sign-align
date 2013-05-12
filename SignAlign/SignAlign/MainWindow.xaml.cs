@@ -44,11 +44,14 @@ namespace SignAlign
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
-            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -400, true);
-            int fn; int fp; double per; int mc;
+            SignClassifier sc = new SignClassifier("C:/Users/user/Desktop/signAlign/Data/", -400, false);
+            int fn; int fp; double per; int mc; int numtests;
+
+            double mcrate;
+            mcrate = sc.restrictedGrammarTest("C:/Users/user/Desktop/signAlign/Data/Test/Relative/",out mc, out numtests, out per);
             //sc.misclassTest();
             //sc.acceptanceThreshTest(-2000, 25);
-            //per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out fp, out fn, out mc);
+            //per = sc.runTests("C:/Users/user/Desktop/signAlign/Data/Test/Relative/", out numtests, out fp, out fn, out mc);
             //sc.clustersTest(3,9);
             //sc.clustersRocTest("Hello", "C:/Users/user/Desktop/signAlign/Data/", 3,10, -1000, 50);
 

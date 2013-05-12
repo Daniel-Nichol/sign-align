@@ -129,26 +129,10 @@ namespace SignAlign
             }
         }
 
-        /// <summary>
-        /// Saves this gesture recording as a test case. 
-        /// </summary>
-        /// <param name="fileLoc">Where to save the test case</param>
-        /// <param name="name">The file name for this test</param>
-        /// <param name="correctSign">The correct sign to associate with this test</param>
-        public void saveAsTest(string fileLoc, string name, string correctSign)
-        {
-
-        }
-
         private double[] asDoubleArray(SkeletonPoint sp)
         {
             double[] sparr = {sp.X, sp.Y, sp.Z};
             return sparr;
-        }
-
-        private Tuple<float, float, float> makeTuple(SkeletonPoint sp)
-        {
-            return new Tuple<float, float, float>(sp.X, sp.Y, sp.Z); 
         }
 
         public void finish()
