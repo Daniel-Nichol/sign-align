@@ -61,34 +61,6 @@ namespace SignAlign
             recorder.saveRecordings("C:/Users/user/Desktop/signAlign/Data/", false);
             button1.IsEnabled = false;
         }
-
-
-
-
-
-       /* public void allFramesReadyEvent(object sender, AllFramesReadyEventArgs e)
-        {
-            using (ColorImageFrame colorFrame = e.OpenColorImageFrame())
-            {
-                if (colorFrame == null)
-                {
-                    return;
-                }
-                byte[] pixels = new byte[colorFrame.PixelDataLength];
-                colorFrame.CopyPixelDataTo(pixels);
-
-                int stride = colorFrame.Width * 4;
-                image1.Source =
-                    BitmapSource.Create(colorFrame.Width, colorFrame.Height,
-                    96, 96, PixelFormats.Bgr32, null, pixels, stride);
-
-
-            }
-        }*/
-
-
-     
-
     }
 
 

@@ -16,7 +16,7 @@ namespace SignAlign
     /// Holds a series of joint positions through time from the sensor.
     /// Will give an instance of a given gesture
     /// </summary>
-    class GestureRecording
+    public class GestureRecording
     {
         private long totalTime; //We store the total time of the recording
         private Stopwatch sw = new Stopwatch(); //We use the stopwatch object to do this
@@ -126,6 +126,18 @@ namespace SignAlign
                                    skeleton.Joints[JointType.Head].Position.Z - skeleton.Joints[j].Position.Z
                                };
                 jReadingsRel.Add(rel);
+            }
+        }
+
+        public Dictionary<JointType, List<double[]>> getJointReadings(bool absolute)
+        {
+            if (absolute)
+            {
+                return jointReadingsAbsolute;
+            }
+            else
+            {
+                return jointReadingsHeadRelative;
             }
         }
 

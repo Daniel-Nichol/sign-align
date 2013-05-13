@@ -95,7 +95,7 @@ namespace SignAlign
             }
             return nearestLabel;
         }
-        //Helper function computes the Euclidean distance between two points.
+        //Helper function. Computes the Euclidean distance between two points.
         private double EuclideanDist(double[] v1, double[] v2)
         {
             double sum = 0;

@@ -7,7 +7,7 @@ using Microsoft.Kinect;
 
 namespace SignAlign
 {
-    class SignClassifier
+    public class SignClassifier
     {
         private List<SignModel> signModels;
         private int clusters = 4;
@@ -52,6 +52,29 @@ namespace SignAlign
             buildClassifier();
             
         }
+
+        /// <summary>
+        /// Given a gesture recording object gets the most likely sign
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public string getSign(GestureRecording gr)
+        {
+            Dictionary<JointType, List<double[]>> jointObsHM = gr.getJointReadings(false); //Fix.
+
+            //Translate for use in the getSign method
+            Dictionary<string, double[][]> jointObsSeq = new Dictionary<string, double[][]>();
+            foreach (JointType j in GestureRecording.trackedJoints)
+            {
+                string jname = j.ToString();
+                List<double[]> seqList; jointObsHM.TryGetValue(j, out seqList);
+                double[][] seqArr = seqList.ToArray();
+                jointObsSeq.Add(jname, seqArr);
+            }
+
+            return getSign(jointObsSeq);
+        }
+
         /// <summary>
         /// Given a list of observations sequences, one for each joint, returns the name of the most likely sign
         /// </summary>

@@ -81,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="translateController.cs" />
+    <Compile Include="translateWindow.xaml.cs">
+      <DependentUpon>translateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="recordingWindow.xaml.cs">
       <DependentUpon>recordingWindow.xaml</DependentUpon>
     </Compile>
@@ -90,6 +94,10 @@
     <Compile Include="Training\D-HMM.cs" />
     <Compile Include="Training\KMeansClassifier.cs" />
     <Compile Include="Training\MarkovChain.cs" />
+    <Page Include="translateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

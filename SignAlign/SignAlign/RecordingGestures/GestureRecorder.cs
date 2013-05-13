@@ -11,11 +11,12 @@ namespace SignAlign
     {
         private List<GestureRecording> recordings = new List<GestureRecording>(); //A list of recordings
         private GestureRecording currentRecording;
+
         private Skeleton[] skeletonData = new Skeleton[6]; //An array of skeletons given by the sensor
         public bool areRecording { get; private set; }
         private string gestureName;
-        private bool training; //If true record training data, else record test data
-        //private bool handsUp = true; //Do we record for hands above the waistw?
+        private bool training; //If true record training data, else record test/hold-out data
+        
         public bool handsMet = false;
         private int minRecordingLength = 5;
 
@@ -23,12 +24,6 @@ namespace SignAlign
         {
             this.gestureName = gestureName;
             this.training = training;
-            //kinectSensor.SkeletonFrameReady += new EventHandler<SkeletonFrameReadyEventArgs>(KinectAllFramesReady);
-        }
-
-        public void setHandsUpTraining(bool handsUp)
-        {
-            //this.handsUp = handsUp;
         }
 
         //Update current recording with kinect readings when frame ready
