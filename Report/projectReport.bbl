@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -198,7 +198,7 @@ Ali Rahimi.
   Edwards]{russell1995artificial}
 Stuart~Jonathan Russell, Peter Norvig, John~F Canny, Jitendra~M Malik, and
   Douglas~D Edwards.
-\newblock \emph{Artificial intelligence: a modern approach}, volume~74.
+\newblock \emph{Artificial intelligence: a modern approach}.
 \newblock Prentice hall Englewood Cliffs, 1995.
 
 \bibitem[Stamp(2004)]{stamp2004revealing}
@@ -214,12 +214,17 @@ Thad Starner and Alex Pentland.
 \newblock In \emph{Computer Vision, 1995. Proceedings., International Symposium
   on}, pages 265--270. IEEE, 1995.
 
-\bibitem[van Oosten(2010)]{van2010can}
+\bibitem[Taramasco and Bauer(2013)]{RhmmPac}
+Ollivier Taramasco and Sebastian Bauer.
+\newblock \emph{RHmm: Hidden Markov Models simulations and estimations}, 2013.
+\newblock URL \url{http://CRAN.R-project.org/package=RHmm}.
+\newblock R package version 2.0.3.
+
+\bibitem[van Oosten(2010)]{vano2010can}
 Jean-Paul van Oosten.
 \newblock \emph{Can markov properties be learned by hidden markov modelling
   algorithms}.
-\newblock PhD thesis, Master’s thesis, University of Groningen, The
-  Netherlands, 2010.
+\newblock PhD thesis, University of Groningen, The Netherlands, 2010.
 
 \bibitem[Yamato et~al.(1992)Yamato, Ohya, and Ishii]{yamato1992recognizing}
 Junji Yamato, Jun Ohya, and Kenichiro Ishii.

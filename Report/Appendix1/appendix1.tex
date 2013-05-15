@@ -1,6 +1,23 @@
-\chapter{Appdx A}
+\chapter{Appendix: Technical Details}
 
+\section{Program Architecture}
+This project was implemented in C\# using the Kinect SDK for Windows to provide access to the Kinect skeletal stream. The system was implemented using a Model-View-Controller architecure. The model here was the sign classifier which constitutes the majority of the project presented in this report whilst the controllers are the collection of classes we wrote to interface the Kinect sensor to the classifier. The view component consisted of a collection of simple user interfaces built using Windows Presentation Foundation to allow the user to record training, test and hold out data or to translate signs in real time by performing signs in front of the Kinect sensor.
 
+Throughout the course of this project it became evident that there are a range of models we could have used in place of the discrete observation HMM. As such we used object oriented programming principles to ensure that the underlying workhorse statistical model which is used to build the \verb|signModel| class was easily interchangeable. For brevity we chose to forgoe the details of how interfaces were defined and used within the main report. Figure~\ref{fig:mvc} shows the full class hierarchy of the SignAlign system and how the Hidden Markov Model could be swapped for a different model easily.
+
+\begin{figure}[t]
+        \centering
+        \includegraphics[width = 1.00\textwidth]{ThesisFigs/MVC}
+        \caption{A UML diagram of the full SignAlign system}\label{fig:mvc}
+\end{figure}
+
+\section{Correctness Testing}
+After implementing the \verb|DHMM|, \verb|signModel| and \verb|signClassifier| classes we verified their correctness by writing a collection of unit tests. However as we have built a statistical model the extent of our automated testing was limited to simple ``sanity checks'' and for this reason we omitted the details from the main report. We began by testing the likelihood evaluation and re-estimation procedure of the \verb|DHMM| class by comparing its results on a collection of predetermined test cases against those of the RHMM package written in R~\citep{RhmmPac}. Following this we went on to test the \verb|signModel| class by writing a collection of test re-estimations on a collection of observation sequences to ensure that the re-estimation procedure does indeed increase the likelihood of that \verb|signModel| generating those observation sequences. 
+
+\section{Program Listing}
+A full program listing for the SignAlign system is available at \\
+\verb|https://github.com/Daniel-Nichol/sign-align|.
+ 
 % ------------------------------------------------------------------------
 
 %%% Local Variables: 

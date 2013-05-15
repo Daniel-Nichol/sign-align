@@ -302,13 +302,13 @@ namespace SignAlign
             {
                 return;
             }
-            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/acceptanceThreshTest.csv"))
+            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/acceptanceThreshTest1.csv"))
             {
                 for (double tempThresh = minTresh; tempThresh < 0; tempThresh += increment)
                 {
                     acceptanceThreshold = tempThresh;
                     int falsePos = 0; int falseNeg = 0; int mc = 0; int ta = 0;
-                    runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/",out ta, out falsePos, out falseNeg, out mc);
+                    runTests("C:/Users/user/Desktop/signAlign/Data/Test/Relative/",out ta, out falsePos, out falseNeg, out mc);
                     sr.WriteLine(tempThresh.ToString() + "," + falsePos.ToString() + "," + falseNeg.ToString() + "," + mc.ToString());
                 }
 
@@ -426,7 +426,7 @@ namespace SignAlign
         /// <param name="maxClusters"></param
         public void clustersTest(int minClusters, int maxClusters)
         {
-            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/clusterNumberTest.csv"))
+            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/clusterNumberTest1.csv"))
             {
                 for (int i = minClusters; i < maxClusters; i++)
                 {
@@ -440,7 +440,7 @@ namespace SignAlign
                     for (int thresh = -2000; thresh < 0; thresh += 50)
                     {
                         acceptanceThreshold = thresh;
-                        accuracy = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/",out ta, out falsePos, out falseNeg, out mc);
+                        accuracy = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Relative/",out ta, out falsePos, out falseNeg, out mc);
                         threshString += thresh.ToString() + ",";
                         accString += accuracy.ToString() + ",";
                     }
@@ -553,13 +553,13 @@ namespace SignAlign
                 "Snow","Swan","Tea","Where","Your"
             };
             allSignsList = strlist.ToList<string>();
-            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/misclassTest.csv"))
+            using (StreamWriter sr = new StreamWriter("C:/Users/user/Desktop/signAlign/Data/Meta/misclassTest1.csv"))
             {
                 int numOfSigns = allSignsList.Count;
                 foreach(string sign in allSignsList)
                 {
                     int falsePos = 0; int falseNeg = 0; int mc = 0; int ta = 0; double accuracy;
-                    accuracy = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Absolute/", out ta, out falsePos, out falseNeg, out mc);
+                    accuracy = runTests("C:/Users/user/Desktop/signAlign/Data/Test/Relative/", out ta, out falsePos, out falseNeg, out mc);
                     sr.WriteLine(numOfSigns.ToString() +","+ mc.ToString());
                     ignore.Add(sign);
                     ignoreList = ignore.ToArray();

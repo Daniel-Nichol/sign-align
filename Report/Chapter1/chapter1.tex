@@ -12,14 +12,14 @@
 \fi
 
 \section{Model Selection}
-Our first task in implementing a sign recognition system was to determine which kind of model is suitable for the task of gesture recognition. We required a model which could be trained on a moderate sized training set and which is computationally efficient enough to be run in real time. Our research determined that Hidden Markov Models, Neural Networks or a Finite State Machine approach would be suitable for gesture recognition and that these models had been used for similar applications before~\citep{mitra2007gesture}. We decided that Hidden Markov Models would be the most suitable for the task of sign language recognition because they are approximately \emph{scale invariant}, meaning that they perform well even with minor scaling of their input, and hence resiliant to the changes in input occuring when the signer changes.
+Our first task in implementing a sign recognition system was to determine a model suitable for the task of gesture recognition. We required a model which could be trained on a moderate sized training set and which is computationally efficient enough to be run in real time. Our research determined that Hidden Markov Models, Neural Networks or a Finite State Machine approach would be suitable for gesture recognition and that these models had been used for similar applications before~\citep{mitra2007gesture}. We decided that Hidden Markov Models would be the most suitable for the task of sign language recognition because they are approximately \emph{scale invariant}, meaning that they perform well even with minor scaling of their input, and hence resilient to the changes in input occurring when the signer changes.
 
 \section{Hidden Markov Models}
 A \emph{Hidden Markov Model} (HMM) is (following the definitions in~\cite{rabiner1989tutorial}) a doubly stochastic process which consists of an underlying discrete Markov chain with state set $S = \{S_1, \dots, S_n \}$ and stochastic matrix $A=[a_{i,j}]_{N\times N}$ where 
 \begin{equation*}
 a_{i,j} = \mathbb{P}(q_{t+1} = S_i | q_t = S_j) \text{  for each  } 1 \leq i,j \leq N
 \end{equation*}
-which is hidden from an observer in the respect that one cannot directly observe the current state of the Markov chain. Instead we have a collection of $M$ observable symbols, say $V = \{ v_1, \dots, v_M\}$, which may be observed with probability dependent on the state underlying Markov chain (Figure:~\ref{fig:hmmex}). We encode these so-called \emph{emission probabilities} in a matrix $B = [b_j(k)]_{N\times M}$ where
+which is hidden from an observer in the sense that one cannot directly observe the current state of the Markov chain. Instead we have a collection of $M$ observable symbols, say $V = \{ v_1, \dots, v_M\}$, which may be observed with probability dependent on the state of the underlying Markov chain (Figure:~\ref{fig:hmmex}). We encode these so-called \emph{emission probabilities} in a matrix $B = [b_j(k)]_{N\times M}$ where
 \begin{equation*}
 b_j(k) = \mathbb{P}[v_k \text{ occurs at time }t | q_t = S_j] 
 \end{equation*}
@@ -56,14 +56,14 @@ Note now that a hidden Markov Model is entirely determined by the transition mat
 Hidden Markov Models were first introduced by in a series of papers by L.E Baum and others in the late 1960s ~\citep{baum1966statistical,baum1970maximization} and have been since used to study handwriting recognition~\citep{bunke1995off}, speech recognition ~\citep{juang1991hidden, jelinek1998statistical}, natural language modelling~\citep{manning1999foundations, jurafsky2002speech} and biological processes ~\citep{krogh1994hidden, durbin1998biological, lio1998models}.
 \\
 \\
-Given these defintions there exist three basic problems which form the basis of using HMMs as a tool for machine learning
+Given these definitions there exist three basic problems which form the basis of using HMMs as a tool for machine learning
 \begin{enumerate}
 \item Given an observation sequence $\bm{O} = O_1,O_2,\dots,O_T$ and a HMM $\lambda$, what is $\mathbb{P}(\bm{O}|\lambda)$ - the probability that the observation sequence $\bm{O}$ was produced by $\lambda$?
 \item Given a HMM $\lambda$ and an observation sequence $\bm{O} = O_1,O_2,\dots,O_T $ what is the state sequence of the underlying Markov chain in $\lambda$ which is most likely to have generated $\bm{O}$?
 \item Given an observation sequence $\bm{O}$, how to do we choose the parameters of $\lambda = (A,B,\bm{\pi})$ which best optimise $\mathbb{P}[\bm{O}|\lambda]$?
 \end{enumerate}
 
-In fact the problem of sign language gesture recognition can be seen as instance of problems 3 and 1. First we take for each gesture $g$ a set of training data which are recordings of the joints in 3D space. This training data forms a collection of observation sequences $\bm{O}_1, \dots, \bm{O}_n$ which are used in a solution to problem 3 to parameterise a hidden Markov Model $\lambda_g$ to model the gesture.
+In fact the problem of sign language gesture recognition can be seen as an instance of problems 3 and 1. First we take for each gesture $g$ a set of training data which are recordings of the joints in 3D space. This training data forms a collection of observation sequences $\bm{O}_1, \dots, \bm{O}_n$ which are used in a solution to problem 3 to parameterise a Hidden Markov Model $\lambda_g$ to model the gesture.
 
 Then given a fresh observation sequence $\bm{O}$ we can use a solution to problem 1 to compute $\mathbb{P}[\bm{O} | \lambda_g]$ for each $g$. We can then take the gesture $g$ for which this probability is maximised and, provided the probability exceeds some threshold, conclude that the gesture $g$ corresponds to the observation sequence $\bm{O}$. 
 
@@ -145,21 +145,21 @@ It follows that given an initial HMM $\lambda$ we may improve it to a locally op
 	\end{enumerate}
 \item return $\lambda$
 \end{enumerate}
-Note that this algorithm may not actually terminate. In practice we threshold the increase of $\mathbb{P}[\bm{O}|\lambda]$ to ensure termination in a reasonable time. Further, in practice we will not have single observation sequence but rather a collection, perhaps from a variety of signers of different heights, genders, ages or dialects. In the implementation of our HMM framework we will modify this algorithm to work for multiple observation sequences. This will again increase the time complexity of the algorithm, however this problem is not so significant as in practice we will use this algorithm once per sign and save the parameterisations.
+Note that this algorithm may not actually terminate. In practice we threshold the increase of $\mathbb{P}[\bm{O}|\lambda]$ to ensure termination in a reasonable time. 
 
 \subsection{Limitations of HMMs}
-A significant limitation of hidden Markov Models is that they can have only a finite set $V$ of possible observations. In practice this can prevent us using a HMM to model a specific gesture exactly. Take for example the problem of detecting the gesture of a circle drawn on a 2D plane. We might create a hidden Markov Model in which the states of the Markov chain represent some specific points on the plane and want our matrix $B$ to be such that
+A significant limitation of Hidden Markov Models is that they can have only a finite set $V$ of possible observations. This prevents us from using a HMM to model a specific gesture exactly. Take for example the problem of detecting the gesture of a circle drawn on a 2D plane. We might create a Hidden Markov Model in which the states of the Markov chain represent some specific points on the plane and want our matrix $B$ to be such that
 \begin{align*}
 &b_j(\bm{p}) = \mathbb{P}[\text{the pen is at point $\bm{p}$ at time $t$ } | q_t = S_j] &\text{ for each point $\bm{p}\in\mathbb{R}^2$}
 \end{align*}
-However as the plane is continuous and $V$ is finite this is not possible. One solution is the discretise the plane and have only a finite (but large) set of observation symbols. This method has been used with some success to distuingish between gestures with large variations, for example different tennis strokes~\citep{yamato1992recognizing}, and it is this method that we use for our system. It could be argued that this discretisation of the observation space could cause use to lose some subtlety in the input and hence prevent us from distinguishing between similar signs. We attempt to compensate for this by taking into account the full torso in determining a sign and using the elbows, shoulders and head to help distinguish signs where the hands are not sufficient alone.
+However as the plane is continuous and $V$ is finite this is not possible. One solution is to discretise the plane and have only a finite (but large) set of observation symbols. This method has been used with some success to distinguish between gestures with large variations, for example different tennis strokes~\citep{yamato1992recognizing}, and it is this method that we use for our system. It could be argued that this discretisation of the observation space could cause us to lose some subtlety in the input and hence prevent us from distinguishing between similar signs. We attempt to compensate for this by taking into account the full torso in determining a sign and using the elbows, shoulders and head to help distinguish signs where the hands are not sufficient alone.
 
-A second solution is to utilise \emph{Continuous Distribution Hidden Markov Models} which extend HMMs by replacing the emissions matrix $B$ with a probability density function. This method proved to be outside of the scope of this project but is one that has proven fruitful in previous pattern detection systems. As such we have built our sign recognition system to allow the discrete hidden markov models to be replaced by a continuous counterpart provided with relative ease (by implementing a certain interface).
+A second solution is to utilise \emph{Continuous Distribution Hidden Markov Models} which extend HMMs by replacing the emissions matrix $B$ with a probability density function. This method proved to be outside of the scope of this project but is one that has proven fruitful in previous pattern detection systems. As such we have built our sign recognition system to allow the discrete Hidden Markov Models to be replaced by a continuous counterpart provided with relative ease (by implementing a certain interface).
 
 \section{Previous Work}
 Motivated by the success of hidden Markov Models for speech in the mid 1970s \citep{baker1975dragon, jelinek1975design} these models were adopted for gesture detection. ~\citet{yamato1992recognizing} used discrete HMMs with observations from a 2D camera to detect tennis strokes and later ~\citet{starner1995real} implemented a system to recognise American Sign Language in real-time using by continuous density hidden Markov Models. This system relied on a single camera and required the user to wear a pair of special gloves. By imposing a restricted grammar to only allow sentences of a particular structure they were able to achieve an accuracy of 97.0\% on an independent training set. 
 
-More recently the SignSpeak project, which aims to use a 2D video camera and an extension of HMM techniques~\citep{dreuw2009smoothed, dreuw2010signspeak}, has received EU funding. This project aims to solve the problems of image extraction, sign recognition and language translation to provide a complete video-to-text system for sign language translation.
+More recently the SignSpeak project, which aims to use a 2D video camera and an extension of HMM techniques~\citep{dreuw2009smoothed, dreuw2010signspeak}, has received EU funding. This project aims to solve the problems of image extraction, sign recognition and language translation to provide a complete video-to-text system.
 
 % ------------------------------------------------------------------------
 
