@@ -112,7 +112,7 @@ and then normalised the $c_j$ to satisfy
 \begin{equation*}
 \sum_{j \in J} c_j = 1
 \end{equation*}
-We decided that if a joint $j$ has $c_j < 0.05$ then it is unlikely  to impact the overall decision about which sign has been observed and that the calculation of $\mathbb{P}[\mathbf{O}_j | \lambda_j]$ would be a waste of computational resources. As such we decided to set $c_j = 0$ for these joints and forgoe the unnecessary calculations. Using this method we chose to ignore the head, chest and lower body joints provided by the Kinect sensor.
+We decided that if a joint $j$ has $c_j < 0.05$ then it is unlikely  to impact the overall decision about which sign has been observed and that the calculation of $\mathbb{P}[\mathbf{O}_j | \lambda_j]$ would be a waste of computational resources. As such we decided to set $c_j = 0$ for these joints and forgo the unnecessary calculations. Using this method we chose to ignore the head, chest and lower body joints provided by the Kinect sensor.
 
 \subsection{Determining The Initial Topology and Parameters}
 As our training method utilises a local search to improve our parameterisation its effectiveness will greatly depend on how we initialise our Hidden Markov Models. If the initial parameterisation is poor then even with a large training set we may fail to find a parameterisation which allows us to recognise signs with high accuracy.

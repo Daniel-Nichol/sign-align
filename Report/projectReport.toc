@@ -20,21 +20,21 @@
 \contentsline {subsection}{\numberline {3.2.1}Determining the Weightings}{20}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Determining The Initial Topology and Parameters}{22}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Building a Sign Classifier}{24}{section.3.3}
-\contentsline {chapter}{\numberline {4}Interfacing With The Kinect Sensor}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Recording Training Data}{27}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}The Training Data}{29}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Limitations in the Training Data}{29}{subsection.4.1.2}
-\contentsline {chapter}{\numberline {5}Testing and Experimentation}{32}{chapter.5}
-\contentsline {section}{\numberline {5.1}Determining the Classifier Parameters}{32}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}The Cluster Number}{33}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}The Acceptance Threshold}{34}{subsection.5.1.2}
-\contentsline {section}{\numberline {5.2}Lowering the Misclassification Rate}{36}{section.5.2}
-\contentsline {chapter}{\numberline {6}Analysis and Conclusions}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Further Work}{40}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Improvements to the Current Classifier}{40}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Extensions of SignAlign}{41}{subsection.6.1.2}
-\contentsline {chapter}{Appendix: Technical Details}{43}{appendix*.16}
-\contentsline {section}{\numberline {.1}Program Architecture}{43}{section..1}
-\contentsline {section}{\numberline {.2}Correctness Testing}{44}{section..2}
-\contentsline {section}{\numberline {.3}Program Listing}{45}{section..3}
-\contentsline {chapter}{References}{46}{appendix*.18}
+\contentsline {chapter}{\numberline {4}Interfacing With The Kinect Sensor}{26}{chapter.4}
+\contentsline {section}{\numberline {4.1}Recording Training Data}{26}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}The Training Data}{28}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Limitations in the Training Data}{28}{subsection.4.1.2}
+\contentsline {chapter}{\numberline {5}Testing and Experimentation}{31}{chapter.5}
+\contentsline {section}{\numberline {5.1}Determining the Classifier Parameters}{31}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}The Cluster Number}{32}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}The Acceptance Threshold}{33}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Lowering the Misclassification Rate}{35}{section.5.2}
+\contentsline {chapter}{\numberline {6}Analysis and Conclusions}{38}{chapter.6}
+\contentsline {section}{\numberline {6.1}Further Work}{39}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Improvements to the Current Classifier}{39}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Extensions of SignAlign}{40}{subsection.6.1.2}
+\contentsline {chapter}{Appendix: Technical Details}{42}{appendix*.16}
+\contentsline {section}{\numberline {.1}Program Architecture}{42}{section..1}
+\contentsline {section}{\numberline {.2}Correctness Testing}{43}{section..2}
+\contentsline {section}{\numberline {.3}Program Listing}{44}{section..3}
+\contentsline {chapter}{References}{45}{appendix*.18}
